@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>guilheblIOPages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="guilhebl IO Pages">
+    <meta name="author" content="Guilherme Becker Lamounier">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='/font-awesome/css/font-lora.css' rel='stylesheet' type='text/css'>
+    <link href='/font-awesome/css/font-montserrat.css' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Theme CSS -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+
+    <!-- Syntax highlight CSS -->
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/index.html">
+                    <i class="fa fa-play-circle"></i>  <span class="light">guilhebl</span> IO Pages
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/">Blog</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <section class="post">
+        <div class="post-body">
+            <div class="container">
+		<div class="row-fluid">
+		  <div class="center-block">
+		    <h1>Building RESTful webservices with JAX-RS</h1>
+		    <p class="muted">27 March 2014</p>
+
+		    <h2>Prerequisites</h2>
+
+<p>To start deploying your JAX-RS application you need to install:</p>
+
+<ul>
+<li>Java JDK (1.6 or later)</li>
+<li>Glassfish (4.0 or later ) or any other JavaEE server which implements Java EE 6 or 7.</li>
+</ul>
+
+
+<p>Download java latest version and follow installation instructions.
+Download Glassfish and unzip on preferred location, test installation using commands:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> <span class="nv">$GLASSFISH_FOLDER$/</span>glassfish/bin/
+asadmin start-domain domain1 
+</code></pre></div>
+
+
+<p>If you got the domain up and running successfully you're ready to step to the next action</p>
+
+<h2>Create REST webservices in your Webapp</h2>
+
+<p>Configure your server side Java webapp to be able to respond to incoming REST HTTP requests
+from client side UI via JAX-RS.</p>
+
+<p>Since our application server is Glassfish, the default JAX-RS implementation of glassfish is Jersey.
+You can either configure Jersey Servlet in your web.xml as:</p>
+
+<div class="highlight"><pre><code class="xml">   <span class="nt">&lt;servlet&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;servlet-class&gt;</span>com.sun.jersey.spi.container.servlet.ServletContainer<span class="nt">&lt;/servlet-class&gt;</span>
+        <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+   <span class="nt">&lt;/servlet&gt;</span>
+   <span class="nt">&lt;servlet-mapping&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/rest/*<span class="nt">&lt;/url-pattern&gt;</span>
+   <span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></div>
+
+
+<p>With this Jersey will scan your packages to check if there are any annotated resources
+Or else use the implementation agnostic way, which is the prefferred way:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.ws.rs.ApplicationPath</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.ws.rs.core.Application</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.facade.UserService</span><span class="o">;</span>
+
+<span class="nd">@ApplicationPath</span><span class="o">(</span><span class="s">&quot;/rest&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAppApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">getClasses</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">classes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;();</span>
+        <span class="c1">// register root resource</span>
+        <span class="n">classes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">classes</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+
+<p>in the sample above we are registering one REST resource class UserService
+which we will implement like this:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.ws.rs.GET</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.ws.rs.Path</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.ws.rs.Produces</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.ws.rs.core.MediaType</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.domain.UserVO</span><span class="o">;</span>
+
+<span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/user&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">UserService</span><span class="o">()</span> <span class="o">{}</span>
+    
+    <span class="nd">@GET</span>
+    <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">TEXT_PLAIN</span><span class="o">})</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/text-sample&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">textSample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hi! This is a test!&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GET</span>
+    <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">TEXT_HTML</span><span class="o">})</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/html-sample&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">htmlSample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;&lt;ul&gt;&lt;li&gt;Element 1&lt;/li&gt;&lt;li&gt;Element 2&lt;/li&gt;&lt;li&gt;Element 3&lt;/li&gt;&lt;/ul&gt;&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GET</span>
+    <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_XML</span><span class="o">,</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">})</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/json-sample&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">UserVO</span> <span class="nf">jsonSample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">UserVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="n">buildSampleUserVO</span><span class="o">();</span>     
+        <span class="k">return</span> <span class="n">vo</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">UserVO</span> <span class="nf">buildSampleUserVO</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">UserVO</span> <span class="n">userVO</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserVO</span><span class="o">();</span>
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">&quot;test@testdomain.com&quot;</span><span class="o">);</span>
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setActive</span><span class="o">(</span><span class="s">&quot;T&quot;</span><span class="o">);</span>
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&quot;*************&quot;</span><span class="o">);</span>       
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroupsStr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>      
+        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;abc&quot;</span><span class="o">);</span>
+        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;admin&quot;</span><span class="o">);</span>
+        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;users&quot;</span><span class="o">);</span>
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setUserGroups</span><span class="o">(</span><span class="n">userGroupsStr</span><span class="o">);</span>                         
+        <span class="k">return</span> <span class="n">userVO</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+
+<h2>Configure your domain model to support JAXB</h2>
+
+<p>Notice how UserService is returning a UserVO object in the last 2 methods, JAXB: Java API for XML Binding
+is the default api for transforming Java objects into XML or JSON, in order to make JAXB understand our domain
+model we must annotate our domain classes with @XmlRootElement:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.xml.bind.annotation.XmlRootElement</span><span class="o">;</span>
+
+<span class="nd">@XmlRootElement</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserVO</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">active</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">Id</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getPassword</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">password</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getActive</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">active</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setActive</span><span class="o">(</span><span class="n">String</span> <span class="n">active</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">active</span> <span class="o">=</span> <span class="n">active</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getUserGroups</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">userGroups</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserGroups</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userGroups</span> <span class="o">=</span> <span class="n">userGroups</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+
+<h2>Build and test</h2>
+
+<p>Your REST resource now is able to respond HTTP requests and send back various MIME types according to each
+request URI (path).</p>
+
+<p>After that we're ready to build and deploy our webapp on Glassfish.
+In case you get a successful deploy it's time to test your deployed REST webservices,
+open your browser and navigate to "localhost:8080/myApp/rest/user/"
+myApp should be replaced with your webapp name.</p>
+
+<h4>1. TEXT Response - localhost:8080/myApp/rest/user/text-sample</h4>
+
+<p><img src="/assets/img/screenshot_01_text.png" alt="TEXT screenshot" /></p>
+
+<h4>2. HTML Response - "localhost:8080/myApp/rest/user/html-sample" </h5></h4>
+
+<p><img src="/assets/img/screenshot_01_html.png" alt="HTML screenshot" /></p>
+
+<h4>3. JSON Response - "localhost:8080/myApp/rest/user/json-sample" </h5></h4>
+
+<p>If you just place the location above in your browser and hit enter you will get a HTTP 404 - Not found page
+This is because your browser expects presentable MIME types like text/html or text/plain.</p>
+
+<p>In order to test your XML and JSON responses you need to hit your URLs using a HTTP client tool,
+in this example I use Chrome's DEV HTTP Client, but there are many other tools and you can even create your
+own Java client app to test. In order to accept JSON data responses you must have in your HTTP request headers the Accepted types:
+application/json or application/xml for XML.</p>
+
+<p>Response using client tool:</p>
+
+<p><img src="/assets/img/screenshot_01_json.png" alt="JSON screenshot" /></p>
+
+<h2>Additional Resources</h2>
+
+<p>A REST endpoint can deliver many other HTTP MIME type responses, its up to you the way you want to assemble your collection of webservices according to the necessities of your project. With this type of approach you can achieve a cleaner separation between the UI Layer (Javascript + HTML) and Service Layer (Business and Domain model components), giving greater independence and flexibility to your UI and service layer teams, since their integration will be based on the REST interface contract.</p>
+
+<h4>Additional links:</h4>
+
+<p><a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkknj.html">JavaEE 6 Oracle JAX-RS and JAXB tutorial</a></p>
+
+		  </div>
+		</div>
+            </div>
+        </div>
+    </section>
+    <!-- Core JavaScript Files -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/grayscale.js"></script>
+
+</body>
+
+</html>
+
+
