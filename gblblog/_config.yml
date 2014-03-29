@@ -1,9 +1,0 @@
-name: "guilheblIOPages"
-description: "guilhebl IO Pages"
-
-url: "guilhebl.github.io"
-
-markdown: rdiscount
-extensions: [fenced_code_blocks]
-permalink: pretty
-pygments: true
