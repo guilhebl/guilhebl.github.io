@@ -1,0 +1,230 @@
+---
+layout: post
+title: "Building RESTful webservices with JAX-RS"
+date:   2014-03-27 22:36:24
+categories: java
+---
+
+## Prerequisites
+
+To start deploying your JAX-RS application you need to install:
+
+- Java JDK (1.6 or later)
+- Glassfish (4.0 or later ) or any other JavaEE server which implements Java EE 6 or 7.
+
+Download java latest version and follow installation instructions.
+Download Glassfish and unzip on preferred location, test installation using commands:
+
+{% highlight bash %}
+cd $GLASSFISH_FOLDER$/glassfish/bin/
+asadmin start-domain domain1 
+{% endhighlight %}
+
+If you got the domain up and running successfully you're ready to step to the next action
+
+
+## Create REST webservices in your Webapp
+
+Configure your server side Java webapp to be able to respond to incoming REST HTTP requests
+from client side UI via JAX-RS.
+
+Since our application server is Glassfish, the default JAX-RS implementation of glassfish is Jersey.
+You can either configure Jersey Servlet in your web.xml as:
+
+{% highlight xml %}
+   <servlet>
+	    <servlet-name>JerseyRESTServlet</servlet-name>
+	    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+	    <servlet-name>JerseyRESTServlet</servlet-name>
+	    <url-pattern>/rest/*</url-pattern>
+   </servlet-mapping>
+{% endhighlight %}
+
+With this Jersey will scan your packages to check if there are any annotated resources
+Or else use the implementation agnostic way, which is the prefferred way:
+
+{% highlight java linenos=table %}
+
+package com.guilhebl.test.web.common.application;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+import com.guilhebl.test.web.service.facade.UserService;
+
+@ApplicationPath("/rest")
+public class SampleAppApplication extends Application {
+    @Override
+    public Set<Class<?>> getClasses() {
+        final Set<Class<?>> classes = new HashSet<Class<?>>();
+        // register root resource
+        classes.add(UserService.class);
+        return classes;
+    }
+}
+
+{% endhighlight %}
+
+in the sample above we are registering one REST resource class UserService
+which we will implement like this:
+
+{% highlight java linenos=table %}
+package com.guilhebl.test.web.service.facade;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.guilhebl.test.web.service.domain.UserVO;
+
+@Path("/user")
+public class UserService {
+
+	public UserService() {}
+	
+	@GET
+	@Produces({MediaType.TEXT_PLAIN})
+	@Path("/text-sample")
+	public String textSample() {
+		return "Hi! This is a test!";
+	}
+
+	@GET
+	@Produces({MediaType.TEXT_HTML})
+	@Path("/html-sample")
+	public String htmlSample() {
+		return "<ul><li>Element 1</li><li>Element 2</li><li>Element 3</li></ul>";
+	}
+
+	@GET
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Path("/json-sample")
+	public UserVO jsonSample() {
+		UserVO vo = buildSampleUserVO();		
+		return vo;
+	}
+
+	private UserVO buildSampleUserVO() {
+		UserVO userVO = new UserVO();
+		userVO.setId("test@testdomain.com");
+		userVO.setActive("T");
+		userVO.setPassword("*************");		
+		List<String> userGroupsStr = new ArrayList<String>();		
+		userGroupsStr.add("abc");
+		userGroupsStr.add("admin");
+		userGroupsStr.add("users");
+		userVO.setUserGroups(userGroupsStr);							
+		return userVO;
+	}
+}
+{% endhighlight %}
+
+
+## Configure your domain model to support JAXB
+
+Notice how UserService is returning a UserVO object in the last 2 methods, JAXB: Java API for XML Binding
+is the default api for transforming Java objects into XML or JSON, in order to make JAXB understand our domain
+model we must annotate our domain classes with @XmlRootElement:
+
+{% highlight java linenos=table %}
+package com.guilhebl.test.web.service.domain;
+
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class UserVO {
+
+	private String id;	
+	private String password;
+	private String active;
+	private List<String> userGroups;
+	
+	public String Id() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
+	public List<String> getUserGroups() {
+		return userGroups;
+	}
+	public void setUserGroups(List<String> userGroups) {
+		this.userGroups = userGroups;
+	}
+}
+{% endhighlight %}
+
+
+## Build and test
+
+Your REST resource now is able to respond HTTP requests and send back various MIME types according to each
+request URI (path).
+
+After that we're ready to build and deploy our webapp on Glassfish.
+In case you get a successful deploy it's time to test your deployed REST webservices,
+open your browser and navigate to "localhost:8080/myApp/rest/user/"
+myApp should be replaced with your webapp name.
+
+#### 1. TEXT Response - localhost:8080/myApp/rest/user/text-sample 
+
+![TEXT screenshot](/assets/img/screenshot_01_text.png)
+
+
+
+#### 2. HTML Response - "localhost:8080/myApp/rest/user/html-sample" </h5>
+
+![HTML screenshot](/assets/img/screenshot_01_html.png)
+
+
+#### 3. JSON Response - "localhost:8080/myApp/rest/user/json-sample" </h5>
+
+If you just place the location above in your browser and hit enter you will get a HTTP 404 - Not found page
+This is because your browser expects presentable MIME types like text/html or text/plain.
+
+In order to test your XML and JSON responses you need to hit your URLs using a HTTP client tool,
+in this example I use Chrome's DEV HTTP Client, but there are many other tools and you can even create your
+own Java client app to test. In order to accept JSON data responses you must have in your HTTP request headers the Accepted types:
+application/json or application/xml for XML.
+
+Response using client tool:
+
+![JSON screenshot](/assets/img/screenshot_01_json.png)
+
+
+## Additional Resources
+
+JAX-RS REST endpoints can deliver many other HTTP MIME type responses, using RESTful webservices,
+its up to you the way you want to assemble your collection of webservices.
+With this type of approach you can achieve a clean separation between the UI Layer (Javascript + HTML) and Service Layer (Business and Domain model components).
+
+Additional links:
+
+[JavaEE 6 Oracle JAX-RS and JAXB tutorial](http://docs.oracle.com/javaee/6/tutorial/doc/gkknj.html)
+
+
+
+
