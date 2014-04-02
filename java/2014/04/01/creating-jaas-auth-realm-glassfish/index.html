@@ -87,6 +87,10 @@ in order to keep your business domain related code isolated from the authenticat
 <p>The examples of this post explain how to create a JDBC Authentication realm for Oracle and PostgreSQL in Linux and Windows,
 using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
+<hr />
+
+<hr />
+
 <h2>Setup DATABASE</h2>
 
 <h4>ORACLE</h4>
@@ -104,6 +108,8 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 <span class="k">GRANT</span> <span class="n">DBA</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span> <span class="c1">-- * For testing purposes only!</span>
 </code></pre></div>
 
+
+<hr />
 
 <h4>POSTGRESQL</h4>
 
@@ -137,6 +143,8 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 </code></pre></div>
 
 
+<hr />
+
 <h5>WINDOWS</h5>
 
 <p>Open command line, in your POSGRESQL bin folder:</p>
@@ -145,6 +153,10 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 </code></pre></div>
 
+
+<hr />
+
+<hr />
 
 <h2>Build Database Model</h2>
 
@@ -171,6 +183,10 @@ postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 </code></pre></div>
 
 
+<hr />
+
+<hr />
+
 <h2>Configure Glassfish</h2>
 
 <h4>Create DATASOURCE in Glassfish</h4>
@@ -179,6 +195,8 @@ postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 .jar file(s) in the Classpath for Glassfish.</p>
 
 <p>Create JDBC connection pool using asadmin Tool under glassfish\bin:</p>
+
+<hr />
 
 <h5>ORACLE</h5>
 
@@ -190,6 +208,8 @@ asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCRe
 </code></pre></div>
 
 
+<hr />
+
 <h5>POSTGRESQL</h5>
 
 <div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
@@ -200,10 +220,16 @@ asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreS
 </code></pre></div>
 
 
+<hr />
+
+<hr />
+
 <h4>CREATE AUTHENTICATION REALM in Glassfish</h4>
 
 <p>Here we specify several parameters for the authentication realm we're creating, including a DIGEST algorithm to store the
 user's password encrypted, In this example we're going to use MD5.</p>
+
+<hr />
 
 <h5>ORACLE</h5>
 
@@ -214,6 +240,8 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
+<hr />
+
 <h5>POSTGRESQL</h5>
 
 <div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
@@ -222,6 +250,10 @@ user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=
 group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
 </code></pre></div>
 
+
+<hr />
+
+<hr />
 
 <h2>Configure your web.xml</h2>
 
@@ -296,6 +328,10 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 
 <p>notice the url-pattern tag, this defines the actual resources that this group of users can access.</p>
 
+<hr />
+
+<hr />
+
 <h2>Create your authentication form</h2>
 
 <p>In your Login page, place a form that will trigger the login flow:</p>
@@ -313,6 +349,10 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
+<hr />
+
+<hr />
+
 <h2>Load some sample data and test</h2>
 
 <p>Create 2 different USER Groups one for common Users and other for Admins:</p>
@@ -329,6 +369,10 @@ while admin users should be able to access these URLs and also "protected" URLs 
 /account/*.</p>
 
 <p>You can customize your login and error pages accordingly.</p>
+
+<hr />
+
+<hr />
 
 <h2>Additional links:</h2>
 

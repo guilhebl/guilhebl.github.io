@@ -147,6 +147,7 @@ a:focus {
     height: auto;
     padding: 100px 0;
     text-align: left;
+    word-wrap: initial;
     color: #fff;
 /*    background: url(../img/green_cup.png);
     background-repeat:repeat-y;

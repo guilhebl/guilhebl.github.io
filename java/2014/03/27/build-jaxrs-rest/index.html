@@ -98,6 +98,10 @@ asadmin start-domain domain1
 
 <p>If you got the domain up and running successfully you're ready to step to the next action</p>
 
+<hr />
+
+<hr />
+
 <h2>Create REST webservices in your Webapp</h2>
 
 <p>Configure your server side Java webapp to be able to respond to incoming REST HTTP requests
@@ -283,6 +287,10 @@ which we will implement like this:</p>
 </td></tr></table>
 
 
+<hr />
+
+<hr />
+
 <h2>Configure your domain model to support JAXB</h2>
 
 <p>Notice how UserService is returning a UserVO object in the last 2 methods, JAXB: Java API for XML Binding
@@ -370,6 +378,10 @@ model we must annotate our domain classes with @XmlRootElement:</p>
 </td></tr></table>
 
 
+<hr />
+
+<hr />
+
 <h2>Build and test</h2>
 
 <p>Your REST resource will answer HTTP requests and send back responses with MIME type according to each
@@ -383,13 +395,19 @@ the maven glassfish plugin since I can integrate my project build and deploy ste
 open your browser and navigate to "localhost:8080/myApp/rest/user/"
 myApp should be replaced with your webapp name.</p>
 
+<hr />
+
 <p>. TEXT Response - localhost:8080/myApp/rest/user/text-sample</p>
 
 <p><img src="/assets/img/screenshot_01_text.png" alt="TEXT screenshot" /></p>
 
+<hr />
+
 <p>. HTML Response - "localhost:8080/myApp/rest/user/html-sample"</p>
 
 <p><img src="/assets/img/screenshot_01_html.png" alt="HTML screenshot" /></p>
+
+<hr />
 
 <p>. JSON Response - "localhost:8080/myApp/rest/user/json-sample"</p>
 
@@ -404,6 +422,10 @@ application/json or application/xml for XML.</p>
 <p>Response using client tool:</p>
 
 <p><img src="/assets/img/screenshot_01_json.png" alt="JSON screenshot" /></p>
+
+<hr />
+
+<hr />
 
 <h2>Additional Resources</h2>
 
