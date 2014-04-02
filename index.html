@@ -99,7 +99,7 @@
   
 	<blockquote>
 	  <p class="lead"><a href="/java/2014/04/01/three-ways-get-ejb-ref/">Three ways on how to get an EJB reference</a></p>
-	    1: @Inject Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility. 1 2@Inject private UserServiceBeanLocal userService; 2: @EJB EJB specific annotation, can use specific attributes like "beanName": 1 2@EJB(mappedName = &quot;ejb/UserService&quot;) private UserServiceBeanLocal userService; 3: JNDI Lookup In simple Java POJOs or classes that doesn't have support for injection dependency mechanisms, you can realize a direct JNDI Lookup to get and EJB instance. In this example a simple Hashmap based cache is...<br />
+	    1: @Inject Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility. @Inject private UserServiceBeanLocal userService; 2: @EJB EJB specific annotation, can use specific attributes like "beanName": @EJB(mappedName = &quot;ejb/UserService&quot;) private UserServiceBeanLocal userService; 3: JNDI Lookup In simple Java POJOs or classes that doesn't have support for injection dependency mechanisms, you can realize a direct JNDI Lookup to get and EJB instance. In this example a simple Hashmap based cache is added to...<br />
             <a href="/java/2014/04/01/three-ways-get-ejb-ref/">Read more...</a>
 	  <footer>01 April 2014</footer>
 	</blockquote>
