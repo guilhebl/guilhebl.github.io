@@ -54,7 +54,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="/">Blog</a>
+                        <a href="/#postList">Blog</a>
                     </li>
                     <li class="page-scroll">
                         <a href="/about">About</a>
@@ -213,75 +213,72 @@ user's password encrypted, In this example we're going to use MD5.</p>
 
 <h2>Configure your web.xml</h2>
 
-<div class="highlight"><pre><code class="xml">  <span class="nt">&lt;login-config&gt;</span>
-        <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
-        <span class="nt">&lt;realm-name&gt;</span>userauth<span class="nt">&lt;/realm-name&gt;</span>
-        <span class="nt">&lt;form-login-config&gt;</span>
-            <span class="nt">&lt;form-login-page&gt;</span>/login.xhtml<span class="nt">&lt;/form-login-page&gt;</span>
-            <span class="nt">&lt;form-error-page&gt;</span>/loginError.xhtml<span class="nt">&lt;/form-error-page&gt;</span>
-        <span class="nt">&lt;/form-login-config&gt;</span>              
-    <span class="nt">&lt;/login-config&gt;</span>
+<div class="highlight"><pre><code class="xml"><span class="nt">&lt;login-config&gt;</span>
+    <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
+    <span class="nt">&lt;realm-name&gt;</span>userauth<span class="nt">&lt;/realm-name&gt;</span>
+    <span class="nt">&lt;form-login-config&gt;</span>
+        <span class="nt">&lt;form-login-page&gt;</span>/login.xhtml<span class="nt">&lt;/form-login-page&gt;</span>
+        <span class="nt">&lt;form-error-page&gt;</span>/loginError.xhtml<span class="nt">&lt;/form-error-page&gt;</span>
+    <span class="nt">&lt;/form-login-config&gt;</span>
+<span class="nt">&lt;/login-config&gt;</span>
 
-    <span class="nt">&lt;security-constraint&gt;</span> 
-        <span class="nt">&lt;display-name&gt;</span>ConstraintSSL<span class="nt">&lt;/display-name&gt;</span>
-        <span class="nt">&lt;web-resource-collection&gt;</span>
-            <span class="nt">&lt;web-resource-name&gt;</span>common<span class="nt">&lt;/web-resource-name&gt;</span>
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;url-pattern&gt;</span>/login/*<span class="nt">&lt;/url-pattern&gt;</span>
-            <span class="nt">&lt;url-pattern&gt;</span>/products/*<span class="nt">&lt;/url-pattern&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>GET<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>POST<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>HEAD<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>PUT<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>OPTIONS<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>TRACE<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>DELETE<span class="nt">&lt;/http-method&gt;</span>
-        <span class="nt">&lt;/web-resource-collection&gt;</span>
-        <span class="nt">&lt;auth-constraint&gt;</span>       
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;role-name&gt;</span>USERS<span class="nt">&lt;/role-name&gt;</span>
-            <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
-        <span class="nt">&lt;/auth-constraint&gt;</span>
-        
-    <span class="nt">&lt;user-data-constraint&gt;</span>
-      <span class="nt">&lt;description&gt;</span>Development mode<span class="nt">&lt;/description&gt;</span>
-      <span class="nt">&lt;transport-guarantee&gt;</span>NONE<span class="nt">&lt;/transport-guarantee&gt;</span>
-    <span class="nt">&lt;/user-data-constraint&gt;</span>
-    <span class="nt">&lt;/security-constraint&gt;</span>
-
-    <span class="nt">&lt;security-constraint&gt;</span> 
-        <span class="nt">&lt;display-name&gt;</span>ConstraintUser<span class="nt">&lt;/display-name&gt;</span>
-        <span class="nt">&lt;web-resource-collection&gt;</span>
-            <span class="nt">&lt;web-resource-name&gt;</span>protected<span class="nt">&lt;/web-resource-name&gt;</span>
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;url-pattern&gt;</span>/account/*<span class="nt">&lt;/url-pattern&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>GET<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>POST<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>HEAD<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>PUT<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>OPTIONS<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>TRACE<span class="nt">&lt;/http-method&gt;</span>
-            <span class="nt">&lt;http-method&gt;</span>DELETE<span class="nt">&lt;/http-method&gt;</span>
-        <span class="nt">&lt;/web-resource-collection&gt;</span>
-        <span class="nt">&lt;auth-constraint&gt;</span>       
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
-        <span class="nt">&lt;/auth-constraint&gt;</span>
-        
-    <span class="nt">&lt;user-data-constraint&gt;</span>
-      <span class="nt">&lt;description&gt;</span>SSL not required for Development<span class="nt">&lt;/description&gt;</span>
-      <span class="nt">&lt;transport-guarantee&gt;</span>CONFIDENTIAL<span class="nt">&lt;/transport-guarantee&gt;</span>
-    <span class="nt">&lt;/user-data-constraint&gt;</span>
-    <span class="nt">&lt;/security-constraint&gt;</span>
-        
-    <span class="nt">&lt;security-role&gt;</span>
-        <span class="nt">&lt;description/&gt;</span>
+<span class="nt">&lt;security-constraint&gt;</span>
+    <span class="nt">&lt;display-name&gt;</span>ConstraintSSL<span class="nt">&lt;/display-name&gt;</span>
+    <span class="nt">&lt;web-resource-collection&gt;</span>
+        <span class="nt">&lt;web-resource-name&gt;</span>common<span class="nt">&lt;/web-resource-name&gt;</span>
+        <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/login/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/products/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>GET<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>POST<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>HEAD<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>PUT<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>OPTIONS<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>TRACE<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>DELETE<span class="nt">&lt;/http-method&gt;</span>
+    <span class="nt">&lt;/web-resource-collection&gt;</span>
+    <span class="nt">&lt;auth-constraint&gt;</span>
+        <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;role-name&gt;</span>USERS<span class="nt">&lt;/role-name&gt;</span>
-    <span class="nt">&lt;/security-role&gt;</span>
-    <span class="nt">&lt;security-role&gt;</span>
-        <span class="nt">&lt;description/&gt;</span>
         <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
-    <span class="nt">&lt;/security-role&gt;</span>
+    <span class="nt">&lt;/auth-constraint&gt;</span>
+        <span class="nt">&lt;user-data-constraint&gt;</span>
+        <span class="nt">&lt;description&gt;</span>Development mode<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;transport-guarantee&gt;</span>NONE<span class="nt">&lt;/transport-guarantee&gt;</span>
+    <span class="nt">&lt;/user-data-constraint&gt;</span>
+<span class="nt">&lt;/security-constraint&gt;</span>
+<span class="nt">&lt;security-constraint&gt;</span>
+    <span class="nt">&lt;display-name&gt;</span>ConstraintUser<span class="nt">&lt;/display-name&gt;</span>
+    <span class="nt">&lt;web-resource-collection&gt;</span>
+        <span class="nt">&lt;web-resource-name&gt;</span>protected<span class="nt">&lt;/web-resource-name&gt;</span>
+        <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/account/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>GET<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>POST<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>HEAD<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>PUT<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>OPTIONS<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>TRACE<span class="nt">&lt;/http-method&gt;</span>
+        <span class="nt">&lt;http-method&gt;</span>DELETE<span class="nt">&lt;/http-method&gt;</span>
+    <span class="nt">&lt;/web-resource-collection&gt;</span>
+    <span class="nt">&lt;auth-constraint&gt;</span>
+        <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
+    <span class="nt">&lt;/auth-constraint&gt;</span>
+    <span class="nt">&lt;user-data-constraint&gt;</span>
+        <span class="nt">&lt;description&gt;</span>SSL not required for Development<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;transport-guarantee&gt;</span>CONFIDENTIAL<span class="nt">&lt;/transport-guarantee&gt;</span>
+    <span class="nt">&lt;/user-data-constraint&gt;</span>
+<span class="nt">&lt;/security-constraint&gt;</span>
+
+<span class="nt">&lt;security-role&gt;</span>
+    <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;role-name&gt;</span>USERS<span class="nt">&lt;/role-name&gt;</span>
+<span class="nt">&lt;/security-role&gt;</span>
+<span class="nt">&lt;security-role&gt;</span>
+    <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
+<span class="nt">&lt;/security-role&gt;</span>
 </code></pre></div>
 
 
