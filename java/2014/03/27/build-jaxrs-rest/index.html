@@ -106,7 +106,15 @@ from client side UI via JAX-RS.</p>
 <p>Since our application server is Glassfish, the default JAX-RS implementation of glassfish is Jersey.
 You can either configure Jersey Servlet in your web.xml as:</p>
 
-<div class="highlight"><pre><code class="xml">   <span class="nt">&lt;servlet&gt;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="xml">1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre></div></td><td class="code"><div class="highlight"><pre>   <span class="nt">&lt;servlet&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;servlet-class&gt;</span>com.sun.jersey.spi.container.servlet.ServletContainer<span class="nt">&lt;/servlet-class&gt;</span>
         <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
@@ -115,7 +123,8 @@ You can either configure Jersey Servlet in your web.xml as:</p>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;url-pattern&gt;</span>/rest/*<span class="nt">&lt;/url-pattern&gt;</span>
    <span class="nt">&lt;/servlet-mapping&gt;</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
 
 
 <p>With this Jersey will scan your packages to check if there are any annotated resources

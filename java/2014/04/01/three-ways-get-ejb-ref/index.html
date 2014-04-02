@@ -82,18 +82,22 @@
 
 <p>Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility.</p>
 
-<div class="highlight"><pre><code class="java"><span class="nd">@Inject</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java">1
+2</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nd">@Inject</span>
 <span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
 
 
 <h3>2: @EJB</h3>
 
 <p>EJB specific annotation, can use specific attributes like "beanName":</p>
 
-<div class="highlight"><pre><code class="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">&quot;ejb/UserService&quot;</span><span class="o">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java">1
+2</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">&quot;ejb/UserService&quot;</span><span class="o">)</span>
 <span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
 
 
 <h3>3: JNDI Lookup</h3>
@@ -102,7 +106,26 @@
 you can realize a direct JNDI Lookup to get and EJB instance. In this example a simple Hashmap based cache
 is added to enhance performance for repeated lookups:</p>
 
-<div class="highlight"><pre><code class="java"><span class="cm">/* </span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="cm">/* </span>
 <span class="cm">Read from Local Home Interface if EJB container is located in same JVM, otherwise use</span>
 <span class="cm">remote interface</span>
 <span class="cm">*/</span>
@@ -122,7 +145,8 @@ is added to enhance performance for repeated lookups:</p>
       <span class="o">}</span>
       <span class="k">return</span> <span class="n">home</span><span class="o">;</span>
    <span class="o">}</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
 
 
 

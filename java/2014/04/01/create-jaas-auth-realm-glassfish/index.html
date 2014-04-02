@@ -182,14 +182,20 @@ postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 
 <h5>ORACLE</h5>
 
-<div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource --datasourceclassname<span class="o">=</span>oracle.jdbc.pool.OracleDataSource --property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>testapp:password<span class="o">=</span>testapp1:url<span class="o">=</span>jdbc<span class="se">\\</span>:oracle<span class="se">\\</span>:thin<span class="se">\\</span>:@localhost<span class="se">\\</span>:1521<span class="se">\\</span>:XE oracleJDBCPool
-asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCResource
+<div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
+--datasourceclassname<span class="o">=</span>oracle.jdbc.pool.OracleDataSource 
+--property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>testapp:password<span class="o">=</span>testapp1:url<span class="o">=</span>jdbc<span class="se">\\</span>:oracle<span class="se">\\</span>:thin<span class="se">\\</span>:@localhost<span class="se">\\</span>:1521<span class="se">\\</span>:XE oracleJDBCPool
+
+asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCResource 
 </code></pre></div>
 
 
 <h5>POSTGRESQL</h5>
 
-<div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource --datasourceclassname<span class="o">=</span>org.postgresql.ds.PGSimpleDataSource --property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>postgres:password<span class="o">=</span>testapp1:serverName<span class="o">=</span>localhost:portNumber<span class="o">=</span>5432:databaseName<span class="o">=</span>testapp postgreSQLJDBCPool
+<div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
+--datasourceclassname<span class="o">=</span>org.postgresql.ds.PGSimpleDataSource 
+--property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>postgres:password<span class="o">=</span>testapp1:serverName<span class="o">=</span>localhost:portNumber<span class="o">=</span>5432:databaseName<span class="o">=</span>testapp postgreSQLJDBCPool
+
 asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreSQLJDBCResource
 </code></pre></div>
 
@@ -201,19 +207,90 @@ user's password encrypted, In this example we're going to use MD5.</p>
 
 <h5>ORACLE</h5>
 
-<div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>oracleJDBCResource:user-table<span class="o">=</span>TB_USER:user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
+<div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
+--property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>oracleJDBCResource:user-table<span class="o">=</span>TB_USER:
+user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:
+group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
 </code></pre></div>
 
 
-<p>B - POSTGRESQL</p>
+<h5>POSTGRESQL</h5>
 
-<div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>postgreSQL_JDBCResource:user-table<span class="o">=</span>TB_USER:user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
+<div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
+--property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>postgreSQLJDBCResource:user-table<span class="o">=</span>TB_USER:
+user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:
+group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
 </code></pre></div>
 
 
 <h2>Configure your web.xml</h2>
 
-<div class="highlight"><pre><code class="xml"><span class="nt">&lt;login-config&gt;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="xml"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;login-config&gt;</span>
     <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
     <span class="nt">&lt;realm-name&gt;</span>userauth<span class="nt">&lt;/realm-name&gt;</span>
     <span class="nt">&lt;form-login-config&gt;</span>
@@ -279,7 +356,8 @@ user's password encrypted, In this example we're going to use MD5.</p>
     <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
 <span class="nt">&lt;/security-role&gt;</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
 
 
 <p>notice the url-pattern tag, this defines the actual resources that this group of users can access.</p>
