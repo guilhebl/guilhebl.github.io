@@ -75,15 +75,28 @@
             <div class="container">
 		<div class="row-fluid">
 		  <div class="center-block">
-		    <h1>Three different ways to get an EJB reference in Java</h1>
+		    <h1>@Inject vs @EJB and Direct JNDI Lookup</h1>
 		    <p class="muted">01 April 2014</p>
 
-		    <h3>1: @Inject</h3>
+		    <h2>Three different ways to get an EJB reference in Java</h2>
 
-<p>Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility.</p>
+<h3>1: @Inject</h3>
+
+<p>Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility for your java classes
+and it's nowadays considered the standard way of integrating managed lifecycle components in the JavaEE platform.</p>
 
 <div class="highlight"><pre><code class="java"><span class="nd">@Inject</span>
 <span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span>
+</code></pre></div>
+
+
+<p>Inject Interface:</p>
+
+<div class="highlight"><pre><code class="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@Documented</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">Inject</span> <span class="o">{</span>
+<span class="o">}</span>
 </code></pre></div>
 
 
@@ -93,10 +106,27 @@
 
 <h3>2: @EJB</h3>
 
-<p>EJB specific annotation, can use specific attributes like "beanName":</p>
+<p>EJB specific annotation, can use specific attributes like "beanName" and others:</p>
 
 <div class="highlight"><pre><code class="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">&quot;ejb/UserService&quot;</span><span class="o">)</span>
 <span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span>
+</code></pre></div>
+
+
+<p>EJB Interface</p>
+
+<div class="highlight"><pre><code class="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">EJB</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">name</span><span class="o">()</span> <span class="k">default</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">beanName</span><span class="o">()</span> <span class="k">default</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Class</span> <span class="nf">beanInterface</span><span class="o">()</span> <span class="k">default</span> <span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">mappedName</span><span class="o">()</span> <span class="k">default</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre></div>
 
 
