@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>guilheblIOPages</title>
+    <link>http://guilhebl.github.io</link>
+    <description>guilhebl IO Pages</description>
+    <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
+    <item>
+      <title>Managing your UI dependencies with Bower</title>
+      <link>http://guilhebl.github.io/ui/2014/04/06/bower-ui-dependency-management-tool/</link>
+      <description>&lt;h2&gt;Bower - a UI dependency management tool&lt;/h2&gt;
+</description>
+      <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/ui/2014/04/06/bower-ui-dependency-management-tool/</guid>
+      <dc:date>2014-04-06T05:31:24-03:00</dc:date>
+    </item>
+    <item>
+      <title>Evolution of the Java EE platform</title>
+      <link>http://guilhebl.github.io/java/2014/04/05/javaee-evolution/</link>
+      <description>&lt;h2&gt;Java SE&lt;/h2&gt;
+</description>
+      <pubDate>Sat, 05 Apr 2014 06:36:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/05/javaee-evolution/</guid>
+      <dc:date>2014-04-05T06:36:24-03:00</dc:date>
+    </item>
+    <item>
+      <title>@Inject vs @EJB and Direct JNDI Lookup</title>
+      <link>http://guilhebl.github.io/java/2014/04/01/ways-get-ejb-ref/</link>
+      <description>&lt;h2&gt;Three different ways to get an EJB reference in Java&lt;/h2&gt;
+</description>
+      <pubDate>Tue, 01 Apr 2014 23:44:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/01/ways-get-ejb-ref/</guid>
+      <dc:date>2014-04-01T23:44:24-03:00</dc:date>
+    </item>
+    <item>
+      <title>Creating a JAAS JDBC Authentication Realm in Glassfish</title>
+      <link>http://guilhebl.github.io/java/2014/04/01/creating-jaas-auth-realm-glassfish/</link>
+      <description>&lt;h2&gt;Why JAAS&lt;/h2&gt;
+</description>
+      <pubDate>Tue, 01 Apr 2014 20:38:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/01/creating-jaas-auth-realm-glassfish/</guid>
+      <dc:date>2014-04-01T20:38:24-03:00</dc:date>
+    </item>
+    <item>
+      <title>Building RESTful webservices with JAX-RS</title>
+      <link>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</link>
+      <description>&lt;h2&gt;Prerequisites&lt;/h2&gt;
+</description>
+      <pubDate>Thu, 27 Mar 2014 19:36:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
+      <dc:date>2014-03-27T19:36:24-03:00</dc:date>
+    </item>
+    <dc:date>2014-04-06T05:31:24-03:00</dc:date>
+  </channel>
+</rss>

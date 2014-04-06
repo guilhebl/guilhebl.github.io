@@ -80,7 +80,13 @@
 
 		    <h2>Prerequisites</h2>
 
+
+
+
 <p>To start deploying your JAX-RS application you need to install:</p>
+
+
+
 
 <ul>
 <li>Java JDK (1.6 or later)</li>
@@ -88,27 +94,52 @@
 </ul>
 
 
+
+
 <p>Download java latest version and follow installation instructions.
 Download Glassfish and unzip on preferred location, test installation using commands:</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash"><span class="nb">cd</span> <span class="nv">$GLASSFISH_FOLDER$/</span>glassfish/bin/
 asadmin start-domain domain1 
 </code></pre></div>
 
 
+
+
 <p>If you got the domain up and running successfully you're ready to step to the next action</p>
 
-<hr />
+
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Create REST webservices in your Webapp</h2>
+
+
+
 
 <p>Configure your server side Java webapp to be able to respond to incoming REST HTTP requests
 from client side UI via JAX-RS.</p>
 
+
+
+
 <p>Since our application server is Glassfish, the default JAX-RS implementation of glassfish is Jersey.
 You can either configure Jersey Servlet in your web.xml as:</p>
+
+
+
 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="xml">1
 2
@@ -131,8 +162,13 @@ You can either configure Jersey Servlet in your web.xml as:</p>
 </td></tr></table>
 
 
+
+
 <p>With this Jersey will scan your packages to check if there are any annotated resources
 Or else use the implementation agnostic way, which is the prefferred way:</p>
+
+
+
 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
  2
@@ -177,8 +213,13 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
 </td></tr></table>
 
 
+
+
 <p>in the sample above we are registering one REST resource class UserService
 which we will implement like this:</p>
+
+
+
 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
  2
@@ -287,15 +328,29 @@ which we will implement like this:</p>
 </td></tr></table>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Configure your domain model to support JAXB</h2>
+
+
+
 
 <p>Notice how UserService is returning a UserVO object in the last 2 methods, JAXB: Java API for XML Binding
 is the default api for transforming Java objects into XML or JSON, in order to make JAXB understand our domain
 model we must annotate our domain classes with @XmlRootElement:</p>
+
+
+
 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
  2
@@ -378,62 +433,134 @@ model we must annotate our domain classes with @XmlRootElement:</p>
 </td></tr></table>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Build and test</h2>
 
+
+
+
 <p>Your REST resource will answer HTTP requests and send back responses with MIME type according to each
 request URI(path) and to the Accepted-Type headers in the HTTP request.</p>
+
+
+
 
 <p>After that we're ready to build and deploy our webapp in Glassfish. You can either drop your .war or .ear file inside
 Glassfish autodeploy folder, or either deploy via admin console, maven or some other automated procedure, I'd rather use
 the maven glassfish plugin since I can integrate my project build and deploy steps easily.</p>
 
+
+
+
 <p>In case you get a successful deploy it's time to test your deployed REST webservices,
 open your browser and navigate to "localhost:8080/myApp/rest/user/"
 myApp should be replaced with your webapp name.</p>
 
+
+
+
 <hr />
+
+
+
 
 <p>. TEXT Response - localhost:8080/myApp/rest/user/text-sample</p>
 
+
+
+
 <p><img src="/assets/img/screenshot_01_text.png" alt="TEXT screenshot" /></p>
 
+
+
+
 <hr />
+
+
+
 
 <p>. HTML Response - "localhost:8080/myApp/rest/user/html-sample"</p>
 
+
+
+
 <p><img src="/assets/img/screenshot_01_html.png" alt="HTML screenshot" /></p>
+
+
+
 
 <hr />
 
+
+
+
 <p>. JSON Response - "localhost:8080/myApp/rest/user/json-sample"</p>
+
+
+
 
 <p>If you just place the location above in your browser and hit enter you will get a HTTP 404 - Not found page
 This is because your browser expects presentable MIME types like text/html or text/plain.</p>
+
+
+
 
 <p>In order to test your XML and JSON responses you need to access your URLs using a HTTP client tool,
 in this example I use Chrome's DEV HTTP Client, but there are many other tools and you can even create your
 own Java client app to test. In order to accept JSON data responses you must have in your HTTP request headers the Accepted types:
 application/json or application/xml for XML.</p>
 
+
+
+
 <p>Response using client tool:</p>
+
+
+
 
 <p><img src="/assets/img/screenshot_01_json.png" alt="JSON screenshot" /></p>
 
-<hr />
+
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Additional Resources</h2>
 
+
+
+
 <p>A REST endpoint can deliver many other HTTP MIME type responses, it's up to you the way you want to assemble your collection of webservices focusing to match according to the necessities of your project. With this approach you can achieve a cleaner separation between the UI Layer (Javascript + HTML) and Service Layer (Business and Domain model components), giving greater independence and flexibility to your UI and service layer teams, since their integration will be based on the REST interface contract.</p>
+
+
+
 
 <h4>Additional links:</h4>
 
+
+
+
 <p><a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkknj.html">JavaEE 6 Oracle JAX-RS and JAXB tutorial</a></p>
+
 
 
 

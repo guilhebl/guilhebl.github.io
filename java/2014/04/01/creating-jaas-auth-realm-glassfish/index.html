@@ -80,22 +80,46 @@
 
 		    <h2>Why JAAS</h2>
 
+
+
+
 <p>The objective of using JAAS is to separate the concerns of user authentication so that they may be managed independently.
 You can let your Application Server handle the authentication logic using JAAS JDBC based authentication
 in order to keep your business domain related code isolated from the authentication layer mechanism.</p>
 
+
+
+
 <p>The examples of this post explain how to create a JDBC Authentication realm for Oracle and PostgreSQL in Linux and Windows,
 using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
-<hr />
+
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Setup DATABASE</h2>
 
+
+
+
 <h4>ORACLE</h4>
 
+
+
+
 <p>Open ORACLE SQLPlus:</p>
+
+
+
 
 <div class="highlight"><pre><code class="sql"><span class="k">CREATE</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> <span class="n">DATAFILE</span> <span class="s1">&#39;testapp.dbf&#39;</span> <span class="k">SIZE</span> <span class="mi">40</span><span class="n">M</span> <span class="n">ONLINE</span><span class="p">;</span>
 
@@ -109,31 +133,60 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 </code></pre></div>
 
 
+
+
 <hr />
+
+
+
 
 <h4>POSTGRESQL</h4>
 
+
+
+
 <h5>LINUX</h5>
 
+
+
+
 <p>.Create data base</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash">sudo -u postgres createdb testapp
 </code></pre></div>
 
 
+
+
 <p>.Start data base</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash">sudo /etc/init.d/postgresql start
 </code></pre></div>
 
 
+
+
 <p>.Login to your database</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash">psql -d testapp -U testapp
 </code></pre></div>
 
 
+
+
 <p>. to examine the database</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash">    <span class="se">\l</span> :List databases
     <span class="se">\c</span> database-name :List databases
@@ -143,22 +196,44 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 </code></pre></div>
 
 
+
+
 <hr />
+
+
+
 
 <h5>WINDOWS</h5>
 
+
+
+
 <p>Open command line, in your POSGRESQL bin folder:</p>
+
+
+
 
 <div class="highlight"><pre><code class="bat">initdb -U postgres -A password -E utf<span class="m">8</span> -W -D POSTGRESQL_ROOT\data
 postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 </code></pre></div>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Build Database Model</h2>
+
+
+
 
 <div class="highlight"><pre><code class="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">TB_USER</span>
  <span class="p">(</span>
@@ -183,22 +258,48 @@ postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 </code></pre></div>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Configure Glassfish</h2>
 
+
+
+
 <h4>Create DATASOURCE in Glassfish</h4>
+
+
+
 
 <p>First copy JDBC libs to glassfish/lib, or make sure you have Oracle or PostgreSQL jdbc
 .jar file(s) in the Classpath for Glassfish.</p>
 
+
+
+
 <p>Create JDBC connection pool using asadmin Tool under glassfish\bin:</p>
+
+
+
 
 <hr />
 
+
+
+
 <h5>ORACLE</h5>
+
+
+
 
 <div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
 --datasourceclassname<span class="o">=</span>oracle.jdbc.pool.OracleDataSource 
@@ -208,9 +309,17 @@ asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCRe
 </code></pre></div>
 
 
+
+
 <hr />
 
+
+
+
 <h5>POSTGRESQL</h5>
+
+
+
 
 <div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
 --datasourceclassname<span class="o">=</span>org.postgresql.ds.PGSimpleDataSource 
@@ -220,18 +329,38 @@ asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreS
 </code></pre></div>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h4>CREATE AUTHENTICATION REALM in Glassfish</h4>
+
+
+
 
 <p>Here we specify several parameters for the authentication realm we're creating, including a DIGEST algorithm to store the
 user's password encrypted, In this example we're going to use MD5.</p>
 
+
+
+
 <hr />
 
+
+
+
 <h5>ORACLE</h5>
+
+
+
 
 <div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
 --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>oracleJDBCResource:user-table<span class="o">=</span>TB_USER:
@@ -240,9 +369,17 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
+
+
 <hr />
 
+
+
+
 <h5>POSTGRESQL</h5>
+
+
+
 
 <div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
 --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>postgreSQLJDBCResource:user-table<span class="o">=</span>TB_USER:
@@ -251,11 +388,22 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Configure your web.xml</h2>
+
+
+
 
 <div class="highlight"><pre><code class="xml"><span class="nt">&lt;login-config&gt;</span>
     <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
@@ -326,15 +474,32 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
+
+
 <p>notice the url-pattern tag, this defines the actual resources that this group of users can access.</p>
 
-<hr />
+
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Create your authentication form</h2>
 
+
+
+
 <p>In your Login page, place a form that will trigger the login flow:</p>
+
+
+
 
 <div class="highlight"><pre><code class="html"> <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;j_security_check&quot;</span> <span class="nt">&gt;</span>
   <span class="nt">&lt;label&gt;</span>User<span class="nt">&lt;/label&gt;</span> 
@@ -349,13 +514,27 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Load some sample data and test</h2>
 
+
+
+
 <p>Create 2 different USER Groups one for common Users and other for Admins:</p>
+
+
+
 
 <div class="highlight"><pre><code class="sql"><span class="c1">--------------------------------- USERS AND GROUPS -----------------------------------------------------</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;USERS&#39;</span><span class="p">,</span> <span class="s1">&#39;common USERS&#39;</span><span class="p">);</span>
@@ -363,20 +542,38 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 </code></pre></div>
 
 
+
+
 <p>After that create sample users on each group,
 common users should only be able to access resources under /products/<em> and /login/</em>,
 while admin users should be able to access these URLs and also "protected" URLs which are under
 /account/*.</p>
 
+
+
+
 <p>You can customize your login and error pages accordingly.</p>
 
-<hr />
+
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Additional links:</h2>
 
+
+
+
 <p><a href="http://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service">JAAS</a></p>
+
 
 
 

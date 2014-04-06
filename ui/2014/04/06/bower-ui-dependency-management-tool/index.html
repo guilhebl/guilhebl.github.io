@@ -80,32 +80,67 @@
 
 		    <h2>Bower - a UI dependency management tool</h2>
 
+
+
+
 <p>Building UI related code has evolved during last years due to the introduction of new modern Javascript frameworks
 and to the new possibilities of usage that the javascript language has been extended like server side usage with Node.JS
 for example.</p>
 
+
+
+
 <p>There are several popular build tools nowadays to manage project dependencies, like maven and others. But UI related
 dependencies aren't managed very well under these tools.</p>
 
+
+
+
 <p>Bower is a lightweight UI related dependency manager tool, it depends on Node.js to run and npm as package manager</p>
+
+
+
 
 <h2>Prerequisites</h2>
 
+
+
+
 <p>Bower depends on Node and npm. It's installed globally using npm:</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash">npm install -g bower
 </code></pre></div>
 
 
+
+
 <p>Also make sure that git is installed as some bower packages require it to be fetched and installed.</p>
 
-<hr />
+
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h2>Creating your project's bower.json file</h2>
 
+
+
+
 <p>Configure your project's dependency in a file called bower.json, the default bower configuration file for your project:</p>
+
+
+
 
 <div class="highlight"><pre><code class="json"><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;myApp&quot;</span><span class="p">,</span>
@@ -135,26 +170,51 @@ dependencies aren't managed very well under these tools.</p>
 </code></pre></div>
 
 
+
+
 <p>. name and version: Here you place your project name and version.</p>
+
+
+
 
 <p>. ignore: Here we're telling Bower that it should ignore folders like "node_modules" "tests" and "bower_components"
 since these folders are used for development and test scenarios and are not needed during production deployment
 or application runtime.</p>
 
+
+
+
 <p>. devDependencies: Here we're listing our development dependencies, which are a list of other bower packages available for download,
 like jQuery, requireJS and angularJS libs. Notice the >= symbol, this will tell Bower to fetch version "XXX" or above of this particular artifact. There are other options as well to fetch isolated version ranges.</p>
 
+
+
+
 <p>After that we run the command</p>
+
+
+
 
 <div class="highlight"><pre><code class="bash">bower install
 </code></pre></div>
 
 
+
+
 <p>and Bower will fetch our necessary dependencies and place them under "bower_components" folder as per default.</p>
+
+
+
 
 <h2>.bowerrc file</h2>
 
+
+
+
 <p>The .bowerrc file enables custom configuration for Bower. For example we can determine a custom install directory:</p>
+
+
+
 
 <div class="highlight"><pre><code class="json"><span class="p">{</span>
   <span class="nt">&quot;directory&quot;</span><span class="p">:</span> <span class="s2">&quot;public/bower_components&quot;</span>
@@ -162,13 +222,25 @@ like jQuery, requireJS and angularJS libs. Notice the >= symbol, this will tell 
 </code></pre></div>
 
 
-<hr />
+
 
 <hr />
+
+
+
+
+<hr />
+
+
+
 
 <h4>Additional links:</h4>
 
+
+
+
 <p><a href="http://bower.io">Bower</a></p>
+
 
 
 
