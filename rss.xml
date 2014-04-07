@@ -10,6 +10,15 @@
     <description>guilhebl IO Pages</description>
     <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
     <item>
+      <title>Portable global JNDI name</title>
+      <link>http://guilhebl.github.io/java/2014/04/06/portable-global-jndi-name/</link>
+      <description>&lt;h2&gt;Default syntax&lt;/h2&gt;
+</description>
+      <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/06/portable-global-jndi-name/</guid>
+      <dc:date>2014-04-06T05:31:24-03:00</dc:date>
+    </item>
+    <item>
       <title>Managing your UI dependencies with Bower</title>
       <link>http://guilhebl.github.io/ui/2014/04/06/bower-ui-dependency-management-tool/</link>
       <description>&lt;h2&gt;Bower - a UI dependency management tool&lt;/h2&gt;

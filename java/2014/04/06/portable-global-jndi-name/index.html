@@ -70,36 +70,65 @@
     </nav>
 
 
-
-    <section class="intro">
-        <div class="intro-body">
+    <section class="post">
+        <div class="post-body">
             <div class="container">
-                <div class="row">
+		<div class="row-fluid">
+		  <div class="center-block">
+		    <h1>Portable global JNDI name</h1>
+		    <p class="muted">06 April 2014</p>
 
-		     <div class="col-md-8 col-md-offset-2">
+		    <h2>Default syntax</h2>
 
-		<div class="spacerGBL">
-                
-                <img src="../img/photo_perfil_02.jpg" alt="GBL photo">
+
+
+
+<p>Per the EJB 3.1 Specification, each session bean is assigned a unique JNDI name within the java:global namespace.</p>
+
+
+
+
+<div class="highlight"><pre><code class="java"><span class="nl">java:</span><span class="n">global</span><span class="o">[/&lt;</span><span class="n">app</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;]/&lt;</span><span class="n">module</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/&lt;</span><span class="n">bean</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</code></pre></div>
+
+
+
+
+<p>The <app-name> portion is only present if the application is deployed as an .ear file.   In that case, <app-name> defaults to the unqualified name of the .ear file, minus the file extension.   The <app-name> can be explicitly specified using the <app-name> element in application.xml.</p>
+
+
+
+
+<p><module-name> defaults to the unqualified name of the ejb-jar file or .war file in which the EJB component is defined, minus the file extension.   The <module-name> can be explicitly specified using the <module-name> element of the ejb-jar.xml (for ejb-jars) or web.xml(for EJB components defined in .wars).</p>
+
+
+
+
+<p><bean-name> corresponds to the session bean's EJB name.  It defaults to the unqualified name of the session bean class.  It can be explicitly specified using the name attribute of the @Stateless/@Stateful/@Singleton annotation.  Alternatively, if the ejb-jar.xml is being used to define the component, <bean-name> corresponds to the <ejb-name> element of ejb-jar.xml.</p>
+
+
+
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		    
+		  </div>
 		</div>
-
-		<div class="spacerGBL" />
-                <p>Guilherme  Becker. L, or just "Gui", is a Software Engineer, focused on building modern, fast and scalabale software. Believing in the principles that the best software solutions are the ones that focus on being simple, scalable and resource efficient. On his free time he likes to play guitar and do some other cool things!</p>
-
-	<blockquote>
-	  <p class="lead">
-	Graduated on Computer Sciences, has more than 10 years of professional experience in the field of software development, focusing mainly on web related technolgies: Java, UI/Javascript, Web frameworks, webdesign, Database technologies, Domain modelling, Performance optimization, Virtualization, Service oriented architectures, Artificial Intelligence, among other topics.
-</p>
-	  <footer>Certifications: OCJP, OCWCD, OCBCD, OCEA</footer>
-	</blockquote>
-		      </div>
-
-                </div>
             </div>
         </div>
     </section>
-
-
     <!-- Core JavaScript Files -->
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -111,4 +140,5 @@
 </body>
 
 </html>
+
 
