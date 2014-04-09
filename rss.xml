@@ -8,7 +8,27 @@
     <title>guilheblIOPages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages</description>
-    <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
+    <pubDate>Wed, 09 Apr 2014 05:31:24 -0300</pubDate>
+    <item>
+      <title>JPA - Find all - Generic method</title>
+      <link>http://guilhebl.github.io/java/2014/04/09/jpa-find-all-generic/</link>
+      <description>&lt;p&gt;You might want to implement some generic template type
+methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-superclass&quot;&gt;domain model superclass&lt;/a&gt; in order to avoid duplicating boilerplate code for several classes, one example is the findAll method, in certain scenarios you might want to search for all entities of a given Class:&lt;/p&gt;
+</description>
+      <pubDate>Wed, 09 Apr 2014 05:31:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/09/jpa-find-all-generic/</guid>
+      <dc:date>2014-04-09T05:31:24-03:00</dc:date>
+    </item>
+    <item>
+      <title>Domain Model Generic Superclass</title>
+      <link>http://guilhebl.github.io/java/2014/04/09/domain-model-generic-superclass/</link>
+      <description>&lt;p&gt;One of the core pieces of your appplication lays on the business domain and the objects which it is composed.
+Since many classes share similar fields and attributes, considering their Database relational model, you might want to build an initial generic superclass in order to avoid duplicating boilerplate code on several classes:&lt;/p&gt;
+</description>
+      <pubDate>Wed, 09 Apr 2014 05:31:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/09/domain-model-generic-superclass/</guid>
+      <dc:date>2014-04-09T05:31:24-03:00</dc:date>
+    </item>
     <item>
       <title>Portable global JNDI name</title>
       <link>http://guilhebl.github.io/java/2014/04/06/portable-global-jndi-name/</link>
@@ -63,6 +83,6 @@
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T19:36:24-03:00</dc:date>
     </item>
-    <dc:date>2014-04-06T05:31:24-03:00</dc:date>
+    <dc:date>2014-04-09T05:31:24-03:00</dc:date>
   </channel>
 </rss>
