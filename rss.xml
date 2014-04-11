@@ -8,7 +8,16 @@
     <title>guilheblIOPages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages</description>
-    <pubDate>Wed, 09 Apr 2014 05:31:24 -0300</pubDate>
+    <pubDate>Thu, 10 Apr 2014 20:45:24 -0300</pubDate>
+    <item>
+      <title>Regex Utility Class</title>
+      <link>http://guilhebl.github.io/java/2014/04/10/regex-util-class/</link>
+      <description>&lt;p&gt;Sometimes it's useful to have in hand several utility type methods in order to do similar tasks repeatedly. Utility classes are good candidates for a singleton. This example shows a Singleton Regex Utility class that provides several Regex validation methods:&lt;/p&gt;
+</description>
+      <pubDate>Thu, 10 Apr 2014 20:45:24 -0300</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/04/10/regex-util-class/</guid>
+      <dc:date>2014-04-10T20:45:24-03:00</dc:date>
+    </item>
     <item>
       <title>JPA - Find all - Generic method</title>
       <link>http://guilhebl.github.io/java/2014/04/09/jpa-find-all-generic/</link>
@@ -83,6 +92,6 @@ Since many classes share similar fields and attributes, considering their Databa
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T19:36:24-03:00</dc:date>
     </item>
-    <dc:date>2014-04-09T05:31:24-03:00</dc:date>
+    <dc:date>2014-04-10T20:45:24-03:00</dc:date>
   </channel>
 </rss>

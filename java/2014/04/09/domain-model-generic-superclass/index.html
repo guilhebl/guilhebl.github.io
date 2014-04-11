@@ -398,7 +398,29 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<p>FileReference domain class</p>
+<p>FileReference domain entity,</p>
+
+
+
+
+<p>TABLE:</p>
+
+
+
+
+<div class="highlight"><pre><code class="sql">  <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_FILE_REFERENCE</span>
+ <span class="p">(</span>
+    <span class="n">ID_FILE_REFERENCE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">TYPE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">CONSTRAINT</span> <span class="n">TB_FILE_REFERENCE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_FILE_REFERENCE</span><span class="p">)</span>
+ <span class="p">);</span>
+</code></pre></div>
+
+
+
+
+<p>Class:</p>
 
 
 
@@ -497,6 +519,171 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 <p>The class has a column called "NAME" which is mapped by it's supperclass, all similar classes which has a name attribute can extend BaseNamedEntity class, enabling extension points in your applitcation for defining common methods and mapping common fields, for domain objects that have common columns in DB or common behavior.</p>
+
+
+
+
+<p>Perhaps in certain scenarios there might be a need to record every record creation and alteration dates, together with other fields.</p>
+
+
+
+
+<p>An example of a "thicker" Generic Domain Entity Superclass:</p>
+
+
+
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.persistence.MappedSuperclass</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Temporal</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.TemporalType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Version</span><span class="o">;</span>
+
+<span class="nd">@MappedSuperclass</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">BaseNamedEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">semanticName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">created</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">lastUpdated</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="n">Long</span> <span class="n">version</span><span class="o">;</span>
+    
+    <span class="kd">protected</span> <span class="nf">BaseDomainEntity</span><span class="o">()</span> <span class="o">{}</span>
+    
+    <span class="nd">@Version</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getVersion</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">version</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setVersion</span><span class="o">(</span><span class="n">Long</span> <span class="n">version</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">version</span> <span class="o">=</span> <span class="n">version</span><span class="o">;</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getSemanticName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">semanticName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSemanticName</span><span class="o">(</span><span class="n">String</span> <span class="n">semanticName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">semanticName</span> <span class="o">=</span> <span class="n">semanticName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Temporal</span><span class="o">(</span><span class="n">TemporalType</span><span class="o">.</span><span class="na">DATE</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getCreated</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">created</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Temporal</span><span class="o">(</span><span class="n">TemporalType</span><span class="o">.</span><span class="na">DATE</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getLastUpdated</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">lastUpdated</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCreated</span><span class="o">(</span><span class="n">Date</span> <span class="n">created</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">created</span> <span class="o">=</span> <span class="n">created</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLastUpdated</span><span class="o">(</span><span class="n">Date</span> <span class="n">lastUpdated</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lastUpdated</span> <span class="o">=</span> <span class="n">lastUpdated</span><span class="o">;</span>
+    <span class="o">}</span>
+        
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+
+
+
+<p>Created and Last Updated are common columns to track when this record was created and last time it was changed, semantic name is
+a common column to store the SEO friendly semantic name of this entity, so URLs based on this entity might be properly displayed in
+an SEO friendly manner.</p>
+
+
+
+
+<p>Using the @Version enables JPA based automatic versioning, which uses an optimistic lock mechanism to ensure no confilct if 2 users are writing the same record, and one of the users have stale data (an old and invalid version of that Record). this will ensure that the record can be changed by only one user at a time, avoiding confilcts. The @Version field is immutable so you might not want to change the version field on any of your domain model instances in order to avoid unpredictable behaviors. Let the underlying JPA PersistenceContext handle the versioning and extend this class for any domain class that might need versioning.</p>
+
+
+
+
+<p>An example of mapping to PostgreSQL database:</p>
+
+
+
+
+<div class="highlight"><pre><code class="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_FILE_REFERENCE</span>
+ <span class="p">(</span>
+    <span class="n">ID_FILE_REFERENCE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">SEMANTICNAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">TYPE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">CREATED</span> <span class="nb">DATE</span><span class="p">,</span>
+    <span class="n">LASTUPDATED</span> <span class="nb">DATE</span><span class="p">;</span>
+    <span class="k">VERSION</span> <span class="nb">BIGINT</span><span class="p">;</span>
+    <span class="k">CONSTRAINT</span> <span class="n">TB_FILE_REFERENCE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_FILE_REFERENCE</span><span class="p">)</span>
+ <span class="p">);</span>
+ 
+</code></pre></div>
+
+
 
 
 
