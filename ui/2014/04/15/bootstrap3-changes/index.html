@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>guilheblIOPages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="guilhebl IO Pages">
+    <meta name="author" content="Guilherme Becker Lamounier">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='/font-awesome/css/font-lora.css' rel='stylesheet' type='text/css'>
+    <link href='/font-awesome/css/font-montserrat.css' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Theme CSS -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+
+    <!-- Syntax highlight CSS -->
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49522383-1', 'guilhebl.github.io');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/index.html">
+                    <i class="fa fa-play-circle"></i>  <span class="light">guilhebl</span> IO Pages
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/#postList">Blog</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <section class="post">
+        <div class="post-body">
+            <div class="container">
+		<div class="row-fluid">
+		  <div class="center-block">
+		    <h1>New features and changes of Bootstrap version 3</h1>
+		    <p class="muted">15 April 2014</p>
+
+		    <h2>Major changes</h2>
+
+
+
+
+<p>. Dropped IE7 and FF3.6 support.</p>
+
+
+
+
+<p>. Standard and responsive CSS combined into a single file.</p>
+
+
+
+
+<p>. Renamed Variables: Rename variables to use dashes instead of camelCase. For example, it's now @body-bg instead of @bodyBackground</p>
+
+
+
+
+<p>. No more @blue, @orange, instead its @brand-primary, @brand-success, and others. These are then assigned on a per-component basis (e.g., @state-warning-text, @btn-background-primary, etc)</p>
+
+
+
+
+<p>. Add retina image mixin with .img-retina()</p>
+
+
+
+
+<p>. New variables added like:- Change @component-active-bg and customize the active states of nav pills, dropdowns, and more.</p>
+
+
+
+
+<p>. Overhaul grid systems to make it fluid and mobile-first.</p>
+
+
+
+
+<p>.Removed separate fluid grid system, container, and layout</p>
+
+
+
+
+<p>. New single grid system uses .row (percentages not pixels), (padding over margin), and box-sizing: border-box, now.
+Offsets are still 100% supported.</p>
+
+
+
+
+<p>. Instead of .span<em> and .offset</em>, we're now using .col-<em> and .col-offset-</em>, respectively.</p>
+
+
+
+
+<p>. Use .col-<em> classes for tiny devices (smartphones). And use .col-sm-</em> classes for small devices (tablets)</p>
+
+
+
+
+<p>. Added .col-push-<em> and .col-pull-</em> modifier classes for easy column source ordering.</p>
+
+
+
+
+<p>. Removed dedicated table grid classes.</p>
+
+
+
+
+<p>. Use of "max-width" instead of "width" on all .container instances is recommended to help prevent some issues with containers in components like navbars.</p>
+
+
+
+
+<h3>Buttons</h3>
+
+
+
+
+<p>. The default gray button requires two classes—class="btn btn-default".</p>
+
+
+
+
+<p>. Dropped .btn-inverse</p>
+
+
+
+
+<h3>Forms</h3>
+
+
+
+
+<p>. Removed input-prepend and input-append for singular .input-group</p>
+
+
+
+
+<p>. Dropped .form-search</p>
+
+
+
+
+<p>. Horizontal forms are now mobile-first, meaning at less than 768px, elements are stacked. Above that, elements are floated and appear side-by-side.</p>
+
+
+
+
+<p>. Checkboxes and radios now require an extra additional step to setup. Instead of .radio.inline, you now need a single class, .radio-inline, for direct use</p>
+
+
+
+
+<h3>Icons</h3>
+
+
+
+
+<p>. Convert to Glyphicons v1.7 @font-face and drop the old PNGs.</p>
+
+
+
+
+<p>. All classes start with .glyphicon- instead of .icon-</p>
+
+
+
+
+<h3>Labels</h3>
+
+
+
+
+<p>. Refactor labels to scale with their parent's font-size</p>
+
+
+
+
+<p>. Dropped the .label-inverse</p>
+
+
+
+
+<p>. Hero Unit changed to Jumbotron, Class changed from .hero-unit to .jumbotron</p>
+
+
+
+
+<p>. Lighter font-weight for headings</p>
+
+
+
+
+<p>. Scale font-size in responsive views.</p>
+
+
+
+
+<h3>Navs and Navbars</h3>
+
+
+
+
+<p>. Removed .nav-list option. Replaced by the new .list-group component.</p>
+
+
+
+
+<p>. Drop support for .navbar-search</p>
+
+
+
+
+<p>. Overhaul styles of default navbar and its sub-components:</p>
+
+
+
+
+<p>. Dropdown menu carets (those attached to the actual menu, not the indicators) have been removed so that dropdown menus sit flat against the edge of the navbar.</p>
+
+
+
+
+<p>. Navbar vertical dividers have been brought in a smidge, meaning they do not extend the full height of the navbar.</p>
+
+
+
+
+<p>. No more box-shadow or gradients on the navbars.</p>
+
+
+
+
+<p>. Height of navbar has increased from 44px to 62px for mobile devices, and 50px for desktops.</p>
+
+
+
+
+<p>. Removed .navbar-inner and moved relevant styles to .navbar</p>
+
+
+
+
+<p>. Changed .navbar > .nav to .navbar-nav</p>
+
+
+
+
+<p>. Change .btn-navbar to .navbar-toggle</p>
+
+
+
+
+<p>. Changed .brand to .navbar-brand</p>
+
+
+
+
+<h3>Dropdowns</h3>
+
+
+
+
+<p>. Removed submenus suport in dropdown menus.</p>
+
+
+
+
+<p>. Removed .nav-header and replaced with .dropdown-header</p>
+
+
+
+
+<h3>Modals</h3>
+
+
+
+
+<p>. No longer require use of .hide</p>
+
+
+
+
+<p>. Reintroduces .modal-open on the body (so we can nuke the scroll there)</p>
+
+
+
+
+<p>. Adds a couple extra levels of markup (namely .modal-dialog and .modal-content) so we can scroll the entire modal rather than overflow a section within the modal.</p>
+
+
+
+
+<p>. Related, .modal is now the wrapper, and .modal-content is the modal itself. This is so we can still use position: fixed;, but make the modal relatively positioned so that scrolling moves the entire modal, not something with it.</p>
+
+
+
+
+<p>. Added a .modal-title for more consistent and useful targeting of the heading content (previously this was just an and selector performance wise that sucked).</p>
+
+
+
+
+<h3>Carousel</h3>
+
+
+
+
+<p>. Redesigned Lighter styles for the previous and next controls, as well as the carousel captions.</p>
+
+
+
+
+<p>. Updated required markup for carousel controls. The .carousel-control class now requires another element within it for the previous/next characters. Those characters are now Glyhpicons icons for improved styling and positioning across browsers and devices. Indicators are now bottom-middle aligned.</p>
+
+
+
+
+<p>. Captions are reinforced as optional and, by default, are hidden on mobile views, then shown for >768px viewports.</p>
+
+
+
+
+<h2>Link</h2>
+
+
+
+
+<p><a href="https://github.com/twbs/bootstrap/pull/6342">Bootstrap 3 changes</a></p>
+
+
+
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		    
+		  </div>
+		</div>
+            </div>
+        </div>
+    </section>
+    <!-- Core JavaScript Files -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/grayscale.js"></script>
+
+</body>
+
+</html>
+
+
