@@ -8,7 +8,16 @@
     <title>guilheblIOPages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages</description>
-    <pubDate>Tue, 15 Apr 2014 12:00:00 -0300</pubDate>
+    <pubDate>Tue, 15 Apr 2014 19:05:00 -0300</pubDate>
+    <item>
+      <title>Useful Linux commands for developers</title>
+      <link>http://guilhebl.github.io/linux/2014/04/15/useful-dev-commands-linux/</link>
+      <description>&lt;h3&gt;System Information&lt;/h3&gt;
+</description>
+      <pubDate>Tue, 15 Apr 2014 19:05:00 -0300</pubDate>
+      <guid>http://guilhebl.github.io/linux/2014/04/15/useful-dev-commands-linux/</guid>
+      <dc:date>2014-04-15T19:05:00-03:00</dc:date>
+    </item>
     <item>
       <title>New features and changes of Bootstrap version 3</title>
       <link>http://guilhebl.github.io/ui/2014/04/15/bootstrap3-changes/</link>
@@ -101,6 +110,6 @@ Since many classes share similar fields and attributes, considering their Databa
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T19:36:24-03:00</dc:date>
     </item>
-    <dc:date>2014-04-15T12:00:00-03:00</dc:date>
+    <dc:date>2014-04-15T19:05:00-03:00</dc:date>
   </channel>
 </rss>
