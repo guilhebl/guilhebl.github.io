@@ -8,7 +8,16 @@
     <title>guilheblIOPages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages</description>
-    <pubDate>Tue, 15 Apr 2014 19:05:00 -0300</pubDate>
+    <pubDate>Thu, 24 Apr 2014 19:05:00 -0300</pubDate>
+    <item>
+      <title>New features in Ubuntu 14.04 Trusty</title>
+      <link>http://guilhebl.github.io/linux/2014/04/24/ubuntu-14-04-trusty-features/</link>
+      <description>&lt;h3&gt;Linux kernel 3.13&lt;/h3&gt;
+</description>
+      <pubDate>Thu, 24 Apr 2014 19:05:00 -0300</pubDate>
+      <guid>http://guilhebl.github.io/linux/2014/04/24/ubuntu-14-04-trusty-features/</guid>
+      <dc:date>2014-04-24T19:05:00-03:00</dc:date>
+    </item>
     <item>
       <title>Useful Linux commands for developers</title>
       <link>http://guilhebl.github.io/linux/2014/04/15/useful-dev-commands-linux/</link>
@@ -110,6 +119,6 @@ Since many classes share similar fields and attributes, considering their Databa
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T19:36:24-03:00</dc:date>
     </item>
-    <dc:date>2014-04-15T19:05:00-03:00</dc:date>
+    <dc:date>2014-04-24T19:05:00-03:00</dc:date>
   </channel>
 </rss>

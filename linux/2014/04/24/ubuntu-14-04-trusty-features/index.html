@@ -75,86 +75,50 @@
             <div class="container">
 		<div class="row-fluid">
 		  <div class="center-block">
-		    <h1>Useful Linux commands for developers</h1>
-		    <p class="muted">15 April 2014</p>
+		    <h1>New features in Ubuntu 14.04 Trusty</h1>
+		    <p class="muted">24 April 2014</p>
 
-		    <h3>System Information</h3>
-
-
-
-
-<p>Processor Info:</p>
+		    <h3>Linux kernel 3.13</h3>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> cat /proc/cpuinfo 
-</code></pre></div>
+<p>Ubuntu 14.04 includes the 3.13.0-24.46 Ubuntu Linux kernel which is based on the v3.13.9 upstream stable Linux kernel.</p>
 
 
 
 
-<p>Memory Info:</p>
+<p>. Networking - Included Open vSwitch 2.0.1 support (including VXLAN), better bonding support, better bridge management and diagnosis and new buffer bloat avoidance measures. We also introduce better TCP connection management in the face of packet loss, plus TCP fastopen and improved attack tolerance</p>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> cat /proc/meminfo
-</code></pre></div>
+<p>. Scheduling - the default I/O scheduler was changed from CFQ to Deadline.</p>
 
 
 
 
-<p>Version of your kernel and the GCC compiler:</p>
+<p>. Thermal and Power Management - Power management and efficiency continues to be a focus and we saw the inclusion of the Intel RPL (Running AVerage Power Limit) support for enforcing and monitoring power limits on modern Intel processors.</p>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> cat /proc/version 
-</code></pre></div>
+<p>. Virtualization - Various changes as well as major improvements to Xen and KVM.</p>
 
 
 
 
-<hr />
+<p>. Filesystems - general performance and latency improvements have been made across the board for filesystems such as Btrfs, XFS, and Ext4.</p>
 
 
 
 
-<h3>File and display commands</h3>
+<p>. Security - Improvements to AppArmor allow more fine-grained control over applications. The Integrity Measurement Architecture has also been enabled. Packaging updates for signed kernels were also performed as well as EFI boot support.</p>
 
 
 
 
-<p>Lists files with permissions, shows hidden files, displays them in a column format, and suppresses group information.</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> ls -laxo
-</code></pre></div>
-
-
-
-
-<p>Clear screen:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> clear
-</code></pre></div>
-
-
-
-
-<p>Remove directory with all content inside:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> rm -rf example
-</code></pre></div>
+<p>. Hardware support - ARM multiplatform support has been added, enabling you to build a single ARM kernel image that can boot across multiple hardware platforms. Additionally, the ARM64 and Power architectures are now fully supported.</p>
 
 
 
@@ -164,62 +128,12 @@
 
 
 
-<h3>User access</h3>
+<h3>General updates</h3>
 
 
 
 
-<p>Turn a file to be executable for your user:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> chmod +x file.bin
-</code></pre></div>
-
-
-
-
-<p>Switch to super user:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> su
-</code></pre></div>
-
-
-
-
-<p>Run a command using super user:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> sudo <span class="o">(</span><span class="nb">command</span><span class="o">)</span>
-</code></pre></div>
-
-
-
-
-<p>Exit from Super user mode or close terminal window:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> <span class="nb">exit</span>
-</code></pre></div>
-
-
-
-
-<p>Open application using Super user:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> sudo open -a <span class="s2">&quot;app_name&quot;</span>
-</code></pre></div>
+<p>Improvements in several applications including Libreoffice: Calc and Writer, AppArmor, Nautilus, Unity, Python, Xorg.</p>
 
 
 
@@ -229,84 +143,60 @@
 
 
 
-<h2>Process management</h2>
+<h3>Ubuntu Server</h3>
 
 
 
 
-<p>List active processes:</p>
+<h5>OpenStack Icehouse</h5>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> ps -a
-</code></pre></div>
+<p>Ubuntu 14.04 LTS includes the OpenStack 2014.1 (Icehouse) release of the following projects in Ubuntu main:</p>
 
 
 
 
-<p>discover PID of a process:</p>
+<p>OpenStack Compute - Nova
+OpenStack Identity - Keystone
+OpenStack Imaging - Glance
+OpenStack Block Storage - Cinder
+OpenStack Networking - Neutron
+OpenStack Object Storage - Swift
+OpenStack Telemetry - Ceilometer
+OpenStack Orchestration - Heat
+OpenStack Dashboard - Horizon</p>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> pidof java
-</code></pre></div>
+<h5>Xen 4.4</h5>
 
 
 
 
-<p>Kill process by PID:</p>
+<p>Ubuntu 14.04 LTS includes Xen 4.4. This is a significant upgrade from the previous release. Of particular note the xen hypervisor no longer supports 32bit only CPUs on the x86 architecture.</p>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> <span class="nb">kill </span>2581
-</code></pre></div>
+<h5>Apache 2.4</h5>
 
 
 
 
-<p>Kill process and force shutdown:</p>
+<p>Ubuntu 14.04 LTS includes Apache 2.4; this is a major version upgrade from Apache 2.2 in Ubuntu 12.04 LTS</p>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> <span class="nb">kill</span> -9 2581
-</code></pre></div>
+<h5>PHP 5.5</h5>
 
 
 
 
-<p>Kill all processes with same name:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> killall java
-</code></pre></div>
-
-
-
-
-<hr />
-
-
-
-
-<h2>GIT</h2>
-
-
-
-
-<div class="highlight"><pre><code class="bash">git push -u origin master:my_test
-</code></pre></div>
-
-
-
-
-<p>Pushes the commits from your local master branch to a (possibly new) remote branch my_test
-and sets up master to track origin/my_test.</p>
+<p>PHP has been updated to 5.5, which is a major upgrade from 5.3.</p>
 
 
 
@@ -316,53 +206,18 @@ and sets up master to track origin/my_test.</p>
 
 
 
-<h2>node.js</h2>
+<h3>Other upgrades</h3>
 
 
 
 
-<p>Remove all globally installed packages with npm:</p>
+<h5>Ubuntu Touch</h5>
 
 
 
 
-<div class="highlight"><pre><code class="bash"> sudo npm -g ls <span class="p">|</span> grep -v <span class="s1">&#39;npm@&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;/@/ {print $2}&#39;</span> <span class="p">|</span> awk -F@ <span class="s1">&#39;{print $1}&#39;</span> <span class="p">|</span> xargs sudo npm -g rm
-</code></pre></div>
-
-
-
-
-<p>Purge NodeJS installation</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash"> sudo apt-get remove --purge nodejs
-</code></pre></div>
-
-
-
-
-<p>Solve Permission access issues when running without sudo:</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash">sudo chown -R <span class="nv">$USER</span> /usr/<span class="o">{</span><span class="nb">local</span>/share/man,local/bin,lib/node<span class="o">}</span>
-</code></pre></div>
-
-
-
-
-<p>and</p>
-
-
-
-
-<div class="highlight"><pre><code class="bash">sudo chown -R <span class="nv">$USER</span> 
-</code></pre></div>
-
-
+<p>For phones and tablets while this Ubuntu Touch release is still not a supported release, it is a relatively "stable"
+build for wider testing and feedback while Ubuntu Team is still continuing with high velocity towards a going-to-market milestone later.</p>
 
 
 
