@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>guilheblIOPages</title>
+    <title>guilhebl IO Pages</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="guilhebl IO Pages">
+    <meta name="description" content="guilhebl IO Pages - Software Development writings">
     <meta name="author" content="Guilherme Becker Lamounier">
 
     <!-- Bootstrap Core CSS -->
@@ -46,8 +46,19 @@
                 </a>
             </div>
 
+	<div class="col-sm-3 col-md-3 pull-right">
+        <div class="input-group">
+
+            <input type="text" class="search-field form-control" placeholder="Search" autocomplete="off">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
@@ -63,10 +74,13 @@
                         <a href="/contact">Contact</a>
                     </li>
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
+
+        <div class="results resultsBox"></div>
     </nav>
 
 
@@ -111,6 +125,10 @@
     <!-- Custom Theme JavaScript -->
     <script src="/js/grayscale.js"></script>
 
+    <!-- Plugin Third party JavaScript -->
+    <script src="js/jekyll-search.js"></script>
+    <script src="js/jekyll-search.jquery.js"></script>
+ 
 </body>
 
 </html>

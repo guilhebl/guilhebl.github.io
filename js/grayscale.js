@@ -18,6 +18,12 @@ $(function() {
     });
 });
 
+// DOM Ready
+
+$(document).ready(function() {
+    $('.search-field').jekyllSearch();
+});
+
 //Google Map Skin - Get more at http://snazzymaps.com/
 /*
 var myOptions = {

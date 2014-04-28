@@ -46,7 +46,11 @@
     </url>
     <url>
         <loc>http://guilhebl.github.io/linux/2014/04/24/ubuntu-14-04-trusty-features/</loc>
-        <lastmod>2014-04-24T22:48:31-03:00</lastmod>
+        <lastmod>2014-04-27T21:12:01-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://guilhebl.github.io/ui/2014/04/27/angular-view-content-loaded/</loc>
+        <lastmod>2014-04-28T01:46:32-03:00</lastmod>
     </url>
     <url>
         <loc>http://guilhebl.github.io/contact/</loc>
@@ -54,10 +58,14 @@
     </url>
     <url>
         <loc>http://guilhebl.github.io/</loc>
-        <lastmod>2014-04-24T22:48:31-03:00</lastmod>
+        <lastmod>2014-04-28T02:25:14-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://guilhebl.github.io/search.json</loc>
+        <lastmod>2014-03-09T12:27:11-03:00</lastmod>
     </url>
     <url>
         <loc>http://guilhebl.github.io/about/</loc>
-        <lastmod>2014-04-07T14:07:22-03:00</lastmod>
+        <lastmod>2014-04-28T02:27:31-03:00</lastmod>
     </url>
 </urlset>

@@ -89,82 +89,49 @@
             <div class="container">
 		<div class="row-fluid">
 		  <div class="center-block">
-		    <h1>Evolution of the Java EE platform</h1>
-		    <p class="muted">05 April 2014</p>
+		    <h1>angular $viewContentLoaded</h1>
+		    <p class="muted">27 April 2014</p>
 
-		    <h2>Java SE</h2>
-
-
-
-
-<p>The evolution of the Java Enterprise Edition (JavaEE) platform is closely related to the evolution of the Java language and the
- Java Standard Edition(JavaSE) API itself.</p>
+		    <h3>$viewContentLoaded</h3>
 
 
 
 
-<p><img src="/assets/img/j2se1.png" alt="Java SE" /></p>
+<p>When using angularJS, you can hook up event listeners like
+onDomReady using</p>
 
 
 
 
-<p>Starting from the first Java version the basic foundation API's are layered together to offer the user a new Object Oriented, portable
-and flexible language.</p>
+<div class="highlight"><pre><code class="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="c1">// ... </span>
+</code></pre></div>
 
 
 
 
-<p>Java has progressively evolved in terms of ease of use, and in terms of performance and flexibility, major versions like 1.5 with the inclusion of features like: Generics, Annotations, and other versions with the addition of scripting language support, and now recently in the JavaSE 8 version the inclusion of: Closures, Lambda expressions, Concurrency library for parallel computing on multi-core processors, made Java a modern and widely used programming language.</p>
+<p>sometimes it's necessary to wait until the view gets loaded to hook up some additional processing that depends
+on DOM elements present or created after the controller has processed the view,
+and $viewContentLoaded is intended just for that.</p>
 
 
 
 
-<hr />
+<p>controllers.js</p>
 
 
 
 
-<hr />
+<div class="highlight"><pre><code class="javascript">   <span class="cm">/* Controllers */</span>
+    <span class="nx">myapp</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;ProductController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;ProductService&#39;</span><span class="p">,</span>
+      <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">ProductService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">products</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">query</span><span class="p">();</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">featuredProductList</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">featuredlist</span><span class="p">();</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">orderProp</span> <span class="o">=</span> <span class="s1">&#39;introductionDate&#39;</span><span class="p">;</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$viewContentLoaded&#39;</span><span class="p">,</span> <span class="nx">loadBootstrapUI</span><span class="p">);</span> <span class="err">/* Example building UI based elements dependent on fetched data</span>
+      <span class="p">}]);</span>
+</code></pre></div>
 
 
-
-
-<h2>JAVA EE</h2>
-
-
-
-
-<p>Java EE has progressed accordingly with the Java SE version, since the initial EJB and Servlet implementations which tried to bring to the user a powerful and flexible web development platform. The major version being J2EE 1.4 which brought together the necessary Web Services API and other tools.</p>
-
-
-
-
-<p><img src="/assets/img/JavaEE_evolution.png" alt="Java EE" /></p>
-
-
-
-
-<p>After version 1.4 came the major version that would improve development productivity: Java EE 5, the “J2” was abandoned in the default platform name and the standard became “Java EE”. Java EE 5 presented many new features which would radically transform the way the Developer would use the platform. With the new EJB 3.0 API extensive and verbose XMLs would change place with the use of Annotations, also the new JPA API would make the Object relational mapping much easier.</p>
-
-
-
-
-<p>JavaEE 6 introduced useful features like the support for REST based web-services with JAX-RS api, EJB Lite, dependency injection with CDI and the possiblity of using Profiles: portions of  the Java EE API to be loaded isolated and on demand making the deployment of web based applications much lighter and flexible.</p>
-
-
-
-
-<p>Latest Version:</p>
-
-
-
-
-<p><img src="/assets/img/java_ee7.jpeg" alt="Java EE" /></p>
-
-
-
-
-<p>JavaEE 7 presented updated versions of APIs of: JSF, EJB, JMS and others, and introduced 4 new APIs: Concurrency Utilities (JSR 236), Batch Applications (JSR 352), JSON-P – Java API for JSON (JSR 353), and Java API for Websocket (JSR 356), which enhanced the support for HTML5.</p>
 
 
 

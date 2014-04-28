@@ -390,3 +390,8 @@ body {
 .spacerGBL {
     margin-top: 100px; /* define margin as you see fit */
 }
+
+.resultsBox {
+	padding-top: 16px;
+	padding-left: 16px;
+}

@@ -1,0 +1,94 @@
+[
+	
+		{
+		  "title"    : "angular $viewContentLoaded",
+		  "category" : "",
+		  "url"     : "/ui/2014/04/27/angular-view-content-loaded/",
+		  "date"     : "2014-04-27 19:05:00 -0300"
+		} ,
+	
+		{
+		  "title"    : "New features in Ubuntu 14.04 Trusty Tahr",
+		  "category" : "",
+		  "url"     : "/linux/2014/04/24/ubuntu-14-04-trusty-features/",
+		  "date"     : "2014-04-24 19:05:00 -0300"
+		} ,
+	
+		{
+		  "title"    : "Useful Linux commands for developers",
+		  "category" : "",
+		  "url"     : "/linux/2014/04/15/useful-dev-commands-linux/",
+		  "date"     : "2014-04-15 19:05:00 -0300"
+		} ,
+	
+		{
+		  "title"    : "New features and changes of Bootstrap version 3",
+		  "category" : "",
+		  "url"     : "/ui/2014/04/15/bootstrap3-changes/",
+		  "date"     : "2014-04-15 12:00:00 -0300"
+		} ,
+	
+		{
+		  "title"    : "Regex Utility Class",
+		  "category" : "",
+		  "url"     : "/java/2014/04/10/regex-util-class/",
+		  "date"     : "2014-04-10 20:45:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "JPA - Find all - Generic method",
+		  "category" : "",
+		  "url"     : "/java/2014/04/09/jpa-find-all-generic/",
+		  "date"     : "2014-04-09 05:31:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "Domain Model Generic Superclass",
+		  "category" : "",
+		  "url"     : "/java/2014/04/09/domain-model-generic-superclass/",
+		  "date"     : "2014-04-09 05:31:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "Portable global JNDI name",
+		  "category" : "",
+		  "url"     : "/java/2014/04/06/portable-global-jndi-name/",
+		  "date"     : "2014-04-06 05:31:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "Managing your UI dependencies with Bower",
+		  "category" : "",
+		  "url"     : "/ui/2014/04/06/bower-ui-dependency-management-tool/",
+		  "date"     : "2014-04-06 05:31:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "Evolution of the Java EE platform",
+		  "category" : "",
+		  "url"     : "/java/2014/04/05/javaee-evolution/",
+		  "date"     : "2014-04-05 06:36:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "@Inject vs @EJB and Direct JNDI Lookup",
+		  "category" : "",
+		  "url"     : "/java/2014/04/01/ways-get-ejb-ref/",
+		  "date"     : "2014-04-01 23:44:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "Creating a JAAS JDBC Authentication Realm in Glassfish",
+		  "category" : "",
+		  "url"     : "/java/2014/04/01/creating-jaas-auth-realm-glassfish/",
+		  "date"     : "2014-04-01 20:38:24 -0300"
+		} ,
+	
+		{
+		  "title"    : "Building RESTful webservices with JAX-RS",
+		  "category" : "",
+		  "url"     : "/java/2014/03/27/build-jaxrs-rest/",
+		  "date"     : "2014-03-27 19:36:24 -0300"
+		} 
+	
+]
