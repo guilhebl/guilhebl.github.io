@@ -384,7 +384,7 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: rgba(255,255,255,.2);
+    webkit-tap-highlight-color: rgba(255, 255,255,.2);
 }
 
 .spacerGBL {
@@ -392,6 +392,30 @@ body {
 }
 
 .resultsBox {
-	padding-top: 16px;
+	padding-top: 10px;
 	padding-left: 16px;
+}
+
+.search-link  {
+ margin-left: 4px;
+}
+
+.search-link:hover  {
+  background-color: transparent;
+  color: #176e61;
+  text-decoration: underline;	
+}
+
+.results {
+}
+
+.category-list {
+  text-align: left;
+  font-size: 26px;
+}
+
+.category-list-link {
+  text-align: left;
+  font-size: 26px;
+  color: #B0B0DF;
 }

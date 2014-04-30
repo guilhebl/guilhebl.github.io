@@ -87,78 +87,21 @@
     </nav>
 
 
-    <section class="post">
-        <div class="post-body">
-            <div class="container">
-		<div class="row-fluid">
-		  <div class="center-block">
-		    <h1>angular $viewContentLoaded</h1>
-		    <p class="muted">27 April 2014</p>
 
-		    <h3>$viewContentLoaded</h3>
+<h1 class="category">Category: linux</h1>
+<ul class="posts">
 
+    <div><span class="month">APR</span> <span class="day">24</span> <span class="year">2014</span> </div>
+    <h2><a href="/linux/2014/04/24/ubuntu-14-04-trusty-features/">New features in Ubuntu 14.04 Trusty Tahr</a></h2>
+    <div class="categories">under <a class='category' href='/categories/linux/'>linux</a></div>
 
+    <div><span class="month">APR</span> <span class="day">15</span> <span class="year">2014</span> </div>
+    <h2><a href="/linux/2014/04/15/useful-dev-commands-linux/">Useful Linux commands for developers</a></h2>
+    <div class="categories">under <a class='category' href='/categories/linux/'>linux</a></div>
 
-
-<p>When using angularJS, you can hook up event listeners like
-onDomReady using</p>
+</ul>
 
 
-
-
-<div class="highlight"><pre><code class="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="c1">// ... </span>
-</code></pre></div>
-
-
-
-
-<p>sometimes it's necessary to wait until the view gets loaded to hook up some additional processing that depends
-on DOM elements present or created after the controller has processed the view,
-and $viewContentLoaded is intended just for that.</p>
-
-
-
-
-<p>controllers.js</p>
-
-
-
-
-<div class="highlight"><pre><code class="javascript">   <span class="cm">/* Controllers */</span>
-    <span class="nx">myapp</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;ProductController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;ProductService&#39;</span><span class="p">,</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">ProductService</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">products</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">query</span><span class="p">();</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">featuredProductList</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">featuredlist</span><span class="p">();</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">orderProp</span> <span class="o">=</span> <span class="s1">&#39;introductionDate&#39;</span><span class="p">;</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$viewContentLoaded&#39;</span><span class="p">,</span> <span class="nx">loadBootstrapUI</span><span class="p">);</span> <span class="err">/* Example building UI based elements dependent on fetched data</span>
-      <span class="p">}]);</span>
-</code></pre></div>
-
-
-
-
-
-
-		    <div id="disqus_thread"></div>
-		    <script type="text/javascript">
-			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
-
-			/* * * DON'T EDIT BELOW THIS LINE * * */
-			(function() {
-			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-		    </script>
-		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-		    
-		  </div>
-		</div>
-            </div>
-        </div>
-    </section>
     <!-- Core JavaScript Files -->
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -174,5 +117,4 @@ and $viewContentLoaded is intended just for that.</p>
 </body>
 
 </html>
-
 
