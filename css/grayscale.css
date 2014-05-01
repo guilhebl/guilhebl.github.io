@@ -411,11 +411,13 @@ body {
 
 .category-list {
   text-align: left;
-  font-size: 26px;
 }
 
 .category-list-link {
   text-align: left;
-  font-size: 26px;
+  font-size: 36px;
   color: #B0B0DF;
+}
+.paddingLeft6 {
+ padding-left: 6px;
 }
