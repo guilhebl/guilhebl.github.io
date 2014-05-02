@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/ui/2014/05/01/integrate-angularjs-requirejs/</loc>
+    <lastmod>2014-05-01</lastmod>
+
+  </url>
+  <url>
     <loc>/ui/2014/04/27/angular-view-content-loaded/</loc>
     <lastmod>2014-04-27</lastmod>
 

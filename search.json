@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Integrating angularjs with requirejs",
+		  "category" : "",
+		  "url"     : "/ui/2014/05/01/integrate-angularjs-requirejs/",
+		  "date"     : "2014-05-01 19:05:00 -0300"
+		} ,
+	
+		{
 		  "title"    : "angular $viewContentLoaded",
 		  "category" : "",
 		  "url"     : "/ui/2014/04/27/angular-view-content-loaded/",

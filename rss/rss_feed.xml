@@ -8,7 +8,16 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Sun, 27 Apr 2014 19:05:00 -0300</pubDate>
+    <pubDate>Thu, 01 May 2014 19:05:00 -0300</pubDate>
+    <item>
+      <title>Integrating angularjs with requirejs</title>
+      <link>http://guilhebl.github.io/ui/2014/05/01/integrate-angularjs-requirejs/</link>
+      <description>&lt;h3&gt;index.html&lt;/h3&gt;
+</description>
+      <pubDate>Thu, 01 May 2014 19:05:00 -0300</pubDate>
+      <guid>http://guilhebl.github.io/ui/2014/05/01/integrate-angularjs-requirejs/</guid>
+      <dc:date>2014-05-01T19:05:00-03:00</dc:date>
+    </item>
     <item>
       <title>angular $viewContentLoaded</title>
       <link>http://guilhebl.github.io/ui/2014/04/27/angular-view-content-loaded/</link>
@@ -128,6 +137,6 @@ Since many classes share similar fields and attributes, considering their Databa
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T19:36:24-03:00</dc:date>
     </item>
-    <dc:date>2014-04-27T19:05:00-03:00</dc:date>
+    <dc:date>2014-05-01T19:05:00-03:00</dc:date>
   </channel>
 </rss>
