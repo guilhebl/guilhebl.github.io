@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/business/2014/05/30/right-to-buy-bare-hardware-laptop/</loc>
+    <lastmod>2014-05-30</lastmod>
+
+  </url>
+  <url>
+    <loc>/java/2014/05/30/how-to-get-date-in-future-java/</loc>
+    <lastmod>2014-05-30</lastmod>
+
+  </url>
+  <url>
+    <loc>/java/2014/05/23/java8-lambda-expressions/</loc>
+    <lastmod>2014-05-23</lastmod>
+
+  </url>
+  <url>
     <loc>/ui/2014/05/01/integrate-angularjs-requirejs/</loc>
     <lastmod>2014-05-01</lastmod>
 

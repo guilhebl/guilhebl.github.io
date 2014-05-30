@@ -8,60 +8,87 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Thu, 01 May 2014 19:05:00 -0300</pubDate>
+    <pubDate>Fri, 30 May 2014 15:16:24 -0700</pubDate>
+    <item>
+      <title>The right to buy a bare hardware laptop</title>
+      <link>http://guilhebl.github.io/business/2014/05/30/right-to-buy-bare-hardware-laptop/</link>
+      <description>&lt;h2&gt;The unanswered question on consumer rights&lt;/h2&gt;
+</description>
+      <pubDate>Fri, 30 May 2014 15:16:24 -0700</pubDate>
+      <guid>http://guilhebl.github.io/business/2014/05/30/right-to-buy-bare-hardware-laptop/</guid>
+      <dc:date>2014-05-30T15:16:24-07:00</dc:date>
+    </item>
+    <item>
+      <title>How to get a Date in the Future in Java</title>
+      <link>http://guilhebl.github.io/java/2014/05/30/how-to-get-date-in-future-java/</link>
+      <description>&lt;h2&gt;How to get Date in Future&lt;/h2&gt;
+</description>
+      <pubDate>Fri, 30 May 2014 15:16:24 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/05/30/how-to-get-date-in-future-java/</guid>
+      <dc:date>2014-05-30T15:16:24-07:00</dc:date>
+    </item>
+    <item>
+      <title>Java Lambda expressions</title>
+      <link>http://guilhebl.github.io/java/2014/05/23/java8-lambda-expressions/</link>
+      <description>&lt;h2&gt;Prerequisites&lt;/h2&gt;
+</description>
+      <pubDate>Fri, 23 May 2014 15:36:24 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/2014/05/23/java8-lambda-expressions/</guid>
+      <dc:date>2014-05-23T15:36:24-07:00</dc:date>
+    </item>
     <item>
       <title>Integrating angularjs with requirejs</title>
       <link>http://guilhebl.github.io/ui/2014/05/01/integrate-angularjs-requirejs/</link>
       <description>&lt;h3&gt;index.html&lt;/h3&gt;
 </description>
-      <pubDate>Thu, 01 May 2014 19:05:00 -0300</pubDate>
+      <pubDate>Thu, 01 May 2014 15:05:00 -0700</pubDate>
       <guid>http://guilhebl.github.io/ui/2014/05/01/integrate-angularjs-requirejs/</guid>
-      <dc:date>2014-05-01T19:05:00-03:00</dc:date>
+      <dc:date>2014-05-01T15:05:00-07:00</dc:date>
     </item>
     <item>
       <title>angular $viewContentLoaded</title>
       <link>http://guilhebl.github.io/ui/2014/04/27/angular-view-content-loaded/</link>
       <description>&lt;h3&gt;$viewContentLoaded&lt;/h3&gt;
 </description>
-      <pubDate>Sun, 27 Apr 2014 19:05:00 -0300</pubDate>
+      <pubDate>Sun, 27 Apr 2014 15:05:00 -0700</pubDate>
       <guid>http://guilhebl.github.io/ui/2014/04/27/angular-view-content-loaded/</guid>
-      <dc:date>2014-04-27T19:05:00-03:00</dc:date>
+      <dc:date>2014-04-27T15:05:00-07:00</dc:date>
     </item>
     <item>
       <title>New features in Ubuntu 14.04 Trusty Tahr</title>
       <link>http://guilhebl.github.io/linux/2014/04/24/ubuntu-14-04-trusty-features/</link>
       <description>&lt;h3&gt;Linux kernel 3.13&lt;/h3&gt;
 </description>
-      <pubDate>Thu, 24 Apr 2014 19:05:00 -0300</pubDate>
+      <pubDate>Thu, 24 Apr 2014 15:05:00 -0700</pubDate>
       <guid>http://guilhebl.github.io/linux/2014/04/24/ubuntu-14-04-trusty-features/</guid>
-      <dc:date>2014-04-24T19:05:00-03:00</dc:date>
+      <dc:date>2014-04-24T15:05:00-07:00</dc:date>
     </item>
     <item>
       <title>Useful Linux commands for developers</title>
       <link>http://guilhebl.github.io/linux/2014/04/15/useful-dev-commands-linux/</link>
       <description>&lt;h3&gt;System Information&lt;/h3&gt;
 </description>
-      <pubDate>Tue, 15 Apr 2014 19:05:00 -0300</pubDate>
+      <pubDate>Tue, 15 Apr 2014 15:05:00 -0700</pubDate>
       <guid>http://guilhebl.github.io/linux/2014/04/15/useful-dev-commands-linux/</guid>
-      <dc:date>2014-04-15T19:05:00-03:00</dc:date>
+      <dc:date>2014-04-15T15:05:00-07:00</dc:date>
     </item>
     <item>
       <title>New features and changes of Bootstrap version 3</title>
       <link>http://guilhebl.github.io/ui/2014/04/15/bootstrap3-changes/</link>
       <description>&lt;h2&gt;Major changes&lt;/h2&gt;
 </description>
-      <pubDate>Tue, 15 Apr 2014 12:00:00 -0300</pubDate>
+      <pubDate>Tue, 15 Apr 2014 08:00:00 -0700</pubDate>
       <guid>http://guilhebl.github.io/ui/2014/04/15/bootstrap3-changes/</guid>
-      <dc:date>2014-04-15T12:00:00-03:00</dc:date>
+      <dc:date>2014-04-15T08:00:00-07:00</dc:date>
     </item>
     <item>
       <title>Regex Utility Class</title>
       <link>http://guilhebl.github.io/java/2014/04/10/regex-util-class/</link>
       <description>&lt;p&gt;Sometimes it's useful to have in hand several utility type methods in order to do similar tasks repeatedly. Utility classes are good candidates for a singleton. This example shows a Singleton Regex Utility class that provides several Regex validation methods:&lt;/p&gt;
 </description>
-      <pubDate>Thu, 10 Apr 2014 20:45:24 -0300</pubDate>
+      <pubDate>Thu, 10 Apr 2014 16:45:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/10/regex-util-class/</guid>
-      <dc:date>2014-04-10T20:45:24-03:00</dc:date>
+      <dc:date>2014-04-10T16:45:24-07:00</dc:date>
     </item>
     <item>
       <title>JPA - Find all - Generic method</title>
@@ -69,9 +96,9 @@
       <description>&lt;p&gt;You might want to implement some generic template type
 methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-superclass&quot;&gt;domain model superclass&lt;/a&gt; in order to avoid duplicating boilerplate code for several classes, one example is the findAll method, in certain scenarios you might want to search for all entities of a given Class:&lt;/p&gt;
 </description>
-      <pubDate>Wed, 09 Apr 2014 05:31:24 -0300</pubDate>
+      <pubDate>Wed, 09 Apr 2014 01:31:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/09/jpa-find-all-generic/</guid>
-      <dc:date>2014-04-09T05:31:24-03:00</dc:date>
+      <dc:date>2014-04-09T01:31:24-07:00</dc:date>
     </item>
     <item>
       <title>Domain Model Generic Superclass</title>
@@ -79,64 +106,64 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <description>&lt;p&gt;One of the core pieces of your appplication lays on the business domain and the objects which it is composed.
 Since many classes share similar fields and attributes, considering their Database relational model, you might want to build an initial generic superclass in order to avoid duplicating boilerplate code on several classes:&lt;/p&gt;
 </description>
-      <pubDate>Wed, 09 Apr 2014 05:31:24 -0300</pubDate>
+      <pubDate>Wed, 09 Apr 2014 01:31:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/09/domain-model-generic-superclass/</guid>
-      <dc:date>2014-04-09T05:31:24-03:00</dc:date>
+      <dc:date>2014-04-09T01:31:24-07:00</dc:date>
     </item>
     <item>
       <title>Portable global JNDI name</title>
       <link>http://guilhebl.github.io/java/2014/04/06/portable-global-jndi-name/</link>
       <description>&lt;h2&gt;Default syntax&lt;/h2&gt;
 </description>
-      <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
+      <pubDate>Sun, 06 Apr 2014 01:31:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/06/portable-global-jndi-name/</guid>
-      <dc:date>2014-04-06T05:31:24-03:00</dc:date>
+      <dc:date>2014-04-06T01:31:24-07:00</dc:date>
     </item>
     <item>
       <title>Managing your UI dependencies with Bower</title>
       <link>http://guilhebl.github.io/ui/2014/04/06/bower-ui-dependency-management-tool/</link>
       <description>&lt;h2&gt;Bower - a UI dependency management tool&lt;/h2&gt;
 </description>
-      <pubDate>Sun, 06 Apr 2014 05:31:24 -0300</pubDate>
+      <pubDate>Sun, 06 Apr 2014 01:31:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/ui/2014/04/06/bower-ui-dependency-management-tool/</guid>
-      <dc:date>2014-04-06T05:31:24-03:00</dc:date>
+      <dc:date>2014-04-06T01:31:24-07:00</dc:date>
     </item>
     <item>
       <title>Evolution of the Java EE platform</title>
       <link>http://guilhebl.github.io/java/2014/04/05/javaee-evolution/</link>
       <description>&lt;h2&gt;Java SE&lt;/h2&gt;
 </description>
-      <pubDate>Sat, 05 Apr 2014 06:36:24 -0300</pubDate>
+      <pubDate>Sat, 05 Apr 2014 02:36:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/05/javaee-evolution/</guid>
-      <dc:date>2014-04-05T06:36:24-03:00</dc:date>
+      <dc:date>2014-04-05T02:36:24-07:00</dc:date>
     </item>
     <item>
       <title>@Inject vs @EJB and Direct JNDI Lookup</title>
       <link>http://guilhebl.github.io/java/2014/04/01/ways-get-ejb-ref/</link>
       <description>&lt;h2&gt;Three different ways to get an EJB reference in Java&lt;/h2&gt;
 </description>
-      <pubDate>Tue, 01 Apr 2014 23:44:24 -0300</pubDate>
+      <pubDate>Tue, 01 Apr 2014 19:44:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/01/ways-get-ejb-ref/</guid>
-      <dc:date>2014-04-01T23:44:24-03:00</dc:date>
+      <dc:date>2014-04-01T19:44:24-07:00</dc:date>
     </item>
     <item>
       <title>Creating a JAAS JDBC Authentication Realm in Glassfish</title>
       <link>http://guilhebl.github.io/java/2014/04/01/creating-jaas-auth-realm-glassfish/</link>
       <description>&lt;h2&gt;Why JAAS&lt;/h2&gt;
 </description>
-      <pubDate>Tue, 01 Apr 2014 20:38:24 -0300</pubDate>
+      <pubDate>Tue, 01 Apr 2014 16:38:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/04/01/creating-jaas-auth-realm-glassfish/</guid>
-      <dc:date>2014-04-01T20:38:24-03:00</dc:date>
+      <dc:date>2014-04-01T16:38:24-07:00</dc:date>
     </item>
     <item>
       <title>Building RESTful webservices with JAX-RS</title>
       <link>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</link>
       <description>&lt;h2&gt;Prerequisites&lt;/h2&gt;
 </description>
-      <pubDate>Thu, 27 Mar 2014 19:36:24 -0300</pubDate>
+      <pubDate>Thu, 27 Mar 2014 15:36:24 -0700</pubDate>
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
-      <dc:date>2014-03-27T19:36:24-03:00</dc:date>
+      <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2014-05-01T19:05:00-03:00</dc:date>
+    <dc:date>2014-05-30T15:16:24-07:00</dc:date>
   </channel>
 </rss>
