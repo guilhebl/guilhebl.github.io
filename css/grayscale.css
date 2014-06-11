@@ -150,7 +150,7 @@ a:focus {
 /*    background: url(../img/green_cup.png);
     background-repeat:repeat-y;
 */
-background-color: #6d695c;
+background-color: #3D320D;
 background-image:
 repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
 repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
