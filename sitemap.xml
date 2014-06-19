@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/database/2014/06/18/user-domain-model-relational/</loc>
+    <lastmod>2014-06-18</lastmod>
+
+  </url>
+  <url>
     <loc>/business/2014/05/30/right-to-buy-bare-hardware-laptop/</loc>
     <lastmod>2014-05-30</lastmod>
 
@@ -16,7 +21,7 @@
 
   </url>
   <url>
-    <loc>/ui/2014/05/01/integrate-angularjs-requirejs/</loc>
+    <loc>/ui/2014/05/01/integrate-angularjs-requirejs-jquery/</loc>
     <lastmod>2014-05-01</lastmod>
 
   </url>

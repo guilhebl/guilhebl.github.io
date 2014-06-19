@@ -186,7 +186,7 @@
 
 
 
-<p>Turn a file to be executable for your user:</p>
+<p>Change a bin access mode to be executable:</p>
 
 
 
@@ -316,7 +316,34 @@
 
 
 
-<div class="highlight"><pre><code class="bash">git push -u origin master:my_test
+<p>adds all current changes to staging area</p>
+
+
+
+
+<div class="highlight"><pre><code class="bash">git add -all
+</code></pre></div>
+
+
+
+
+<p>commits current changes from staging area to local branch</p>
+
+
+
+
+<div class="highlight"><pre><code class="bash">git commit -m <span class="s2">&quot;commit message&quot;</span>
+</code></pre></div>
+
+
+
+
+<p>pushes local commits to remote branch</p>
+
+
+
+
+<div class="highlight"><pre><code class="bash">git push
 </code></pre></div>
 
 
@@ -324,6 +351,12 @@
 
 <p>Pushes the commits from your local master branch to a (possibly new) remote branch my_test
 and sets up master to track origin/my_test.</p>
+
+
+
+
+<div class="highlight"><pre><code class="bash">git push -u origin master:my_test
+</code></pre></div>
 
 
 

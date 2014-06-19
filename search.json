@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Typical Database model domain for User",
+		  "category" : "",
+		  "url"     : "/database/2014/06/18/user-domain-model-relational/",
+		  "date"     : "2014-06-18 18:05:00 -0700"
+		} ,
+	
+		{
 		  "title"    : "Choosing the right OS",
 		  "category" : "",
 		  "url"     : "/business/2014/05/30/right-to-buy-bare-hardware-laptop/",
@@ -22,9 +29,9 @@
 		} ,
 	
 		{
-		  "title"    : "Integrating angularjs with requirejs",
+		  "title"    : "Integrating angularjs and jquery with requirejs",
 		  "category" : "",
-		  "url"     : "/ui/2014/05/01/integrate-angularjs-requirejs/",
+		  "url"     : "/ui/2014/05/01/integrate-angularjs-requirejs-jquery/",
 		  "date"     : "2014-05-01 15:05:00 -0700"
 		} ,
 	

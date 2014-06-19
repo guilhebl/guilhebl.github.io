@@ -92,7 +92,7 @@
             <div class="container">
 		<div class="row-fluid">
 		  <div class="center-block">
-		    <h1>Integrating angularjs with requirejs</h1>
+		    <h1>Integrating angularjs and jquery with requirejs</h1>
 		    <p class="muted">01 May 2014</p>
 
 		    <h3>index.html</h3>
@@ -100,7 +100,7 @@
 
 
 
-<p>In your index page, you will have to load requireJS script and point it your main configuration file like:</p>
+<p>First of all, in your index page, you will have to load requireJS script and point it your main configuration file like:</p>
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-<p>In your main.js file you will configure require and also wrap all non-require compatible modules into shims:</p>
+<p>In your main.js file you will configure require and also wrap all non requirejs compatible modules into shims:</p>
 
 
 
@@ -217,7 +217,7 @@
 
 
 
-<p>you should have a file called app.js to set your angular app module:</p>
+<p>you should have a file called app.js that will initialize your angular app module:</p>
 
 
 
@@ -252,8 +252,72 @@
 
 
 
-<p>These files follow the normal angularJS app structure with routes, controllers, directives, services and filters.
-Sample controller.js file:</p>
+<hr />
+
+
+
+
+<p>These files follow the normal angularJS app structure with routes, controllers, directives, services and filters:</p>
+
+
+
+
+<p>services.js</p>
+
+
+
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;angularResource&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+    
+        <span class="cm">/* Services */</span>
+    <span class="kd">var</span> <span class="nx">appServices</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp.services&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngResource&#39;</span><span class="p">]);</span>
+
+    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;UserService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span>
+          <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;/appPortal/rest/user/:id&#39;</span><span class="p">,</span> 
+                <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;@id&quot;</span><span class="p">}</span>
+        <span class="p">);</span>
+      <span class="p">}]);</span>
+
+    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;ProductService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span>
+      <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>    
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;/appPortal/rest/product/:id:query:catid&#39;</span><span class="p">,</span>
+                <span class="p">{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;@id&quot;</span><span class="p">,</span>          
+                <span class="nx">catid</span><span class="o">:</span> <span class="s2">&quot;@catid&quot;</span><span class="p">,</span>            
+                <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;@query&quot;</span>
+                <span class="p">}</span>
+        <span class="p">);</span>
+      <span class="p">}]);</span>   
+
+    
+    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;ProductCategoryService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span>
+      <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>    
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;/appPortal/rest/category/:id:query&#39;</span><span class="p">,</span> 
+                <span class="p">{</span>
+                    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;@id&quot;</span><span class="p">,</span>          
+                    <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;@query&quot;</span>                    
+                <span class="p">},</span>               
+                <span class="p">{</span>
+                  <span class="s1">&#39;querynode&#39;</span><span class="o">:</span>  <span class="p">{</span> <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="nx">params</span><span class="o">:</span> <span class="p">{</span><span class="nx">query</span><span class="o">:</span> <span class="s1">&#39;node&#39;</span><span class="p">},</span> <span class="nx">isArray</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">);</span>
+      <span class="p">}]);</span>
+            
+    <span class="k">return</span> <span class="nx">appServices</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+<hr />
+
+
+
+
+<p>controllers.js</p>
 
 
 
@@ -282,7 +346,93 @@ Sample controller.js file:</p>
 
 
 
-<p>With the above configuration your web application can benefit from the modularity that requirejs provides and the cleanness that angular provides, and make them both play nicely together.</p>
+<hr />
+
+
+
+
+<p>directives.js</p>
+
+
+
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">services</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+        <span class="cm">/* Directives */</span>
+    <span class="kd">var</span> <span class="nx">appDirectives</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp.directives&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;myApp.services&#39;</span><span class="p">]);</span>
+
+    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;prodThumbnail&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+          <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">product</span><span class="o">:</span> <span class="s1">&#39;=&#39;</span>
+          <span class="p">},</span>
+          <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;partials/template/product_thumbnail.html&#39;</span>
+        <span class="p">};</span>
+    <span class="p">}]);</span>
+
+    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;appVersion&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elm</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">elm</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">version</span><span class="p">);</span>
+          <span class="p">};</span>
+    <span class="p">}]);</span>
+    
+    <span class="k">return</span> <span class="nx">appDirectives</span><span class="p">;</span>
+
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+<hr />
+
+
+
+
+<p>Then your HTML pages could contain code to invoke the directives:</p>
+
+
+
+
+<div class="highlight"><pre><code class="html">     <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;product in products&quot;</span> <span class="na">class=</span><span class="s">&quot;span3&quot;</span><span class="nt">&gt;</span>          
+            <span class="nt">&lt;prod-thumbnail</span> <span class="na">product=</span><span class="s">&quot;product&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/prod-thumbnail&gt;</span>         
+        <span class="nt">&lt;/li&gt;</span>
+</code></pre></div>
+
+
+
+
+<hr />
+
+
+
+
+<p>product_thumbnail.html</p>
+
+
+
+
+<div class="highlight"><pre><code class="html">  <span class="nt">&lt;td&gt;</span>
+     <span class="nt">&lt;img</span> <span class="na">ng-src=</span><span class="s">&quot;/appPortal/image?id=&quot;</span> 
+        <span class="na">alt=</span><span class="s">&quot;&quot;</span> <span class="nt">/&gt;</span>
+        
+     <span class="nt">&lt;/td&gt;</span>
+     <span class="nt">&lt;td&gt;</span>$<span class="nt">&lt;/td&gt;</span>
+     <span class="nt">&lt;td&gt;</span>$<span class="nt">&lt;/td&gt;</span>
+</code></pre></div>
+
+
+
+
+<hr />
+
+
+
+
+<p>With the above configuration your web application can benefit from the modularity that requirejs provides and the cleanness and organization that angularjs provides, together which jquery and make them both a great choice to use for a modern frontend web application.</p>
 
 
 
