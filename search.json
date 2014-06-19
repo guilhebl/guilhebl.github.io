@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Integrating angularjs and jquery with requirejs",
+		  "category" : "",
+		  "url"     : "/ui/2014/06/18/integrate-angularjs-requirejs-jquery/",
+		  "date"     : "2014-06-18 18:20:00 -0700"
+		} ,
+	
+		{
 		  "title"    : "Typical Database model domain for User",
 		  "category" : "",
 		  "url"     : "/database/2014/06/18/user-domain-model-relational/",
@@ -26,13 +33,6 @@
 		  "category" : "",
 		  "url"     : "/java/2014/05/23/java8-lambda-expressions/",
 		  "date"     : "2014-05-23 15:36:24 -0700"
-		} ,
-	
-		{
-		  "title"    : "Integrating angularjs and jquery with requirejs",
-		  "category" : "",
-		  "url"     : "/ui/2014/05/01/integrate-angularjs-requirejs-jquery/",
-		  "date"     : "2014-05-01 15:05:00 -0700"
 		} ,
 	
 		{
