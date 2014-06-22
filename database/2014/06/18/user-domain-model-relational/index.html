@@ -107,7 +107,8 @@ according to each table's entity responsibility.</p>
 
 
 <p>this sql script was tested under PostgreSQL DB and also OracleXE DB with minor syntax changes.
-In this scenario the User primary key is also the email, and has to be unique across all the app.</p>
+In this scenario the User primary key is also the email, and has to be unique across all the app.
+User password is stored encrypted in the database (MD5 or some other encryption algorithm).</p>
 
 
 
@@ -125,7 +126,7 @@ In this scenario the User primary key is also the email, and has to be unique ac
 <div class="highlight"><pre><code class="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER</span>
  <span class="p">(</span>
       <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-      <span class="n">PASSWORD</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="n">PASSWORD</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
       <span class="n">ACTIVE</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
  <span class="p">);</span>
  
@@ -172,7 +173,7 @@ In this scenario the User primary key is also the email, and has to be unique ac
  <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_LOG</span>
  <span class="p">(</span>
     <span class="n">ID_LOG</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">EMAIL</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- email of current user logged in the session which originated the action</span>
+    <span class="n">EMAIL</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">VALUE</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">NAME</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">ACTION_TYPE</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -185,7 +186,26 @@ In this scenario the User primary key is also the email, and has to be unique ac
 
 
 
-<p>This domain model is based on a typical user entity relational domain model.</p>
+<hr />
+
+
+
+
+<p>Description of Tables:</p>
+
+
+
+
+<ul>
+<li><p>TB_USER - main table for User.</p></li>
+<li><p>TB_USER_GROUP - Defines User Group for authorization and access security purposes.</p></li>
+<li><p>TB_USER_GROUP_USER - Many to Many relationship between User and UserGroup.</p></li>
+<li><p>TB_USER_PROFILE - UserProfile saves metrics about the User usage like Last access, if user is able to send or receive messages, etc.</p></li>
+<li><p>TB_USER_PREFERENCE - Stores preferences for the user across the site like: Currency, preferred language, remember me feature, etc.</p></li>
+<li><p>TB_LOG - Log table for saving log records from a specific user action like changing sensitive data, also it's not coupled to any other table.</p></li>
+</ul>
+
+
 
 
 
