@@ -8,7 +8,16 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Wed, 18 Jun 2014 18:20:00 -0700</pubDate>
+    <pubDate>Thu, 03 Jul 2014 15:02:21 -0700</pubDate>
+    <item>
+      <title>How to write a good resume</title>
+      <link>http://guilhebl.github.io/business/2014/07/03/how-to-write-good-resume/</link>
+      <description>&lt;p&gt;&lt;img src=&quot;/assets/img/resume_image.jpeg&quot; alt=&quot;Resume&quot; /&gt;&lt;/p&gt;
+</description>
+      <pubDate>Thu, 03 Jul 2014 15:02:21 -0700</pubDate>
+      <guid>http://guilhebl.github.io/business/2014/07/03/how-to-write-good-resume/</guid>
+      <dc:date>2014-07-03T15:02:21-07:00</dc:date>
+    </item>
     <item>
       <title>Integrating angularjs and jquery with requirejs</title>
       <link>http://guilhebl.github.io/ui/2014/06/18/integrate-angularjs-requirejs-jquery/</link>
@@ -173,6 +182,6 @@ Since many classes share similar fields and attributes, considering their Databa
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2014-06-18T18:20:00-07:00</dc:date>
+    <dc:date>2014-07-03T15:02:21-07:00</dc:date>
   </channel>
 </rss>

@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "How to write a good resume",
+		  "category" : "",
+		  "url"     : "/business/2014/07/03/how-to-write-good-resume/",
+		  "date"     : "2014-07-03 15:02:21 -0700"
+		} ,
+	
+		{
 		  "title"    : "Integrating angularjs and jquery with requirejs",
 		  "category" : "",
 		  "url"     : "/ui/2014/06/18/integrate-angularjs-requirejs-jquery/",
