@@ -8,7 +8,18 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Thu, 03 Jul 2014 15:02:21 -0700</pubDate>
+    <pubDate>Sun, 27 Jul 2014 14:06:23 -0700</pubDate>
+    <item>
+      <title>maven - On build Exclude specific folders from being packaged on a WAR file</title>
+      <link>http://guilhebl.github.io/maven/2014/07/27/maven-build-exclude-folders-from-war-file/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;How to avoid packagin unwanted folders from src to target&lt;/h2&gt;
+</description>
+      <pubDate>Sun, 27 Jul 2014 14:06:23 -0700</pubDate>
+      <guid>http://guilhebl.github.io/maven/2014/07/27/maven-build-exclude-folders-from-war-file/</guid>
+      <dc:date>2014-07-27T14:06:23-07:00</dc:date>
+    </item>
     <item>
       <title>How to write a good resume</title>
       <link>http://guilhebl.github.io/business/2014/07/03/how-to-write-good-resume/</link>
@@ -182,6 +193,6 @@ Since many classes share similar fields and attributes, considering their Databa
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2014-07-03T15:02:21-07:00</dc:date>
+    <dc:date>2014-07-27T14:06:23-07:00</dc:date>
   </channel>
 </rss>

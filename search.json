@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "maven - On build Exclude specific folders from being packaged on a WAR file",
+		  "category" : "",
+		  "url"     : "/maven/2014/07/27/maven-build-exclude-folders-from-war-file/",
+		  "date"     : "2014-07-27 14:06:23 -0700"
+		} ,
+	
+		{
 		  "title"    : "How to write a good resume",
 		  "category" : "",
 		  "url"     : "/business/2014/07/03/how-to-write-good-resume/",
