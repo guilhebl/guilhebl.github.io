@@ -100,15 +100,15 @@
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -189,34 +189,34 @@
 87
 88
 89
-90</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">util</span><span class="o">;</span>
+90</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">util</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.regex.Matcher</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegexUtil</span> <span class="o">{</span>
 
-    <span class="cm">/**</span>
-<span class="cm">   ^                 # start-of-string</span>
-<span class="cm">   (?=.*[0-9])       # a digit must occur at least once</span>
-<span class="cm">   (?=.*[a-z])       # a lower case letter must occur at least once</span>
-<span class="cm">   (?=.*[A-Z])       # an upper case letter must occur at least once</span>
-<span class="cm">   </span>
-<span class="cm">   ### (?=.*[@#$%^&amp;+=])  # a special character must occur at least once</span>
-<span class="cm">   </span>
-<span class="cm">   (?=[^\s]+$)       # no whitespace allowed in the entire string</span>
-<span class="cm">   .{6,}             # anything, at least eight places though</span>
-<span class="cm">   $                 # end-of-string</span>
-<span class="cm">   */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PASSWORD_PATTERN</span> <span class="o">=</span> <span class="s">&quot;^(?=.*[0-9])(?=.*[a-z])(?=[^\\s]+$).{6,}$&quot;</span><span class="o">;</span>
+    <span class="cm">/**
+    ^                 # start-of-string
+    (?=.*[0-9])       # a digit must occur at least once
+    (?=.*[a-z])       # a lower case letter must occur at least once
+    (?=.*[A-Z])       # an upper case letter must occur at least once
+    
+    ### (?=.*[@#$%^&amp;+=])  # a special character must occur at least once
+    
+    (?=[^\s]+$)       # no whitespace allowed in the entire string
+    .{6,}             # anything, at least eight places though
+    $                 # end-of-string
+    */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PASSWORD_PATTERN</span> <span class="o">=</span> <span class="s">"^(?=.*[0-9])(?=.*[a-z])(?=[^\\s]+$).{6,}$"</span><span class="o">;</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">EMAIL_PATTERN</span> <span class="o">=</span> <span class="s">&quot;^[_A-Za-z0-9-]+(\\.&quot;</span> <span class="o">+</span>
-            <span class="s">&quot;[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*&quot;</span> <span class="o">+</span>
-            <span class="s">&quot;(\\.[A-Za-z]{2,})$&quot;</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">EMAIL_PATTERN</span> <span class="o">=</span> <span class="s">"^[_A-Za-z0-9-]+(\\."</span> <span class="o">+</span>
+            <span class="s">"[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*"</span> <span class="o">+</span>
+            <span class="s">"(\\.[A-Za-z]{2,})$"</span><span class="o">;</span>
     
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">FILE_NAME_PATTERN</span> <span class="o">=</span> <span class="s">&quot;[_a-zA-Z0-9\\-\\.]+&quot;</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">FILE_NAME_PATTERN</span> <span class="o">=</span> <span class="s">"[_a-zA-Z0-9\\-\\.]+"</span><span class="o">;</span> 
     
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PHONE_PATTERN</span> <span class="o">=</span> <span class="s">&quot;^[+]?([0-9]*[\\.\\s\\-\\(\\)]|[0-9]+){3,24}$&quot;</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PHONE_PATTERN</span> <span class="o">=</span> <span class="s">"^[+]?([0-9]*[\\.\\s\\-\\(\\)]|[0-9]+){3,24}$"</span><span class="o">;</span>
     
     <span class="kd">private</span> <span class="kd">static</span> <span class="n">RegexUtil</span> <span class="n">instance</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Pattern</span> <span class="n">patternPassword</span><span class="o">;</span>
@@ -225,14 +225,14 @@
     <span class="kd">private</span> <span class="n">Pattern</span> <span class="n">patternPhone</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Matcher</span> <span class="n">matcher</span><span class="o">;</span> 
     
-    <span class="kd">private</span> <span class="nf">RegexUtil</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">RegexUtil</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">patternEmail</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">EMAIL_PATTERN</span><span class="o">);</span>
         <span class="n">patternFileName</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">FILE_NAME_PATTERN</span><span class="o">);</span>
         <span class="n">patternPhone</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">PHONE_PATTERN</span><span class="o">);</span>
         <span class="n">patternPassword</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">PASSWORD_PATTERN</span><span class="o">);</span>
     <span class="o">}</span>
     
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">RegexUtil</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">RegexUtil</span> <span class="n">getInstance</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> 
         <span class="o">{</span>
             <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RegexUtil</span><span class="o">();</span>
@@ -240,23 +240,23 @@
         <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">validateIntegerID</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">validateIntegerID</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">id</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">id</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>          
             <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
         <span class="o">}</span>     
         <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">validateStringTypeRegex</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">patternType</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">text</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">text</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">))</span> <span class="o">{</span>   
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">validateStringTypeRegex</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">patternType</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">text</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">text</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">))</span> <span class="o">{</span> 
             
-            <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"email"</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">matcher</span> <span class="o">=</span> <span class="n">patternEmail</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>  
-            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;password&quot;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"password"</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">matcher</span> <span class="o">=</span> <span class="n">patternPassword</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>   
-            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;phone&quot;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"phone"</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">matcher</span> <span class="o">=</span> <span class="n">patternPhone</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>  
-            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;fileName&quot;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">patternType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"fileName"</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">matcher</span> <span class="o">=</span> <span class="n">patternFileName</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>   
             <span class="o">}</span>
             
@@ -267,20 +267,20 @@
         <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
     <span class="o">}</span>
     
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">validateEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nf">validateStringTypeRegex</span><span class="o">(</span><span class="n">email</span><span class="o">,</span> <span class="s">&quot;email&quot;</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">validateEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">validateStringTypeRegex</span><span class="o">(</span><span class="n">email</span><span class="o">,</span> <span class="s">"email"</span><span class="o">);</span>
     <span class="o">}</span>
     
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">validateFileName</span><span class="o">(</span><span class="n">String</span> <span class="n">fileName</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nf">validateStringTypeRegex</span><span class="o">(</span><span class="n">fileName</span><span class="o">,</span> <span class="s">&quot;fileName&quot;</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">validateFileName</span><span class="o">(</span><span class="n">String</span> <span class="n">fileName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">validateStringTypeRegex</span><span class="o">(</span><span class="n">fileName</span><span class="o">,</span> <span class="s">"fileName"</span><span class="o">);</span>
     <span class="o">}</span>
     
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">validatePhoneNumber</span><span class="o">(</span><span class="n">String</span> <span class="n">phone</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nf">validateStringTypeRegex</span><span class="o">(</span><span class="n">phone</span><span class="o">,</span> <span class="s">&quot;phone&quot;</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">validatePhoneNumber</span><span class="o">(</span><span class="n">String</span> <span class="n">phone</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">validateStringTypeRegex</span><span class="o">(</span><span class="n">phone</span><span class="o">,</span> <span class="s">"phone"</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 

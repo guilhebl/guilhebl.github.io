@@ -154,14 +154,13 @@ your screen using anonymous classes or other approaches:</p>
 
 
 
-<div class="highlight"><pre><code class="java"> <span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span><span class="k">new</span> <span class="n">EventHandler</span><span class="o">&lt;</span><span class="n">ActionEvent</span><span class="o">&gt;()</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span><span class="k">new</span> <span class="n">EventHandler</span><span class="o">&lt;</span><span class="n">ActionEvent</span><span class="o">&gt;()</span> <span class="o">{</span>
 
             <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handle</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World!&quot;</span><span class="o">);</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World!"</span><span class="o">);</span>
             <span class="o">}</span>
-        <span class="o">});</span>
-</code></pre></div>
+        <span class="o">});</span></code></pre></div>
 
 
 
@@ -171,10 +170,9 @@ your screen using anonymous classes or other approaches:</p>
 
 
 
-<div class="highlight"><pre><code class="java"><span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span>
-          <span class="n">event</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World!&quot;</span><span class="o">)</span>
-        <span class="o">);</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span>
+          <span class="n">event</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World!"</span><span class="o">)</span>
+        <span class="o">);</span></code></pre></div>
 
 
 
@@ -214,10 +212,9 @@ your screen using anonymous classes or other approaches:</p>
 
 
 
-<div class="highlight"><pre><code class="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span> 
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span> 
     <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">18</span>
-    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span>
-</code></pre></div>
+    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span></code></pre></div>
 
 
 
@@ -232,10 +229,9 @@ your screen using anonymous classes or other approaches:</p>
 
 
 
-<div class="highlight"><pre><code class="java"><span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span> 
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span> 
     <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">18</span>
-    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span>
-</code></pre></div>
+    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span></code></pre></div>
 
 
 
@@ -245,12 +241,11 @@ your screen using anonymous classes or other approaches:</p>
 
 
 
-<div class="highlight"><pre><code class="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span>
         <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">18</span>
         <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -260,8 +255,7 @@ your screen using anonymous classes or other approaches:</p>
 
 
 
-<div class="highlight"><pre><code class="java"><span class="n">email</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">email</span><span class="o">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">email</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">email</span><span class="o">)</span></code></pre></div>
 
 
 

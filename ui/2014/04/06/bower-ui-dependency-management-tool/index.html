@@ -128,8 +128,7 @@ dependencies aren't managed very well under these tools.</p>
 
 
 
-<div class="highlight"><pre><code class="bash">npm install -g bower
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install -g bower</code></pre></div>
 
 
 
@@ -159,32 +158,31 @@ dependencies aren't managed very well under these tools.</p>
 
 
 
-<div class="highlight"><pre><code class="json"><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;myApp&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;ignore&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;**/.*&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;node_modules&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;bower_components&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;test&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;tests&quot;</span>
-  <span class="p">],</span>
-  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;jquery&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.10.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular-route&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular-resource&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular-cookies&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular-animate&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular-scenario&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;angular-mocks&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=1.2.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;bootstrap&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=3.1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;requirejs&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=2.1.9&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;requirejs-text&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;=2.0&quot;</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myApp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ignore"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"**/.*"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"node_modules"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bower_components"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tests"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"jquery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.10.2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular-route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular-resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular-cookies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular-animate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular-scenario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"angular-mocks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bootstrap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=3.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirejs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.1.9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirejs-text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
   
-<span class="p">}</span>
-</code></pre></div>
+</span><span class="p">}</span></code></pre></div>
 
 
 
@@ -212,8 +210,7 @@ like jQuery, requireJS and angularJS libs. Notice the >= symbol, this will tell 
 
 
 
-<div class="highlight"><pre><code class="bash">bower install
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install</code></pre></div>
 
 
 
@@ -233,10 +230,9 @@ like jQuery, requireJS and angularJS libs. Notice the >= symbol, this will tell 
 
 
 
-<div class="highlight"><pre><code class="json"><span class="p">{</span>
-  <span class="nt">&quot;directory&quot;</span><span class="p">:</span> <span class="s2">&quot;public/bower_components&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"directory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public/bower_components"</span><span class="w">
+</span><span class="p">}</span></code></pre></div>
 
 
 

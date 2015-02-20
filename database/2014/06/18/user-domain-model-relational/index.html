@@ -123,65 +123,62 @@ User password is stored encrypted in the database (MD5 or some other encryption 
 
 
 
-<div class="highlight"><pre><code class="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER</span>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER</span>
  <span class="p">(</span>
-      <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-      <span class="n">PASSWORD</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-      <span class="n">ACTIVE</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+      <span class="n">PASSWORD</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="n">ACTIVE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
  <span class="p">);</span>
  
 <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP</span>
  <span class="p">(</span>
-     <span class="n">ID_GROUP</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-     <span class="n">DESCRIPTION</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+     <span class="n">ID_GROUP</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+     <span class="n">DESCRIPTION</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
  <span class="p">);</span>
 
 <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP_USER</span> <span class="p">(</span>
-       <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-       <span class="n">ID_GROUP</span>  <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+       <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+       <span class="n">ID_GROUP</span>  <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">,</span> <span class="n">ID_GROUP</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_GROUP_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER_GROUP</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>
 <span class="p">);</span>
 
  <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_PROFILE</span> <span class="p">(</span>
-     <span class="n">ID_USER_PROFILE</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-     <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">,</span>
-     <span class="n">USER_COOKIE</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
-     <span class="n">LOCALE_CODE</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
-     <span class="n">FIRST_ACCESS</span> <span class="nb">DATE</span><span class="p">,</span>
-     <span class="n">LAST_ACCESS</span> <span class="nb">DATE</span><span class="p">,</span>
-     <span class="n">EMAIL_CONFIRMATION_FLAG</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-     <span class="n">EMAIL_CONFIRMATION_STRING</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
-     <span class="n">SEND_MESSAGE_FLAG</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-     <span class="n">RECEIVE_MESSAGE_FLAG</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+     <span class="n">ID_USER_PROFILE</span> <span class="n">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+     <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">,</span>
+     <span class="n">USER_COOKIE</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
+     <span class="n">LOCALE_CODE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+     <span class="n">FIRST_ACCESS</span> <span class="n">DATE</span><span class="p">,</span>
+     <span class="n">LAST_ACCESS</span> <span class="n">DATE</span><span class="p">,</span>
+     <span class="n">EMAIL_CONFIRMATION_FLAG</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+     <span class="n">EMAIL_CONFIRMATION_STRING</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+     <span class="n">SEND_MESSAGE_FLAG</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+     <span class="n">RECEIVE_MESSAGE_FLAG</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PROFILE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER_PROFILE</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PROFILE_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span>
 <span class="p">);</span>
 
 <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_PREFERENCE</span> <span class="p">(</span>
-     <span class="n">ID_USER_PREFERENCE</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-     <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-     <span class="n">CURRENCY</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
-     <span class="n">PREFERRED_LOCALE</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
-     <span class="n">RECEIVE_NEWSLETTER_FLAG</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-     <span class="n">REMEMBER_ME</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+     <span class="n">ID_USER_PREFERENCE</span> <span class="n">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+     <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+     <span class="n">CURRENCY</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+     <span class="n">PREFERRED_LOCALE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+     <span class="n">RECEIVE_NEWSLETTER_FLAG</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+     <span class="n">REMEMBER_ME</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PREFERENCE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER_PREFERENCE</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PREF_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span>
 <span class="p">);</span>
 
  <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_LOG</span>
  <span class="p">(</span>
-    <span class="n">ID_LOG</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">EMAIL</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">VALUE</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">NAME</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">ACTION_TYPE</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">ID_LOG</span> <span class="n">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">EMAIL</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">VALUE</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">NAME</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">ACTION_TYPE</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="k">CONSTRAINT</span> <span class="n">TB_LOG_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_LOG</span><span class="p">)</span>
- <span class="p">);</span>
-
- 
-</code></pre></div>
+ <span class="p">);</span></code></pre></div>
 
 
 

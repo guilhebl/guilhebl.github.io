@@ -138,16 +138,15 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
 
 
-<div class="highlight"><pre><code class="sql"><span class="k">CREATE</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> <span class="n">DATAFILE</span> <span class="s1">&#39;testapp.dbf&#39;</span> <span class="k">SIZE</span> <span class="mi">40</span><span class="n">M</span> <span class="n">ONLINE</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> <span class="n">DATAFILE</span> <span class="s1">'testapp.dbf'</span> <span class="k">SIZE</span> <span class="mi">40</span><span class="n">M</span> <span class="n">ONLINE</span><span class="p">;</span>
 
 <span class="k">CREATE</span> <span class="k">USER</span> <span class="n">testapp</span>
     <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="n">testapp</span> 
     <span class="k">DEFAULT</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> 
-    <span class="k">TEMPORARY</span> <span class="n">TABLESPACE</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="k">TEMPORARY</span> <span class="n">TABLESPACE</span> <span class="k">temp</span><span class="p">;</span>
 
 <span class="k">GRANT</span> <span class="k">CONNECT</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="n">DBA</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span> <span class="c1">-- * For testing purposes only!</span>
-</code></pre></div>
+<span class="k">GRANT</span> <span class="n">DBA</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span> <span class="o">--</span> <span class="o">*</span> <span class="k">For</span> <span class="n">testing</span> <span class="n">purposes</span> <span class="k">only</span><span class="o">!</span></code></pre></div>
 
 
 
@@ -172,8 +171,7 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
 
 
-<div class="highlight"><pre><code class="bash">sudo -u postgres createdb testapp
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -u postgres createdb testapp</code></pre></div>
 
 
 
@@ -183,8 +181,7 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
 
 
-<div class="highlight"><pre><code class="bash">sudo /etc/init.d/postgresql start
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/postgresql start</code></pre></div>
 
 
 
@@ -194,8 +191,7 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
 
 
-<div class="highlight"><pre><code class="bash">psql -d testapp -U testapp
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">psql -d testapp -U testapp</code></pre></div>
 
 
 
@@ -205,12 +201,11 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
 
 
-<div class="highlight"><pre><code class="bash">    <span class="se">\l</span> :List databases
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\l</span> :List databases
     <span class="se">\c</span> database-name :List databases
-    <span class="se">\d</span> :List tables in database
+    <span class="se">\d</span> :List tables <span class="k">in </span>database
     <span class="se">\d</span> table-name :Describe table
-    <span class="se">\q</span> : quit
-</code></pre></div>
+    <span class="se">\q</span> : quit</code></pre></div>
 
 
 
@@ -230,9 +225,8 @@ using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
 
 
-<div class="highlight"><pre><code class="bat">initdb -U postgres -A password -E utf<span class="m">8</span> -W -D POSTGRESQL_ROOT\data
-postgres -D <span class="nv">%PGSQL_HOME%</span>\data
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bat" data-lang="bat">initdb -U postgres -A password -E utf8 -W -D POSTGRESQL_ROOT\data
+postgres -D %PGSQL_HOME%\data</code></pre></div>
 
 
 
@@ -252,27 +246,26 @@ postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 
 
 
-<div class="highlight"><pre><code class="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">TB_USER</span>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">TB_USER</span>
  <span class="p">(</span>
-      <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-      <span class="n">PASSWORD</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-      <span class="n">ACTIVE</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+      <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+      <span class="n">PASSWORD</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+      <span class="n">ACTIVE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
  <span class="p">);</span>
  
 <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP</span>
  <span class="p">(</span>
-     <span class="n">ID_GROUP</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-     <span class="n">DESCRIPTION</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+     <span class="n">ID_GROUP</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+     <span class="n">DESCRIPTION</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
  <span class="p">);</span>
 
 <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP_USER</span> <span class="p">(</span>
-       <span class="n">ID_USER</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-       <span class="n">ID_GROUP</span>  <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+       <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+       <span class="n">ID_GROUP</span>  <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">,</span> <span class="n">ID_GROUP</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_GROUP_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER_GROUP</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>
-<span class="p">);</span>
-</code></pre></div>
+<span class="p">);</span></code></pre></div>
 
 
 
@@ -318,12 +311,11 @@ postgres -D <span class="nv">%PGSQL_HOME%</span>\data
 
 
 
-<div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
 --datasourceclassname<span class="o">=</span>oracle.jdbc.pool.OracleDataSource 
 --property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>testapp:password<span class="o">=</span>testapp1:url<span class="o">=</span>jdbc<span class="se">\\</span>:oracle<span class="se">\\</span>:thin<span class="se">\\</span>:@localhost<span class="se">\\</span>:1521<span class="se">\\</span>:XE oracleJDBCPool
 
-asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCResource 
-</code></pre></div>
+asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCResource</code></pre></div>
 
 
 
@@ -338,12 +330,11 @@ asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCRe
 
 
 
-<div class="highlight"><pre><code class="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
 --datasourceclassname<span class="o">=</span>org.postgresql.ds.PGSimpleDataSource 
 --property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>postgres:password<span class="o">=</span>testapp1:serverName<span class="o">=</span>localhost:portNumber<span class="o">=</span>5432:databaseName<span class="o">=</span>testapp postgreSQLJDBCPool
 
-asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreSQLJDBCResource
-</code></pre></div>
+asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreSQLJDBCResource</code></pre></div>
 
 
 
@@ -379,11 +370,10 @@ user's password encrypted, In this example we're going to use MD5.</p>
 
 
 
-<div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
 --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>oracleJDBCResource:user-table<span class="o">=</span>TB_USER:
 user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:
-group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
-</code></pre></div>
+group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth</code></pre></div>
 
 
 
@@ -398,11 +388,10 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 
 
 
-<div class="highlight"><pre><code class="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
 --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>postgreSQLJDBCResource:user-table<span class="o">=</span>TB_USER:
 user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:
-group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth
-</code></pre></div>
+group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth</code></pre></div>
 
 
 
@@ -422,7 +411,7 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 
 
 
-<div class="highlight"><pre><code class="xml"><span class="nt">&lt;login-config&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;login-config&gt;</span>
     <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
     <span class="nt">&lt;realm-name&gt;</span>userauth<span class="nt">&lt;/realm-name&gt;</span>
     <span class="nt">&lt;form-login-config&gt;</span>
@@ -487,8 +476,7 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 <span class="nt">&lt;security-role&gt;</span>
     <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
-<span class="nt">&lt;/security-role&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/security-role&gt;</span></code></pre></div>
 
 
 
@@ -518,17 +506,16 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 
 
 
-<div class="highlight"><pre><code class="html"> <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;j_security_check&quot;</span> <span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"j_security_check"</span> <span class="nt">&gt;</span>
   <span class="nt">&lt;label&gt;</span>User<span class="nt">&lt;/label&gt;</span> 
-  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;j_username&quot;</span> <span class="nt">/&gt;</span> 
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"j_username"</span> <span class="nt">/&gt;</span> 
 
   <span class="nt">&lt;label&gt;</span>Password<span class="nt">&lt;/label&gt;</span> 
-  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">name=</span><span class="s">&quot;j_password&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"j_password"</span> <span class="nt">/&gt;</span>
 
-  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;login&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Login&quot;</span> <span class="nt">/&gt;</span> 
-  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;reset&quot;</span> <span class="na">type=</span><span class="s">&quot;reset&quot;</span> <span class="na">value=</span><span class="s">&quot;Reset&quot;</span> <span class="nt">/&gt;</span>
- <span class="nt">&lt;/form&gt;</span>
-</code></pre></div>
+  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Login"</span> <span class="nt">/&gt;</span> 
+  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"reset"</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"Reset"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/form&gt;</span></code></pre></div>
 
 
 
@@ -553,10 +540,9 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
 
 
 
-<div class="highlight"><pre><code class="sql"><span class="c1">--------------------------------- USERS AND GROUPS -----------------------------------------------------</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;USERS&#39;</span><span class="p">,</span> <span class="s1">&#39;common USERS&#39;</span><span class="p">);</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;ADMINISTRATORS&#39;</span><span class="p">,</span> <span class="s1">&#39;privileged ADMIN GROUP&#39;</span><span class="p">);</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">--------------------------------- USERS AND GROUPS -----------------------------------------------------
+</span><span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">'USERS'</span><span class="p">,</span> <span class="s1">'common USERS'</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">'ADMINISTRATORS'</span><span class="p">,</span> <span class="s1">'privileged ADMIN GROUP'</span><span class="p">);</span></code></pre></div>
 
 
 

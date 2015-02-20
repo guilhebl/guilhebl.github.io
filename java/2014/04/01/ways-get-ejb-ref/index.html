@@ -111,9 +111,8 @@ and it's nowadays considered the standard way of integrating managed lifecycle c
 
 
 
-<div class="highlight"><pre><code class="java"><span class="nd">@Inject</span>
-<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Inject</span>
+<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></div>
 
 
 
@@ -123,12 +122,11 @@ and it's nowadays considered the standard way of integrating managed lifecycle c
 
 
 
-<div class="highlight"><pre><code class="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
 <span class="nd">@Documented</span>
 <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">Inject</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -153,9 +151,8 @@ and it's nowadays considered the standard way of integrating managed lifecycle c
 
 
 
-<div class="highlight"><pre><code class="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">&quot;ejb/UserService&quot;</span><span class="o">)</span>
-<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">"ejb/UserService"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></div>
 
 
 
@@ -165,19 +162,18 @@ and it's nowadays considered the standard way of integrating managed lifecycle c
 
 
 
-<div class="highlight"><pre><code class="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
 <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">EJB</span> <span class="o">{</span>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">name</span><span class="o">()</span> <span class="k">default</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">()</span> <span class="k">default</span> <span class="s">""</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">beanName</span><span class="o">()</span> <span class="k">default</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">beanName</span><span class="o">()</span> <span class="k">default</span> <span class="s">""</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">Class</span> <span class="nf">beanInterface</span><span class="o">()</span> <span class="k">default</span> <span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">Class</span> <span class="n">beanInterface</span><span class="o">()</span> <span class="k">default</span> <span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">mappedName</span><span class="o">()</span> <span class="k">default</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">mappedName</span><span class="o">()</span> <span class="k">default</span> <span class="s">""</span><span class="o">;</span>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -204,11 +200,11 @@ is added to enhance performance for repeated lookups:</p>
 
 
 
-<div class="highlight"><pre><code class="java"><span class="cm">/* </span>
-<span class="cm">Read from Local Home Interface if EJB container is located in same JVM, otherwise use</span>
-<span class="cm">remote interface</span>
-<span class="cm">*/</span>
-   <span class="kd">public</span> <span class="n">Crud</span> <span class="nf">getLocalHome</span><span class="o">(</span><span class="n">String</span> <span class="n">jndiHomeName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceLocatorException</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/* 
+Read from Local Home Interface if EJB container is located in same JVM, otherwise use
+remote interface
+*/</span>
+   <span class="kd">public</span> <span class="n">Crud</span> <span class="n">getLocalHome</span><span class="o">(</span><span class="n">String</span> <span class="n">jndiHomeName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceLocatorException</span> <span class="o">{</span>
      <span class="n">Crud</span> <span class="n">home</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
      <span class="k">try</span> <span class="o">{</span> 
        <span class="k">if</span> <span class="o">(</span><span class="n">cache</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">))</span> <span class="o">{</span>
@@ -218,13 +214,12 @@ is added to enhance performance for repeated lookups:</p>
            <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">,</span> <span class="n">home</span><span class="o">);</span>
        <span class="o">}</span>
       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NamingException</span> <span class="n">ne</span><span class="o">)</span> <span class="o">{</span>
-           <span class="k">throw</span> <span class="k">new</span> <span class="nf">ServiceLocatorException</span><span class="o">(</span><span class="n">ne</span><span class="o">);</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="n">ServiceLocatorException</span><span class="o">(</span><span class="n">ne</span><span class="o">);</span>
       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-           <span class="k">throw</span> <span class="k">new</span> <span class="nf">ServiceLocatorException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="n">ServiceLocatorException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
       <span class="o">}</span>
       <span class="k">return</span> <span class="n">home</span><span class="o">;</span>
-   <span class="o">}</span>
-</code></pre></div>
+   <span class="o">}</span></code></pre></div>
 
 
 

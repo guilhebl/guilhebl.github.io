@@ -105,9 +105,8 @@
 
 
 
-<div class="highlight"><pre><code class="html"><span class="c">&lt;!--requireJS --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">data-main=</span><span class="s">&quot;js/main&quot;</span> <span class="na">src=</span><span class="s">&quot;lib/requirejs/require.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--requireJS --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">data-main=</span><span class="s">"js/main"</span> <span class="na">src=</span><span class="s">"lib/requirejs/require.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
 
 
@@ -132,72 +131,71 @@
 
 
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span> 
-    <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;js/&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span> 
+    <span class="na">baseUrl</span><span class="p">:</span> <span class="s1">'js/'</span><span class="p">,</span>
 
-    <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">jquery</span><span class="o">:</span> <span class="s1">&#39;../lib/plugins/jquery/jquery&#39;</span><span class="p">,</span>
-        <span class="nx">angular</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular/angular&#39;</span><span class="p">,</span>
-        <span class="nx">angularAnimate</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular-animate/angular-animate&#39;</span><span class="p">,</span>
-        <span class="nx">angularCookies</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular-cookies/angular-cookies&#39;</span><span class="p">,</span>
-        <span class="nx">angularMocks</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular-mocks/angular-mocks&#39;</span><span class="p">,</span>
-        <span class="nx">angularResource</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular-resource/angular-resource&#39;</span><span class="p">,</span>   
-        <span class="nx">angularRoute</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular-route/angular-route&#39;</span><span class="p">,</span>
-        <span class="nx">angularScenario</span><span class="o">:</span> <span class="s1">&#39;../lib/components/angular-scenario/angular-scenario&#39;</span>
+    <span class="na">paths</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">jquery</span><span class="p">:</span> <span class="s1">'../lib/plugins/jquery/jquery'</span><span class="p">,</span>
+        <span class="na">angular</span><span class="p">:</span> <span class="s1">'../lib/components/angular/angular'</span><span class="p">,</span>
+        <span class="na">angularAnimate</span><span class="p">:</span> <span class="s1">'../lib/components/angular-animate/angular-animate'</span><span class="p">,</span>
+        <span class="na">angularCookies</span><span class="p">:</span> <span class="s1">'../lib/components/angular-cookies/angular-cookies'</span><span class="p">,</span>
+        <span class="na">angularMocks</span><span class="p">:</span> <span class="s1">'../lib/components/angular-mocks/angular-mocks'</span><span class="p">,</span>
+        <span class="na">angularResource</span><span class="p">:</span> <span class="s1">'../lib/components/angular-resource/angular-resource'</span><span class="p">,</span>   
+        <span class="na">angularRoute</span><span class="p">:</span> <span class="s1">'../lib/components/angular-route/angular-route'</span><span class="p">,</span>
+        <span class="na">angularScenario</span><span class="p">:</span> <span class="s1">'../lib/components/angular-scenario/angular-scenario'</span>
     <span class="p">},</span>   
     
-    <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;jquery&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;exports&#39;</span><span class="o">:</span> <span class="s1">&#39;jquery&#39;</span><span class="p">},</span>
-        <span class="s1">&#39;myApp&#39;</span> <span class="o">:</span> <span class="p">{</span><span class="nx">deps</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;jquery&#39;</span> <span class="p">]},</span>
+    <span class="na">shim</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'jquery'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'exports'</span><span class="p">:</span> <span class="s1">'jquery'</span><span class="p">},</span>
+        <span class="s1">'myApp'</span> <span class="p">:</span> <span class="p">{</span><span class="nl">deps</span><span class="p">:[</span><span class="s1">'jquery'</span> <span class="p">]},</span>
         
-        <span class="s1">&#39;angular&#39;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s1">&#39;deps&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jquery&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;exports&#39;</span><span class="o">:</span> <span class="s1">&#39;angular&#39;</span>
+        <span class="s1">'angular'</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'jquery'</span><span class="p">],</span>
+            <span class="s1">'exports'</span><span class="err">:</span> <span class="s1">'angular'</span>
         <span class="p">},</span>
-        <span class="s1">&#39;angularResource&#39;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s1">&#39;deps&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">],</span>
-            <span class="nx">exports</span><span class="o">:</span> <span class="s1">&#39;angularResource&#39;</span>
+        <span class="s1">'angularResource'</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">],</span>
+            <span class="nx">exports</span><span class="err">:</span> <span class="s1">'angularResource'</span>
         <span class="p">},</span>
-        <span class="s1">&#39;angularRoute&#39;</span><span class="o">:</span><span class="p">{</span>
-            <span class="s1">&#39;deps&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">]</span>
+        <span class="s1">'angularRoute'</span><span class="err">:</span><span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
         <span class="p">},</span>
-        <span class="s1">&#39;angularAnimate&#39;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s1">&#39;deps&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">]</span>
+        <span class="s1">'angularAnimate'</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
         <span class="p">},</span>
-        <span class="s1">&#39;angularCookies&#39;</span><span class="o">:</span><span class="p">{</span>
-            <span class="s1">&#39;deps&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">]</span>
+        <span class="s1">'angularCookies'</span><span class="err">:</span><span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
         <span class="p">},</span>          
-    <span class="s1">&#39;angularMocks&#39;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">deps</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">]</span>
+    <span class="s1">'angularMocks'</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
     <span class="p">},</span>
-    <span class="s1">&#39;angularScenario&#39;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">deps</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">]</span>
+    <span class="s1">'angularScenario'</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
     <span class="p">},</span>   
-    <span class="nx">priority</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s1">&#39;angular&#39;</span>
+    <span class="nx">priority</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s1">'angular'</span>
     <span class="p">]</span>
 <span class="p">});</span>
 
-<span class="cm">/*</span>
-<span class="cm"> this block of code is necessary in order to defer angular&#39;s bootstrap phase.</span>
-<span class="cm">*/</span>
+<span class="cm">/*
+ this block of code is necessary in order to defer angular's bootstrap phase.
+*/</span>
 <span class="c1">//http://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;NG_DEFER_BOOTSTRAP!&#39;</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'NG_DEFER_BOOTSTRAP!'</span><span class="p">;</span>
 
 <span class="nx">require</span><span class="p">(</span> <span class="p">[</span>
-    <span class="s1">&#39;angular&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;app&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;routes&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;myApp&#39;</span>
+    <span class="s1">'angular'</span><span class="p">,</span>
+    <span class="s1">'app'</span><span class="p">,</span>
+    <span class="s1">'routes'</span><span class="p">,</span>
+    <span class="s1">'myApp'</span>
 <span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">app</span><span class="p">,</span> <span class="nx">routes</span><span class="p">,</span> <span class="nx">myApp</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">$html</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">$html</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'html'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
 
     <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">().</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">angular</span><span class="p">.</span><span class="nx">resumeBootstrap</span><span class="p">([</span><span class="nx">app</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]);</span>
+        <span class="nx">angular</span><span class="p">.</span><span class="nx">resumeBootstrap</span><span class="p">([</span><span class="nx">app</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]]);</span>
     <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 
 
@@ -222,32 +220,31 @@
 
 
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span>
-    <span class="s1">&#39;angular&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;filters&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;services&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;directives&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;controllers&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;animations&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;angularRoute&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;angularCookies&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;angularAnimate&#39;</span>    
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span>
+    <span class="s1">'angular'</span><span class="p">,</span>
+    <span class="s1">'filters'</span><span class="p">,</span>
+    <span class="s1">'services'</span><span class="p">,</span>
+    <span class="s1">'directives'</span><span class="p">,</span>
+    <span class="s1">'controllers'</span><span class="p">,</span>
+    <span class="s1">'animations'</span><span class="p">,</span>
+    <span class="s1">'angularRoute'</span><span class="p">,</span>
+    <span class="s1">'angularCookies'</span><span class="p">,</span>
+    <span class="s1">'angularAnimate'</span>    
     <span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-        <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+        <span class="s1">'use strict'</span><span class="p">;</span>
 
-        <span class="k">return</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[</span>
-            <span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ngCookies&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ngAnimate&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;myApp.services&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;myApp.directives&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;myApp.filters&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;myApp.controllers&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;myApp.animations&#39;</span>
+        <span class="k">return</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">'ngRoute'</span><span class="p">,</span>
+            <span class="s1">'ngCookies'</span><span class="p">,</span>
+            <span class="s1">'ngAnimate'</span><span class="p">,</span>
+            <span class="s1">'myApp.services'</span><span class="p">,</span>
+            <span class="s1">'myApp.directives'</span><span class="p">,</span>
+            <span class="s1">'myApp.filters'</span><span class="p">,</span>
+            <span class="s1">'myApp.controllers'</span><span class="p">,</span>
+            <span class="s1">'myApp.animations'</span>
         <span class="p">]);</span>
 
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 
 
@@ -267,47 +264,46 @@
 
 
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;angularResource&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'angularResource'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
     
         <span class="cm">/* Services */</span>
-    <span class="kd">var</span> <span class="nx">appServices</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp.services&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ngResource&#39;</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">appServices</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp.services'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngResource'</span><span class="p">]);</span>
 
-    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;UserService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span>
+    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'UserService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
           <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>
-        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;/appPortal/rest/user/:id&#39;</span><span class="p">,</span> 
-                <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;@id&quot;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/appPortal/rest/user/:id'</span><span class="p">,</span> 
+                <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span><span class="p">}</span>
         <span class="p">);</span>
       <span class="p">}]);</span>
 
-    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;ProductService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span>
+    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'ProductService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
       <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>    
-        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;/appPortal/rest/product/:id:query:catid&#39;</span><span class="p">,</span>
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/appPortal/rest/product/:id:query:catid'</span><span class="p">,</span>
                 <span class="p">{</span>
-                <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;@id&quot;</span><span class="p">,</span>          
-                <span class="nx">catid</span><span class="o">:</span> <span class="s2">&quot;@catid&quot;</span><span class="p">,</span>            
-                <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;@query&quot;</span>
+                <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span><span class="p">,</span>            
+                <span class="na">catid</span><span class="p">:</span> <span class="s2">"@catid"</span><span class="p">,</span>          
+                <span class="na">query</span><span class="p">:</span> <span class="s2">"@query"</span>
                 <span class="p">}</span>
         <span class="p">);</span>
       <span class="p">}]);</span>   
 
     
-    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;ProductCategoryService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span>
+    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'ProductCategoryService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
       <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>    
-        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;/appPortal/rest/category/:id:query&#39;</span><span class="p">,</span> 
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/appPortal/rest/category/:id:query'</span><span class="p">,</span> 
                 <span class="p">{</span>
-                    <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;@id&quot;</span><span class="p">,</span>          
-                    <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;@query&quot;</span>                    
+                    <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span><span class="p">,</span>            
+                    <span class="na">query</span><span class="p">:</span> <span class="s2">"@query"</span>                  
                 <span class="p">},</span>               
                 <span class="p">{</span>
-                  <span class="s1">&#39;querynode&#39;</span><span class="o">:</span>  <span class="p">{</span> <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="nx">params</span><span class="o">:</span> <span class="p">{</span><span class="nx">query</span><span class="o">:</span> <span class="s1">&#39;node&#39;</span><span class="p">},</span> <span class="nx">isArray</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+                  <span class="s1">'querynode'</span><span class="p">:</span>  <span class="p">{</span> <span class="nl">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">query</span><span class="p">:</span> <span class="s1">'node'</span><span class="p">},</span> <span class="na">isArray</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
                 <span class="p">}</span>
         <span class="p">);</span>
       <span class="p">}]);</span>
             
     <span class="k">return</span> <span class="nx">appServices</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 
 
@@ -322,26 +318,25 @@
 
 
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
 
     <span class="cm">/* Controllers */</span>
-    <span class="kd">var</span> <span class="nx">appControllers</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp.controllers&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;myApp.services&#39;</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">appControllers</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp.controllers'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'myApp.services'</span><span class="p">]);</span>
 
-    <span class="nx">appControllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;UserController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;$routeParams&#39;</span><span class="p">,</span> <span class="s1">&#39;UserService&#39;</span><span class="p">,</span>
+    <span class="nx">appControllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'UserController'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'$routeParams'</span><span class="p">,</span> <span class="s1">'UserService'</span><span class="p">,</span>
       <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$routeParams</span><span class="p">,</span> <span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">UserService</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span><span class="nx">id</span><span class="o">:</span> <span class="nx">$routeParams</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">UserService</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="nx">$routeParams</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
       <span class="p">}]);</span>
 
-    <span class="nx">appControllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;ProductListController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;ProductService&#39;</span><span class="p">,</span>
+    <span class="nx">appControllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'ProductListController'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'ProductService'</span><span class="p">,</span>
       <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">ProductService</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">products</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">query</span><span class="p">();</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">orderProp</span> <span class="o">=</span> <span class="s1">&#39;introductionDate&#39;</span><span class="p">;</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">orderProp</span> <span class="o">=</span> <span class="s1">'introductionDate'</span><span class="p">;</span>
       <span class="p">}]);</span>
 
     <span class="k">return</span> <span class="nx">appControllers</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 
 
@@ -356,23 +351,23 @@
 
 
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;services&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">services</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">services</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
 
         <span class="cm">/* Directives */</span>
-    <span class="kd">var</span> <span class="nx">appDirectives</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp.directives&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;myApp.services&#39;</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">appDirectives</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp.directives'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'myApp.services'</span><span class="p">]);</span>
 
-    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;prodThumbnail&#39;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">'prodThumbnail'</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">{</span>
-          <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
-          <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">product</span><span class="o">:</span> <span class="s1">&#39;=&#39;</span>
+          <span class="na">restrict</span><span class="p">:</span> <span class="s1">'E'</span><span class="p">,</span>
+          <span class="na">scope</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">product</span><span class="p">:</span> <span class="s1">'='</span>
           <span class="p">},</span>
-          <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;partials/template/product_thumbnail.html&#39;</span>
+          <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'partials/template/product_thumbnail.html'</span>
         <span class="p">};</span>
     <span class="p">}]);</span>
 
-    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;appVersion&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">'appVersion'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
           <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elm</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">elm</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">version</span><span class="p">);</span>
           <span class="p">};</span>
@@ -380,8 +375,7 @@
     
     <span class="k">return</span> <span class="nx">appDirectives</span><span class="p">;</span>
 
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 
 
 
@@ -396,11 +390,10 @@
 
 
 
-<div class="highlight"><pre><code class="html">     <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;product in products&quot;</span> <span class="nt">&gt;</span>            
-            <span class="nt">&lt;prod-thumbnail</span> <span class="na">product=</span><span class="s">&quot;product&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">"product in products"</span> <span class="nt">&gt;</span>         
+            <span class="nt">&lt;prod-thumbnail</span> <span class="na">product=</span><span class="s">"product"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;/prod-thumbnail&gt;</span>         
-        <span class="nt">&lt;/li&gt;</span>
-</code></pre></div>
+        <span class="nt">&lt;/li&gt;</span></code></pre></div>
 
 
 

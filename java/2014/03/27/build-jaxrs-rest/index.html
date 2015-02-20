@@ -119,9 +119,8 @@ Download Glassfish and unzip on preferred location, test installation using comm
 
 
 
-<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> <span class="nv">$GLASSFISH_FOLDER$/</span>glassfish/bin/
-asadmin start-domain domain1 
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="nv">$GLASSFISH_FOLDER$/</span>glassfish/bin/
+asadmin start-domain domain1</code></pre></div>
 
 
 
@@ -158,7 +157,7 @@ You can either configure Jersey Servlet in your web.xml as:</p>
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="xml">1
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -166,7 +165,7 @@ You can either configure Jersey Servlet in your web.xml as:</p>
 6
 7
 8
-9</code></pre></div></td><td class="code"><div class="highlight"><pre>   <span class="nt">&lt;servlet&gt;</span>
+9</code></pre></td><td class="code"><pre><span class="nt">&lt;servlet&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;servlet-class&gt;</span>com.sun.jersey.spi.container.servlet.ServletContainer<span class="nt">&lt;/servlet-class&gt;</span>
         <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
@@ -174,9 +173,9 @@ You can either configure Jersey Servlet in your web.xml as:</p>
    <span class="nt">&lt;servlet-mapping&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;url-pattern&gt;</span>/rest/*<span class="nt">&lt;/url-pattern&gt;</span>
-   <span class="nt">&lt;/servlet-mapping&gt;</span>
+   <span class="nt">&lt;/servlet-mapping&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -187,15 +186,15 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -206,7 +205,7 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
 17
 18
 19
-20</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span>
+20</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
@@ -216,7 +215,7 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
 
 <span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.facade.UserService</span><span class="o">;</span>
 
-<span class="nd">@ApplicationPath</span><span class="o">(</span><span class="s">&quot;/rest&quot;</span><span class="o">)</span>
+<span class="nd">@ApplicationPath</span><span class="o">(</span><span class="s">"/rest"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAppApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">getClasses</span><span class="o">()</span> <span class="o">{</span>
@@ -225,9 +224,9 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
         <span class="n">classes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
         <span class="k">return</span> <span class="n">classes</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -238,15 +237,15 @@ which we will implement like this:</p>
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -289,7 +288,7 @@ which we will implement like this:</p>
 49
 50
 51
-52</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span>
+52</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
@@ -301,48 +300,48 @@ which we will implement like this:</p>
 
 <span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.domain.UserVO</span><span class="o">;</span>
 
-<span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/user&quot;</span><span class="o">)</span>
+<span class="nd">@Path</span><span class="o">(</span><span class="s">"/user"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
 
-    <span class="kd">public</span> <span class="nf">UserService</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">public</span> <span class="n">UserService</span><span class="o">()</span> <span class="o">{}</span>
     
     <span class="nd">@GET</span>
     <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">TEXT_PLAIN</span><span class="o">})</span>
-    <span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/text-sample&quot;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">textSample</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&quot;Hi! This is a test!&quot;</span><span class="o">;</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">"/text-sample"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">textSample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Hi! This is a test!"</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@GET</span>
     <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">TEXT_HTML</span><span class="o">})</span>
-    <span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/html-sample&quot;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">htmlSample</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&quot;&lt;ul&gt;&lt;li&gt;Element 1&lt;/li&gt;&lt;li&gt;Element 2&lt;/li&gt;&lt;li&gt;Element 3&lt;/li&gt;&lt;/ul&gt;&quot;</span><span class="o">;</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">"/html-sample"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">htmlSample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"&lt;ul&gt;&lt;li&gt;Element 1&lt;/li&gt;&lt;li&gt;Element 2&lt;/li&gt;&lt;li&gt;Element 3&lt;/li&gt;&lt;/ul&gt;"</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@GET</span>
     <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_XML</span><span class="o">,</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">})</span>
-    <span class="nd">@Path</span><span class="o">(</span><span class="s">&quot;/json-sample&quot;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">UserVO</span> <span class="nf">jsonSample</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Path</span><span class="o">(</span><span class="s">"/json-sample"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">UserVO</span> <span class="n">jsonSample</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">UserVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="n">buildSampleUserVO</span><span class="o">();</span>     
         <span class="k">return</span> <span class="n">vo</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">private</span> <span class="n">UserVO</span> <span class="nf">buildSampleUserVO</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">UserVO</span> <span class="n">buildSampleUserVO</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">UserVO</span> <span class="n">userVO</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserVO</span><span class="o">();</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">&quot;test@testdomain.com&quot;</span><span class="o">);</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setActive</span><span class="o">(</span><span class="s">&quot;T&quot;</span><span class="o">);</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&quot;*************&quot;</span><span class="o">);</span>       
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"test@testdomain.com"</span><span class="o">);</span>
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setActive</span><span class="o">(</span><span class="s">"T"</span><span class="o">);</span>
+        <span class="n">userVO</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">"*************"</span><span class="o">);</span>     
         <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroupsStr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>      
-        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;abc&quot;</span><span class="o">);</span>
-        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;admin&quot;</span><span class="o">);</span>
-        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;users&quot;</span><span class="o">);</span>
+        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"abc"</span><span class="o">);</span>
+        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"admin"</span><span class="o">);</span>
+        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"users"</span><span class="o">);</span>
         <span class="n">userVO</span><span class="o">.</span><span class="na">setUserGroups</span><span class="o">(</span><span class="n">userGroupsStr</span><span class="o">);</span>                         
         <span class="k">return</span> <span class="n">userVO</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -369,15 +368,15 @@ model we must annotate our domain classes with @XmlRootElement:</p>
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -407,7 +406,7 @@ model we must annotate our domain classes with @XmlRootElement:</p>
 36
 37
 38
-39</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
+39</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
@@ -421,33 +420,33 @@ model we must annotate our domain classes with @XmlRootElement:</p>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">active</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">;</span>
     
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">Id</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">Id</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getPassword</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getPassword</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">password</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getActive</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getActive</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">active</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setActive</span><span class="o">(</span><span class="n">String</span> <span class="n">active</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setActive</span><span class="o">(</span><span class="n">String</span> <span class="n">active</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">active</span> <span class="o">=</span> <span class="n">active</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getUserGroups</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getUserGroups</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">userGroups</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserGroups</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setUserGroups</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">userGroups</span> <span class="o">=</span> <span class="n">userGroups</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 

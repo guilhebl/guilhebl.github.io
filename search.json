@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "create a user forgot password flow via RESTful webservice using angularJS on the frontend and Java EE JAX-RS on the backend",
+		  "category" : "",
+		  "url"     : "/java/ui/2015/02/19/reset-password-flow-angular-js-jax-rs/",
+		  "date"     : "2015-02-19 17:06:23 -0800"
+		} ,
+	
+		{
 		  "title"    : "maven - On build Exclude specific folders from being packaged on a WAR file",
 		  "category" : "",
 		  "url"     : "/maven/2014/07/27/maven-build-exclude-folders-from-war-file/",

@@ -106,23 +106,23 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java">1
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+8</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">ID</span> <span class="nf">getId</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="n">ID</span> <span class="n">getId</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">);</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -132,23 +132,23 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java">1
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+8</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">NamedDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
-<span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getName</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -158,15 +158,15 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -226,7 +226,7 @@ Since many classes share similar fields and attributes, considering their Databa
 66
 67
 68
-69</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+69</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
@@ -238,30 +238,30 @@ Since many classes share similar fields and attributes, considering their Databa
     
     <span class="kd">private</span> <span class="n">ID</span> <span class="n">id</span><span class="o">;</span>
 
-    <span class="kd">protected</span> <span class="nf">BaseDomainEntity</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="n">BaseDomainEntity</span><span class="o">()</span> <span class="o">{</span>
         
     <span class="o">}</span>
     
     <span class="nd">@Transient</span>
-    <span class="kd">public</span> <span class="n">ID</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ID</span> <span class="n">getId</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
     <span class="o">}</span>
     
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">hashCode</span><span class="o">()</span> <span class="o">{</span>
         <span class="kd">final</span> <span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">31</span><span class="o">;</span>
         <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="o">((</span><span class="n">id</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">id</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&quot;unchecked&quot;</span><span class="o">)</span>
+    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">)</span>
             <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
@@ -278,25 +278,25 @@ Since many classes share similar fields and attributes, considering their Databa
     
     <span class="nd">@Override</span>
     <span class="nd">@Transient</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getName</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
     
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
     <span class="o">}</span>
     
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Object</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">Object</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
             <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
         <span class="o">}</span>            
         <span class="n">BaseDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">BaseDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;)</span> <span class="n">arg0</span><span class="o">;</span>                
-        <span class="k">return</span> <span class="nf">getName</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">getName</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
     <span class="o">}</span>
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -306,15 +306,15 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -352,7 +352,7 @@ Since many classes share similar fields and attributes, considering their Databa
 44
 45
 46
-47</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+47</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
@@ -365,42 +365,42 @@ Since many classes share similar fields and attributes, considering their Databa
     <span class="kd">private</span> <span class="n">ID</span> <span class="n">id</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
     
-    <span class="kd">protected</span> <span class="nf">BaseNamedEntity</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">protected</span> <span class="n">BaseNamedEntity</span><span class="o">()</span> <span class="o">{}</span>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getName</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Transient</span>
-    <span class="kd">public</span> <span class="n">ID</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ID</span> <span class="n">getId</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">toString</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Object</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">compareTo</span><span class="o">(</span><span class="n">Object</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
             <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
         <span class="o">}</span>            
         <span class="n">BaseNamedEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">BaseNamedEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;)</span> <span class="n">arg0</span><span class="o">;</span>              
-        <span class="k">return</span> <span class="nf">getName</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">getName</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
     <span class="o">}</span>
 
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -425,14 +425,13 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="sql">  <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_FILE_REFERENCE</span>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_FILE_REFERENCE</span>
  <span class="p">(</span>
-    <span class="n">ID_FILE_REFERENCE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="k">TYPE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">ID_FILE_REFERENCE</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">NAME</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">TYPE</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="k">CONSTRAINT</span> <span class="n">TB_FILE_REFERENCE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_FILE_REFERENCE</span><span class="p">)</span>
- <span class="p">);</span>
-</code></pre></div>
+ <span class="p">);</span></code></pre></div>
 
 
 
@@ -442,15 +441,15 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -485,7 +484,7 @@ Since many classes share similar fields and attributes, considering their Databa
 41
 42
 43
-44</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
+44</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">javax.persistence.Column</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
@@ -498,39 +497,39 @@ Since many classes share similar fields and attributes, considering their Databa
 <span class="kn">import</span> <span class="nn">com.guilhebl.testapp.domain.template.BaseNamedEntity</span><span class="o">;</span>
 
 <span class="nd">@Entity</span>
-<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;TB_FILE_REFERENCE&quot;</span><span class="o">)</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"TB_FILE_REFERENCE"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileReference</span> <span class="kd">extends</span> <span class="n">BaseNamedEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
     
     <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">FileReference</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">public</span> <span class="n">FileReference</span><span class="o">()</span> <span class="o">{}</span>
     
     <span class="nd">@Id</span>
-    <span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;genFileReference&quot;</span><span class="o">,</span> <span class="n">table</span><span class="o">=</span><span class="s">&quot;TB_ID_GENERATOR&quot;</span><span class="o">,</span>
-            <span class="n">pkColumnName</span><span class="o">=</span><span class="s">&quot;ID_NAME&quot;</span><span class="o">,</span> <span class="n">valueColumnName</span><span class="o">=</span><span class="s">&quot;ID_VAL&quot;</span><span class="o">,</span>
-            <span class="n">pkColumnValue</span><span class="o">=</span><span class="s">&quot;TB_FILE_REFERENCE&quot;</span><span class="o">,</span> <span class="n">allocationSize</span><span class="o">=</span><span class="mi">1</span><span class="o">)</span>
-    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span> <span class="n">generator</span><span class="o">=</span><span class="s">&quot;genFileReference&quot;</span><span class="o">)</span>
-    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;ID_FILE_REFERENCE&quot;</span><span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"genFileReference"</span><span class="o">,</span> <span class="n">table</span><span class="o">=</span><span class="s">"TB_ID_GENERATOR"</span><span class="o">,</span>
+            <span class="n">pkColumnName</span><span class="o">=</span><span class="s">"ID_NAME"</span><span class="o">,</span> <span class="n">valueColumnName</span><span class="o">=</span><span class="s">"ID_VAL"</span><span class="o">,</span>
+            <span class="n">pkColumnValue</span><span class="o">=</span><span class="s">"TB_FILE_REFERENCE"</span><span class="o">,</span> <span class="n">allocationSize</span><span class="o">=</span><span class="mi">1</span><span class="o">)</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span> <span class="n">generator</span><span class="o">=</span><span class="s">"genFileReference"</span><span class="o">)</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"ID_FILE_REFERENCE"</span><span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getId</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
     <span class="o">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
     <span class="o">}</span>
         
-    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;TYPE&quot;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getType</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"TYPE"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getType</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setType</span><span class="o">(</span><span class="n">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setType</span><span class="o">(</span><span class="n">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
     <span class="o">}</span>
         
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -550,15 +549,15 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="java"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
 10
 11
 12
@@ -606,7 +605,7 @@ Since many classes share similar fields and attributes, considering their Databa
 54
 55
 56
-57</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+57</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
@@ -624,47 +623,47 @@ Since many classes share similar fields and attributes, considering their Databa
     <span class="kd">private</span> <span class="n">Date</span> <span class="n">lastUpdated</span><span class="o">;</span>
         <span class="kd">private</span> <span class="n">Long</span> <span class="n">version</span><span class="o">;</span>
     
-    <span class="kd">protected</span> <span class="nf">BaseDomainEntity</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">protected</span> <span class="n">BaseDomainEntity</span><span class="o">()</span> <span class="o">{}</span>
     
     <span class="nd">@Version</span>
-    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getVersion</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="n">getVersion</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">version</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setVersion</span><span class="o">(</span><span class="n">Long</span> <span class="n">version</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setVersion</span><span class="o">(</span><span class="n">Long</span> <span class="n">version</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">version</span> <span class="o">=</span> <span class="n">version</span><span class="o">;</span>
     <span class="o">}</span>
 
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getSemanticName</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getSemanticName</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">semanticName</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSemanticName</span><span class="o">(</span><span class="n">String</span> <span class="n">semanticName</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setSemanticName</span><span class="o">(</span><span class="n">String</span> <span class="n">semanticName</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">semanticName</span> <span class="o">=</span> <span class="n">semanticName</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Temporal</span><span class="o">(</span><span class="n">TemporalType</span><span class="o">.</span><span class="na">DATE</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getCreated</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">getCreated</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">created</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Temporal</span><span class="o">(</span><span class="n">TemporalType</span><span class="o">.</span><span class="na">DATE</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getLastUpdated</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">getLastUpdated</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">lastUpdated</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCreated</span><span class="o">(</span><span class="n">Date</span> <span class="n">created</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setCreated</span><span class="o">(</span><span class="n">Date</span> <span class="n">created</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">created</span> <span class="o">=</span> <span class="n">created</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLastUpdated</span><span class="o">(</span><span class="n">Date</span> <span class="n">lastUpdated</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setLastUpdated</span><span class="o">(</span><span class="n">Date</span> <span class="n">lastUpdated</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">lastUpdated</span> <span class="o">=</span> <span class="n">lastUpdated</span><span class="o">;</span>
     <span class="o">}</span>
         
-<span class="o">}</span>
+<span class="o">}</span><span class="w">
+</span></pre></td></tr></tbody></table>
 </pre></div>
-</td></tr></table>
 
 
 
@@ -686,19 +685,17 @@ an SEO friendly manner.</p>
 
 
 
-<div class="highlight"><pre><code class="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_FILE_REFERENCE</span>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_FILE_REFERENCE</span>
  <span class="p">(</span>
-    <span class="n">ID_FILE_REFERENCE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">SEMANTICNAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="k">TYPE</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">CREATED</span> <span class="nb">DATE</span><span class="p">,</span>
-    <span class="n">LASTUPDATED</span> <span class="nb">DATE</span><span class="p">;</span>
-    <span class="k">VERSION</span> <span class="nb">BIGINT</span><span class="p">;</span>
+    <span class="n">ID_FILE_REFERENCE</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">NAME</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">SEMANTICNAME</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">TYPE</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">CREATED</span> <span class="n">DATE</span><span class="p">,</span>
+    <span class="n">LASTUPDATED</span> <span class="n">DATE</span><span class="p">;</span>
+    <span class="k">VERSION</span> <span class="n">BIGINT</span><span class="p">;</span>
     <span class="k">CONSTRAINT</span> <span class="n">TB_FILE_REFERENCE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_FILE_REFERENCE</span><span class="p">)</span>
- <span class="p">);</span>
- 
-</code></pre></div>
+ <span class="p">);</span></code></pre></div>
 
 
 
