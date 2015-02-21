@@ -157,15 +157,7 @@ You can either configure Jersey Servlet in your web.xml as:</p>
 
 
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9</code></pre></td><td class="code"><pre><span class="nt">&lt;servlet&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;servlet&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;servlet-class&gt;</span>com.sun.jersey.spi.container.servlet.ServletContainer<span class="nt">&lt;/servlet-class&gt;</span>
         <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
@@ -173,9 +165,7 @@ You can either configure Jersey Servlet in your web.xml as:</p>
    <span class="nt">&lt;servlet-mapping&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;url-pattern&gt;</span>/rest/*<span class="nt">&lt;/url-pattern&gt;</span>
-   <span class="nt">&lt;/servlet-mapping&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+   <span class="nt">&lt;/servlet-mapping&gt;</span></code></pre></div>
 
 
 
@@ -186,26 +176,7 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
@@ -224,9 +195,7 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
         <span class="n">classes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
         <span class="k">return</span> <span class="n">classes</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -237,58 +206,7 @@ which we will implement like this:</p>
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
@@ -339,9 +257,7 @@ which we will implement like this:</p>
         <span class="n">userVO</span><span class="o">.</span><span class="na">setUserGroups</span><span class="o">(</span><span class="n">userGroupsStr</span><span class="o">);</span>                         
         <span class="k">return</span> <span class="n">userVO</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -368,45 +284,7 @@ model we must annotate our domain classes with @XmlRootElement:</p>
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
@@ -444,9 +322,7 @@ model we must annotate our domain classes with @XmlRootElement:</p>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">setUserGroups</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">userGroups</span> <span class="o">=</span> <span class="n">userGroups</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 

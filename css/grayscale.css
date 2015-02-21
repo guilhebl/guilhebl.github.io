@@ -126,7 +126,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../img/bckg01.jpg) no-repeat bottom center scroll;
+    background: url(../img/Delphi-ruins.jpg) no-repeat center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -171,11 +171,13 @@ background-size: 70px 120px;
 
 .brand-heading {
     font-size: 40px;
-    text-transform: uppercase;    
+    text-transform: uppercase;
+    color: lightblue;
 }
 
 .intro-text {
     font-size: 18px;
+    background-color: black;
 }
 
 @media(min-width:767px) {
@@ -194,6 +196,7 @@ background-size: 70px 120px;
 }
 
 .btn-circle {
+    background-color: black !important;
     width: 70px;
     height: 70px;
     margin-top: 15px;
@@ -275,7 +278,7 @@ background-size: 70px 120px;
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
+    background: url(../assets/img/downloads-bg.jpg) no-repeat center center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -410,6 +413,8 @@ body {
 }
 
 .category-list {
+  padding: 20px;
+  background-color: black;
   text-align: left;
   font-family: sans-serif;
 }
@@ -421,4 +426,20 @@ body {
 }
 .marginRight6 {
  margin-right: 6px;
+}
+.blackbg {
+background-color: black;
+}
+
+.paddingTop18 {
+padding-top: 18px;
+}
+.padding20 {
+padding: 20px;
+}
+.borderThin {
+	border: 1px solid gray;
+}
+.marginTop60 {
+	margin-top: 60px;
 }

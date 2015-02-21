@@ -95,8 +95,18 @@
 		    <h1>Domain Model Generic Superclass</h1>
 		    <p class="muted">09 April 2014</p>
 
-		    <p>One of the core pieces of your appplication lays on the business domain and the objects which it is composed.
-Since many classes share similar fields and attributes, considering their Database relational model, you might want to build an initial generic superclass in order to avoid duplicating boilerplate code on several classes:</p>
+		    <p>There is a common JavaEE pattern for enterprise domain modeling called Domain Generic Superclass which is one specific case of the Design Patter Template:</p>
+
+
+
+
+<p>"With the Template method pattern this happens at compile-time by subclassing the template. Each subclass provides a different concrete algorithm by implementing the template's abstract methods. When a client invokes methods of the template's external interface the template calls its abstract methods (its internal interface) as required to invoke the algorithm."</p>
+
+
+
+
+<p>One of the core pieces of your appplication lays on the business domain and the objects which it is composed.
+Since many classes share similar fields and attributes, for example ID, and considering their Database relational model, you might want to build an initial generic superclass in order to avoid duplicating boilerplate code on several classes, and being able to enhance reusability and modularization:</p>
 
 
 
@@ -106,23 +116,14 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">ID</span> <span class="n">getId</span><span class="o">();</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">ID</span> <span class="n">id</span><span class="o">);</span>
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -132,23 +133,14 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">NamedDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="n">getName</span><span class="o">();</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -158,75 +150,7 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
@@ -294,9 +218,7 @@ Since many classes share similar fields and attributes, considering their Databa
         <span class="n">BaseDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">BaseDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;)</span> <span class="n">arg0</span><span class="o">;</span>                
         <span class="k">return</span> <span class="n">getName</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
     <span class="o">}</span>
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -306,53 +228,7 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 
@@ -398,9 +274,7 @@ Since many classes share similar fields and attributes, considering their Databa
         <span class="k">return</span> <span class="n">getName</span><span class="o">().</span><span class="na">compareTo</span><span class="o">(</span><span class="n">other</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
     <span class="o">}</span>
 
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -441,50 +315,7 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">javax.persistence.Column</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
@@ -527,9 +358,7 @@ Since many classes share similar fields and attributes, considering their Databa
         <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
     <span class="o">}</span>
         
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
@@ -539,7 +368,7 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<p>Perhaps in certain scenarios there might be a need to record every record creation and alteration dates, together with other fields.</p>
+<hr />
 
 
 
@@ -549,63 +378,12 @@ Since many classes share similar fields and attributes, considering their Databa
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57</code></pre></td><td class="code"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
+<p>In this example there is specific group of entities where might need to hold version, creation date and other common attributes.</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">testapp</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">template</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
@@ -616,7 +394,7 @@ Since many classes share similar fields and attributes, considering their Databa
 <span class="kn">import</span> <span class="nn">javax.persistence.Version</span><span class="o">;</span>
 
 <span class="nd">@MappedSuperclass</span>
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">BaseNamedEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseSemanticDomainEntity</span><span class="o">&lt;</span><span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">BaseNamedEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="n">String</span> <span class="n">semanticName</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Date</span> <span class="n">created</span><span class="o">;</span>
@@ -634,7 +412,7 @@ Since many classes share similar fields and attributes, considering their Databa
         <span class="k">this</span><span class="o">.</span><span class="na">version</span> <span class="o">=</span> <span class="n">version</span><span class="o">;</span>
     <span class="o">}</span>
 
-
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"SEMANTIC_NAME"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="n">getSemanticName</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">semanticName</span><span class="o">;</span>
     <span class="o">}</span>
@@ -661,26 +439,24 @@ Since many classes share similar fields and attributes, considering their Databa
         <span class="k">this</span><span class="o">.</span><span class="na">lastUpdated</span> <span class="o">=</span> <span class="n">lastUpdated</span><span class="o">;</span>
     <span class="o">}</span>
         
-<span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table>
-</pre></div>
+<span class="o">}</span></code></pre></div>
 
 
 
 
 <p>Created and Last Updated are common columns to track when this record was created and last time it was changed, semantic name is
 a common column to store the SEO friendly semantic name of this entity, so URLs based on this entity might be properly displayed in
-an SEO friendly manner.</p>
+an SEO friendly URI.</p>
 
 
 
 
-<p>Using the @Version enables JPA based automatic versioning, which uses an optimistic lock mechanism to ensure no confilct if 2 users are writing the same record, and one of the users have stale data (an old and invalid version of that Record). this will ensure that the record can be changed by only one user at a time, avoiding confilcts. The @Version field is immutable so you might not want to change the version field on any of your domain model instances in order to avoid unpredictable behaviors. Let the underlying JPA PersistenceContext handle the versioning and extend this class for any domain class that might need versioning.</p>
+<p>Using the @Version enables JPA based automatic versioning, which provides optimistic lock to ensure no confilct occurs at runtime, for example if 2 users are writing the same record, and one of the users have stale data (an old and invalid version of that Record). this will ensure that the record can be changed by only one user at a time, avoiding confilcts. The @Version field is immutable so you might not want to change the version field on any of your domain model instances in order to avoid unpredictable behaviors. Let the underlying JPA PersistenceContext handle the versioning and extend this class for any domain class that might need versioning.</p>
 
 
 
 
-<p>An example of mapping to PostgreSQL database:</p>
+<p>An example of mapping a concrete realization of the above generic superclass models in the database:</p>
 
 
 

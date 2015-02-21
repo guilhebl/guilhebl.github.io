@@ -107,13 +107,33 @@
 
 <p>People usually have a lot of different passwords for a lot of different websites and online services, forgetting a password is a very common thing and almost
 every website that holds user account data has a forgot password mechanism flow to allow users to either generate a new password or type in a new password based on
-their email or another personal piece of information.</p>
+their email or another personal piece of information. A typical example:</p>
+
+
+
+
+<p>Login Page</p>
+
+
+
+
+<p><img src="/assets/img/login-page-sample.png" alt="TEXT screenshot" /></p>
+
+
+
+
+<p>Reset pasword page</p>
+
+
+
+
+<p><img src="/assets/img/reset-password-sample.png" alt="TEXT screenshot" /></p>
 
 
 
 
 <p>On this post I will demonstrate a sample forgot password flow, where a user will be able to generate a new password (this post is not intended to target a full complete scenario therefore it doesn't deal
-with some other aspects like security and messaging).</p>
+with some other aspects like security and messaging). For sake of brevity I'm ommiting some implementation details but which one can potentially deduce or conclude based from evidence on the example.</p>
 
 
 
@@ -123,7 +143,98 @@ with some other aspects like security and messaging).</p>
 
 
 
-<p>on the html a form or div will accomodate user credentials for reseting the password basically containing the user email:</p>
+<h2>Runtime Environment used on example</h2>
+
+
+
+
+<p>the runtime environment used on the example is based on the following stack:</p>
+
+
+
+
+<p>Frontend:</p>
+
+
+
+
+<ul>
+<li>AngularJS (1.3.12 or later)</li>
+<li>NGINX (1.6.2 or later).</li>
+</ul>
+
+
+
+
+<p>---------------------------- JSON --------------------------------------------------------</p>
+
+
+
+
+<p>Backend:</p>
+
+
+
+
+<ul>
+<li>javaEE EAR (javaEE 6 or later).</li>
+<li>Glassfish (4.0 or later).</li>
+</ul>
+
+
+
+
+<p>---------------------------- SQL ---------------------------------------------------------</p>
+
+
+
+
+<p>PostgreSQL: (9.4.0 or later)</p>
+
+
+
+
+<hr />
+
+
+
+
+<p>User model is based on this <a href="http://guilhebl.github.io/database/2014/06/18/user-domain-model-relational/">domain model</a>.</p>
+
+
+
+
+<p>Other <a href="http://guilhebl.github.io/java/2014/04/09/domain-model-generic-superclass/">good practices</a>.</p>
+
+
+
+
+<hr />
+
+
+
+
+<hr />
+
+
+
+
+<hr />
+
+
+
+
+<h2>Presentation</h2>
+
+
+
+
+<p>on the html a form or div will accomodate user credentials for reseting the password basically containing the user email like in the Reset password FORM example:</p>
+
+
+
+
+<p>HTML:</p>
 
 
 
@@ -231,6 +342,11 @@ with some other aspects like security and messaging).</p>
 
 
 
+<p>To learn more about JAX-RS please check this <a href="http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/">post</a>.</p>
+
+
+
+
 <p>JAX-RS RESTful endpoint implementation:</p>
 
 
@@ -269,7 +385,7 @@ with some other aspects like security and messaging).</p>
     <span class="kd">public</span> <span class="n">String</span> <span class="n">resetPassword</span><span class="o">(</span><span class="nd">@PathParam</span><span class="o">(</span><span class="s">"email"</span><span class="o">)</span> <span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">try</span> <span class="o">{</span>     
             <span class="n">userServiceRestRemote</span><span class="o">.</span><span class="na">resetUserPassword</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
-            <span class="k">return</span> <span class="n">AppConstants</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">EncryptUtil</span><span class="o">.</span><span class="na">generateJSONStringResponse</span><span class="o">(</span><span class="n">NameConstants</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">);</span>
         <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
             <span class="k">try</span> <span class="o">{</span>
@@ -346,7 +462,7 @@ to SQL and commit the transaction if no errors are found.</p>
 <span class="kn">import</span> <span class="nn">io.github.guilhebl.sample.domain.User</span><span class="o">;</span>
 
 <span class="cm">/**
- * Session Bean implementation class UserServiceBean
+ * Session Bean implementation class UserServiceRest
  */</span>
 <span class="nd">@Stateless</span><span class="o">(</span><span class="n">mappedName</span><span class="o">=</span><span class="s">"java:global/myapp/myappEJB/UserServiceRest"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServiceRest</span> <span class="kd">implements</span> <span class="n">UserServiceRestRemote</span> <span class="o">{</span>
@@ -354,7 +470,7 @@ to SQL and commit the transaction if no errors are found.</p>
     <span class="nd">@PersistenceContext</span>
     <span class="kd">protected</span> <span class="n">EntityManager</span> <span class="n">entityManager</span><span class="o">;</span>
 
-        <span class="kd">public</span> <span class="n">UserServiceBean</span><span class="o">()</span> <span class="o">{}</span>
+        <span class="kd">public</span> <span class="n">UserServiceRest</span><span class="o">()</span> <span class="o">{}</span>
 
     <span class="kd">public</span> <span class="n">User</span> <span class="n">findById</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span>   <span class="kd">throws</span> <span class="n">ServiceException</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">entityManager</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
@@ -426,7 +542,23 @@ to SQL and commit the transaction if no errors are found.</p>
         <span class="o">}</span>
         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>  
+
+    <span class="cm">/**
+     * 
+     * Generates simple JSON String responses in the format:
+     * 
+     * {"result":"string"}
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">generateJSONStringResponse</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>      
+        <span class="k">return</span> <span class="s">"{\"result\":"</span> <span class="o">+</span> <span class="s">"\""</span> <span class="o">+</span> <span class="n">str</span> <span class="o">+</span> <span class="s">"\"}"</span><span class="o">;</span>
+    <span class="o">}</span>
+
 <span class="o">}</span></code></pre></div>
+
+
+
+
+<hr />
 
 
 
@@ -462,7 +594,7 @@ Date:Fri, 20 Feb 2015 10:16:19 GMT
 Server:nginx/1.6.2 (Ubuntu)
 X-Powered-By:Servlet/3.1 JSP/2.3 (GlassFish Server Open Source Edition  4.1  Java/Oracle Corporation/1.8)
 
-success</span></code></pre></div>
+{"response": "success"}</span></code></pre></div>
 
 
 
