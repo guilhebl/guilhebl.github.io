@@ -92,7 +92,7 @@
             <div class="container">
 		<div class="row-fluid">
 		  <div class="center-block">
-		    <h1>create a user forgot password flow via RESTful webservice using angularJS on the frontend and Java EE JAX-RS on the backend</h1>
+		    <h1>user forgot password flow using RESTful webservices</h1>
 		    <p class="muted">19 February 2015</p>
 
 		    <hr />
@@ -100,7 +100,7 @@
 
 
 
-<h2>Forgot password flow using angular JS on frontend with Java EE server-side backend</h2>
+<h2>Forgot password flow using angularJS and Java</h2>
 
 
 
@@ -148,7 +148,7 @@ with some other aspects like security and messaging). For sake of brevity I'm om
 
 
 
-<p>the runtime environment used on the example is based on the following stack:</p>
+<p>the runtime environment used on the example is based on the following stack running on Ubuntu Linux 15.04 (vivid):</p>
 
 
 
@@ -190,6 +190,11 @@ with some other aspects like security and messaging). For sake of brevity I'm om
 
 
 <p>PostgreSQL: (9.4.0 or later)</p>
+
+
+
+
+<p>OS: Linux Ubuntu (15.04)</p>
 
 
 
@@ -308,6 +313,7 @@ with some other aspects like security and messaging). For sake of brevity I'm om
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">controllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'ResetPasswordCtrl'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'$location'</span><span class="p">,</span> <span class="s1">'UserService'</span><span class="p">,</span>
       <span class="kd">function</span> <span class="nx">ResetPasswordCtrl</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$location</span><span class="p">,</span> <span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
         
+        <span class="c1">// action handler for ng-click on form</span>
             <span class="nx">$scope</span><span class="p">.</span><span class="nx">resetPassword</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
                 <span class="nx">UserService</span><span class="p">.</span><span class="nx">resetPassword</span><span class="p">({</span><span class="na">email</span><span class="p">:</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">resetPasswordEmail</span><span class="p">},</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">successHandlerResetPassword</span><span class="p">,</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">errorHandler</span><span class="p">);</span>
             <span class="p">};</span>

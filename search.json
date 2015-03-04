@@ -1,7 +1,14 @@
 [
 	
 		{
-		  "title"    : "create a user forgot password flow via RESTful webservice using angularJS on the frontend and Java EE JAX-RS on the backend",
+		  "title"    : "Linux Kernel overview and useful links",
+		  "category" : "",
+		  "url"     : "/linux/2015/03/03/linux-kernel-overview-and-useful-links/",
+		  "date"     : "2015-03-03 17:01:21 -0800"
+		} ,
+	
+		{
+		  "title"    : "user forgot password flow using RESTful webservices",
 		  "category" : "",
 		  "url"     : "/java/ui/2015/02/19/reset-password-flow-angular-js-jax-rs/",
 		  "date"     : "2015-02-19 17:06:23 -0800"

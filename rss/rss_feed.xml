@@ -8,13 +8,24 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Thu, 19 Feb 2015 17:06:23 -0800</pubDate>
+    <pubDate>Tue, 03 Mar 2015 17:01:21 -0800</pubDate>
     <item>
-      <title>create a user forgot password flow via RESTful webservice using angularJS on the frontend and Java EE JAX-RS on the backend</title>
+      <title>Linux Kernel overview and useful links</title>
+      <link>http://guilhebl.github.io/linux/2015/03/03/linux-kernel-overview-and-useful-links/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Linux Kernel overview&lt;/h2&gt;
+</description>
+      <pubDate>Tue, 03 Mar 2015 17:01:21 -0800</pubDate>
+      <guid>http://guilhebl.github.io/linux/2015/03/03/linux-kernel-overview-and-useful-links/</guid>
+      <dc:date>2015-03-03T17:01:21-08:00</dc:date>
+    </item>
+    <item>
+      <title>user forgot password flow using RESTful webservices</title>
       <link>http://guilhebl.github.io/java/ui/2015/02/19/reset-password-flow-angular-js-jax-rs/</link>
       <description>&lt;hr /&gt;
 
-&lt;h2&gt;Forgot password flow using angular JS on frontend with Java EE server-side backend&lt;/h2&gt;
+&lt;h2&gt;Forgot password flow using angularJS and Java&lt;/h2&gt;
 </description>
       <pubDate>Thu, 19 Feb 2015 17:06:23 -0800</pubDate>
       <guid>http://guilhebl.github.io/java/ui/2015/02/19/reset-password-flow-angular-js-jax-rs/</guid>
@@ -203,6 +214,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-02-19T17:06:23-08:00</dc:date>
+    <dc:date>2015-03-03T17:01:21-08:00</dc:date>
   </channel>
 </rss>
