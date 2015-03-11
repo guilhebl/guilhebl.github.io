@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Longest subset with difference 0 or 1",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/03/10/longest-subset-difference-0-1/",
+		  "date"     : "2015-03-10 02:12:12 -0700"
+		} ,
+	
+		{
 		  "title"    : "Linux Kernel overview and useful links",
 		  "category" : "",
 		  "url"     : "/linux/2015/03/03/linux-kernel-overview-and-useful-links/",

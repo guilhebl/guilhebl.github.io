@@ -8,7 +8,18 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Tue, 03 Mar 2015 17:01:21 -0800</pubDate>
+    <pubDate>Tue, 10 Mar 2015 02:12:12 -0700</pubDate>
+    <item>
+      <title>Longest subset with difference 0 or 1</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/03/10/longest-subset-difference-0-1/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Tue, 10 Mar 2015 02:12:12 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/03/10/longest-subset-difference-0-1/</guid>
+      <dc:date>2015-03-10T02:12:12-07:00</dc:date>
+    </item>
     <item>
       <title>Linux Kernel overview and useful links</title>
       <link>http://guilhebl.github.io/linux/2015/03/03/linux-kernel-overview-and-useful-links/</link>
@@ -214,6 +225,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-03-03T17:01:21-08:00</dc:date>
+    <dc:date>2015-03-10T02:12:12-07:00</dc:date>
   </channel>
 </rss>
