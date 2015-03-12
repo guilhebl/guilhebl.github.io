@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "How many characters should be removed to Make it an Anagram",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/03/11/how-many-chars-delete-make-anagram-strings/",
+		  "date"     : "2015-03-11 03:59:22 -0700"
+		} ,
+	
+		{
 		  "title"    : "Longest subset with difference 0 or 1",
 		  "category" : "",
 		  "url"     : "/java/algorithms/2015/03/10/longest-subset-difference-0-1/",
