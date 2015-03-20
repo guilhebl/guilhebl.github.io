@@ -8,7 +8,29 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Wed, 11 Mar 2015 03:59:22 -0700</pubDate>
+    <pubDate>Thu, 19 Mar 2015 03:26:15 -0700</pubDate>
+    <item>
+      <title>Knapsack</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/03/19/knapsack-unbound/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Thu, 19 Mar 2015 03:26:15 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/03/19/knapsack-unbound/</guid>
+      <dc:date>2015-03-19T03:26:15-07:00</dc:date>
+    </item>
+    <item>
+      <title>Find lowest possible sequential number from numeric string while deleting k elements</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/03/19/find-lowest-possible-number-sequence-from-numeric-string/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Thu, 19 Mar 2015 03:12:55 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/03/19/find-lowest-possible-number-sequence-from-numeric-string/</guid>
+      <dc:date>2015-03-19T03:12:55-07:00</dc:date>
+    </item>
     <item>
       <title>How many characters should be removed to Make it an Anagram</title>
       <link>http://guilhebl.github.io/java/algorithms/2015/03/11/how-many-chars-delete-make-anagram-strings/</link>
@@ -236,6 +258,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-03-11T03:59:22-07:00</dc:date>
+    <dc:date>2015-03-19T03:26:15-07:00</dc:date>
   </channel>
 </rss>
