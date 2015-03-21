@@ -8,7 +8,29 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Thu, 19 Mar 2015 03:26:15 -0700</pubDate>
+    <pubDate>Fri, 20 Mar 2015 18:06:15 -0700</pubDate>
+    <item>
+      <title>Find max diameter of binary tree</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/03/20/find-max-diameter-binary-tree/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Fri, 20 Mar 2015 18:06:15 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/03/20/find-max-diameter-binary-tree/</guid>
+      <dc:date>2015-03-20T18:06:15-07:00</dc:date>
+    </item>
+    <item>
+      <title>Find first k available timeslots from n person</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/03/19/first-k-common-timeslots-for-N-people/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Thu, 19 Mar 2015 16:26:15 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/03/19/first-k-common-timeslots-for-N-people/</guid>
+      <dc:date>2015-03-19T16:26:15-07:00</dc:date>
+    </item>
     <item>
       <title>Knapsack</title>
       <link>http://guilhebl.github.io/java/algorithms/2015/03/19/knapsack-unbound/</link>
@@ -258,6 +280,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-03-19T03:26:15-07:00</dc:date>
+    <dc:date>2015-03-20T18:06:15-07:00</dc:date>
   </channel>
 </rss>

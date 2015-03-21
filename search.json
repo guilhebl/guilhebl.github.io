@@ -1,6 +1,20 @@
 [
 	
 		{
+		  "title"    : "Find max diameter of binary tree",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/03/20/find-max-diameter-binary-tree/",
+		  "date"     : "2015-03-20 18:06:15 -0700"
+		} ,
+	
+		{
+		  "title"    : "Find first k available timeslots from n person",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/03/19/first-k-common-timeslots-for-N-people/",
+		  "date"     : "2015-03-19 16:26:15 -0700"
+		} ,
+	
+		{
 		  "title"    : "Knapsack",
 		  "category" : "",
 		  "url"     : "/java/algorithms/2015/03/19/knapsack-unbound/",
