@@ -8,7 +8,7 @@
 		} ,
 	
 		{
-		  "title"    : "Find first k available timeslots from n person",
+		  "title"    : "Find first K available timeslots for N people",
 		  "category" : "",
 		  "url"     : "/java/algorithms/2015/03/19/first-k-common-timeslots-for-N-people/",
 		  "date"     : "2015-03-19 16:26:15 -0700"
