@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Java 8 Stream API - a new way of dealing with Collections",
+		  "category" : "",
+		  "url"     : "/java/2015/03/25/java-8-stream-collections/",
+		  "date"     : "2015-03-25 04:27:15 -0700"
+		} ,
+	
+		{
 		  "title"    : "Find max diameter of binary tree",
 		  "category" : "",
 		  "url"     : "/java/algorithms/2015/03/20/find-max-diameter-binary-tree/",
