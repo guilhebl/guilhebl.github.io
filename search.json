@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Bit manipulation - Find next higher sparse number",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/03/30/bit-manipulation-find-next-sparse-number/",
+		  "date"     : "2015-03-30 01:12:12 -0700"
+		} ,
+	
+		{
 		  "title"    : "Java 8 Stream API - a new way of dealing with Collections",
 		  "category" : "",
 		  "url"     : "/java/2015/03/25/java-8-stream-collections/",
