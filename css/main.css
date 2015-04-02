@@ -158,3 +158,14 @@ a:visited { color: #a0a; }
 .post pre.terminal code {
   background-color: #333;
 }
+
+/************************/
+/* EXTRAS
+/*
+/************************/
+.headerDiv {
+  margin-top: 20px !important;
+}
+.introTextDiv {
+  width: 50% !important;
+}

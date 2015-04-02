@@ -8,7 +8,17 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Mon, 30 Mar 2015 01:12:12 -0700</pubDate>
+    <pubDate>Wed, 01 Apr 2015 15:05:00 -0700</pubDate>
+    <item>
+      <title>angular $locationChangeStart</title>
+      <link>http://guilhebl.github.io/ui/2015/04/01/angular-locationchangestart-route-listener/</link>
+      <description>&lt;p&gt;$locationChangeStart is a useful event listener provided by angular for intercepting route changes and whenever useful to debug or
+inject features while switching between paths.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 01 Apr 2015 15:05:00 -0700</pubDate>
+      <guid>http://guilhebl.github.io/ui/2015/04/01/angular-locationchangestart-route-listener/</guid>
+      <dc:date>2015-04-01T15:05:00-07:00</dc:date>
+    </item>
     <item>
       <title>Bit manipulation - Find next higher sparse number</title>
       <link>http://guilhebl.github.io/java/algorithms/2015/03/30/bit-manipulation-find-next-sparse-number/</link>
@@ -302,6 +312,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-03-30T01:12:12-07:00</dc:date>
+    <dc:date>2015-04-01T15:05:00-07:00</dc:date>
   </channel>
 </rss>

@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "angular $locationChangeStart",
+		  "category" : "",
+		  "url"     : "/ui/2015/04/01/angular-locationchangestart-route-listener/",
+		  "date"     : "2015-04-01 15:05:00 -0700"
+		} ,
+	
+		{
 		  "title"    : "Bit manipulation - Find next higher sparse number",
 		  "category" : "",
 		  "url"     : "/java/algorithms/2015/03/30/bit-manipulation-find-next-sparse-number/",
