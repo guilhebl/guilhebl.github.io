@@ -1,6 +1,20 @@
 [
 	
 		{
+		  "title"    : "Get total count of employees under each manager in the hierarchy",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/04/10/get-count-total-employees-under-each-manager-company-hierarchy/",
+		  "date"     : "2015-04-10 13:00:22 -0700"
+		} ,
+	
+		{
+		  "title"    : "Fit Binary Int M into Binary Int N",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/04/09/fit-binary-int-M-into-binary-int-N/",
+		  "date"     : "2015-04-09 13:00:22 -0700"
+		} ,
+	
+		{
 		  "title"    : "angular $locationChangeStart",
 		  "category" : "",
 		  "url"     : "/ui/2015/04/01/angular-locationchangestart-route-listener/",

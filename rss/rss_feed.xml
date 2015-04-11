@@ -8,7 +8,29 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Wed, 01 Apr 2015 15:05:00 -0700</pubDate>
+    <pubDate>Fri, 10 Apr 2015 13:00:22 -0700</pubDate>
+    <item>
+      <title>Get total count of employees under each manager in the hierarchy</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/04/10/get-count-total-employees-under-each-manager-company-hierarchy/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Fri, 10 Apr 2015 13:00:22 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/04/10/get-count-total-employees-under-each-manager-company-hierarchy/</guid>
+      <dc:date>2015-04-10T13:00:22-07:00</dc:date>
+    </item>
+    <item>
+      <title>Fit Binary Int M into Binary Int N</title>
+      <link>http://guilhebl.github.io/java/algorithms/2015/04/09/fit-binary-int-M-into-binary-int-N/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Problem overview&lt;/h2&gt;
+</description>
+      <pubDate>Thu, 09 Apr 2015 13:00:22 -0700</pubDate>
+      <guid>http://guilhebl.github.io/java/algorithms/2015/04/09/fit-binary-int-M-into-binary-int-N/</guid>
+      <dc:date>2015-04-09T13:00:22-07:00</dc:date>
+    </item>
     <item>
       <title>angular $locationChangeStart</title>
       <link>http://guilhebl.github.io/ui/2015/04/01/angular-locationchangestart-route-listener/</link>
@@ -312,6 +334,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-04-01T15:05:00-07:00</dc:date>
+    <dc:date>2015-04-10T13:00:22-07:00</dc:date>
   </channel>
 </rss>
