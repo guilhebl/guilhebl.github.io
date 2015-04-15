@@ -87,29 +87,110 @@
     </nav>
 
 
-
-    <section class="intro">
-        <div class="intro-body">
+    <section class="post">
+        <div class="post-body">
             <div class="container">
-                <div class="row">
+		<div class="row-fluid">
+		  <div class="center-block">
+		    <h1>NGINX port redirect</h1>
+		    <p class="muted">15 April 2015</p>
 
-			<ul class="category-list">
-			  <li><a href="/categories/algorithms" class="category-list-link">algorithms<a/></li>
-			  <li><a href="/categories/business" class="category-list-link">business<a/></li>
-			  <li><a href="/categories/database" class="category-list-link">database<a/></li>
-			  <li><a href="/categories/java" class="category-list-link">java<a/></li>
-			  <li><a href="/categories/linux" class="category-list-link">linux<a/></li>
-			  <li><a href="/categories/maven" class="category-list-link">maven<a/></li>
-			  <li><a href="/categories/server" class="category-list-link">server<a/></li>
-			  <li><a href="/categories/ui" class="category-list-link">ui<a/></li>
-			</ul>
+		    <hr />
 
-                </div>
+
+
+
+<h2>Sample port redirect</h2>
+
+
+
+
+<p>Sample NGINX configuration for redirecting from port 80 to port 8181. (This example is using Glassfish Application Server listening to port 8181).</p>
+
+
+
+
+<hr />
+
+
+
+
+<h2>nginx project conf</h2>
+
+
+
+
+<div class="highlight"><pre><code class="language-vi" data-lang="vi">server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    server_name localhost;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    client_max_body_size 5M;
+
+    root /usr/share/nginx/html;
+    index  index.html index.htm;
+
+    # Make site accessible from http://localhost/
+    server_name localhost;
+
+    # SSL configuration
+    ssl_certificate /etc/nginx/ssl/myapp.crt;
+        ssl_certificate_key /etc/nginx/ssl/myapp.key;
+
+        location ~ ^/myapp/rest/ {
+            proxy_pass         https://localhost:8181;
+            proxy_redirect     off;
+            proxy_set_header   Host             $host;
+            proxy_set_header   X-Real-IP        $remote_addr;
+            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        }
+
+    location ~ ^/myapp/image/ {
+            proxy_pass         https://localhost:8181; # image server
+            proxy_set_header   Host             $host;
+            proxy_set_header   X-Real-IP        $remote_addr;
+            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+        }
+
+}</code></pre></div>
+
+
+
+
+<hr />
+
+
+
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		    
+		  </div>
+		</div>
             </div>
         </div>
     </section>
-
-
     <!-- Core JavaScript Files -->
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -125,4 +206,5 @@
 </body>
 
 </html>
+
 

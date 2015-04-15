@@ -8,7 +8,18 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Tue, 14 Apr 2015 03:59:22 -0700</pubDate>
+    <pubDate>Wed, 15 Apr 2015 03:59:22 -0700</pubDate>
+    <item>
+      <title>NGINX port redirect</title>
+      <link>http://guilhebl.github.io/server/2015/04/15/nginx-port-redirect-app-server/</link>
+      <description>&lt;hr /&gt;
+
+&lt;h2&gt;Sample port redirect&lt;/h2&gt;
+</description>
+      <pubDate>Wed, 15 Apr 2015 03:59:22 -0700</pubDate>
+      <guid>http://guilhebl.github.io/server/2015/04/15/nginx-port-redirect-app-server/</guid>
+      <dc:date>2015-04-15T03:59:22-07:00</dc:date>
+    </item>
     <item>
       <title>Subset Sum Mod N</title>
       <link>http://guilhebl.github.io/java/algorithms/2015/04/14/subset-sum-mod-n/</link>
@@ -345,6 +356,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-04-14T03:59:22-07:00</dc:date>
+    <dc:date>2015-04-15T03:59:22-07:00</dc:date>
   </channel>
 </rss>
