@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Subset Sum Mod N",
+		  "category" : "",
+		  "url"     : "/java/algorithms/2015/04/14/subset-sum-mod-n/",
+		  "date"     : "2015-04-14 03:59:22 -0700"
+		} ,
+	
+		{
 		  "title"    : "Get total count of employees under each manager in the hierarchy",
 		  "category" : "",
 		  "url"     : "/java/algorithms/2015/04/10/get-count-total-employees-under-each-manager-company-hierarchy/",

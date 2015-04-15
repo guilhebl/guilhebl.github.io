@@ -176,133 +176,12 @@ left or right and compare with current found max diameter (max height from left 
 
 
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<p>Node class:</p>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Solution</span><span class="o">();</span>        
-        <span class="n">sol</span><span class="o">.</span><span class="na">solveBinaryTreeBalancedDiameter</span><span class="o">();</span>
-        <span class="n">sol</span><span class="o">.</span><span class="na">solveBinaryTreeDiameter</span><span class="o">();</span>     
-    <span class="o">}</span>
-    
-<span class="cm">/* 
-    balanced binary tree
-*/</span>   
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">solveBinaryTreeBalancedDiameter</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="n">NodeB</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chRight1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft1</span><span class="o">;</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chRight1</span><span class="o">;</span>
 
-        <span class="c1">// populating left side</span>
-        <span class="n">NodeB</span> <span class="n">chLeft11</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft12</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft1</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft11</span><span class="o">;</span>
-        <span class="n">chLeft1</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft12</span><span class="o">;</span>
 
-        <span class="n">NodeB</span> <span class="n">chLeft111</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft112</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft11</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft111</span><span class="o">;</span>
-        <span class="n">chLeft11</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft112</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft121</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft122</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft12</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft121</span><span class="o">;</span>
-        <span class="n">chLeft12</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft122</span><span class="o">;</span>
-
-        <span class="c1">// populating right side</span>
-        <span class="n">NodeB</span> <span class="n">chRight11</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chRight12</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chRight1</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chRight11</span><span class="o">;</span>
-        <span class="n">chRight1</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chRight12</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chRight111</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chRight112</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chRight11</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chRight111</span><span class="o">;</span>
-        <span class="n">chRight11</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chRight112</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chRight121</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chRight122</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chRight12</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chRight121</span><span class="o">;</span>
-        <span class="n">chRight12</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chRight122</span><span class="o">;</span>
-        
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">root</span><span class="o">));</span>
-    <span class="o">}</span>
-
-        <span class="cm">/* 
-            unbalanced binary tree
-                          
-         */</span>  
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">solveBinaryTreeDiameter</span><span class="o">()</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="n">NodeB</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chRight1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft1</span><span class="o">;</span>
-        <span class="n">root</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chRight1</span><span class="o">;</span>
-
-        <span class="c1">// populating left side</span>
-        <span class="n">NodeB</span> <span class="n">chLeft11</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft12</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft1</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft11</span><span class="o">;</span>
-        <span class="n">chLeft1</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft12</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft111</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft112</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft11</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft111</span><span class="o">;</span>
-        <span class="n">chLeft11</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft112</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft1111</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft1112</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft111</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft1111</span><span class="o">;</span>
-        <span class="n">chLeft111</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft1112</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft121</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft122</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft12</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft121</span><span class="o">;</span>
-        <span class="n">chLeft12</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft122</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft1221</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft1222</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft122</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft1221</span><span class="o">;</span>
-        <span class="n">chLeft122</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft1222</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft12221</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft12222</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft1222</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft12221</span><span class="o">;</span>
-        <span class="n">chLeft1222</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft12222</span><span class="o">;</span>
-
-        <span class="n">NodeB</span> <span class="n">chLeft122221</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">NodeB</span> <span class="n">chLeft122222</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NodeB</span><span class="o">(</span><span class="n">i</span><span class="o">++);</span>
-        <span class="n">chLeft12222</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">chLeft122221</span><span class="o">;</span>
-        <span class="n">chLeft12222</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">chLeft122222</span><span class="o">;</span>
-        
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">root</span><span class="o">));</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">int</span> <span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">NodeB</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="o">}</span> 
-        <span class="kt">int</span> <span class="n">heightLeft</span> <span class="o">=</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">heightRight</span> <span class="o">=</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
-                        
-        <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">((</span><span class="n">heightLeft</span> <span class="o">+</span> <span class="n">heightRight</span> <span class="o">+</span> <span class="mi">1</span><span class="o">),</span> 
-                <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">),</span> <span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">)));</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">int</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">NodeB</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="o">}</span>                        
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">),</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">));</span>        
-    <span class="o">}</span>
-    
-<span class="o">}</span>
-
-<span class="kd">class</span> <span class="nc">NodeB</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">NodeB</span> <span class="o">{</span>
 
     <span class="kt">int</span> <span class="n">val</span><span class="o">;</span>
     <span class="n">NodeB</span> <span class="n">parent</span><span class="o">;</span>
@@ -325,12 +204,38 @@ left or right and compare with current found max diameter (max height from left 
 
 
 
+<p>diameter calculation:</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">findMaxDiameterOfBinaryTree</span><span class="p">(</span><span class="n">NodeB</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span> 
+        <span class="kt">int</span> <span class="n">heightLeft</span> <span class="o">=</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">heightRight</span> <span class="o">=</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+                        
+        <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">((</span><span class="n">heightLeft</span> <span class="o">+</span> <span class="n">heightRight</span> <span class="o">+</span> <span class="mi">1</span><span class="o">),</span> 
+                <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">),</span> <span class="n">findMaxDiameterOfBinaryTree</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">)));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">NodeB</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>                        
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">),</span> <span class="n">findTreeHeight</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">));</span>        
+    <span class="o">}</span></code></pre></div>
+
+
+
+
 <hr />
 
 
 
 
-<p><a href="https://github.com/guilhebl/algorithms/blob/master/src/com/guilhebl/algo/MaxDiamaterBinaryTree.java">Full source code</a></p>
+<p><a href="https://github.com/guilhebl/algorithms/blob/master/src/com/guilhebl/algo/tree/MaxDiamaterBinaryTree.java">Full source code</a></p>
 
 
 
