@@ -105,7 +105,22 @@
 
 
 
-<p>Sample NGINX configuration for redirecting from port 80 to port 8181. (This example is using Glassfish Application Server listening to port 8181).</p>
+<p>A common scenario when using a separate Web Server from an Application Server is port redirect.
+using NGINX as a web application server and an application server it is possible to redirect incoming requests for specific data retrieved in the server-side via JSON,</p>
+
+
+
+
+<ol>
+<li>/myapp/rest/ correlates to the designated server side app RESTful endpoint returning data via JSON</li>
+<li>/myapp/image/ correlates to the designated image server endpoint returning images data via bytestream.</li>
+</ol>
+
+
+
+
+<p>this example depicts an application server environment running in HTTPS secure mode (To enable HTTPS in NGINX generate a public key using OpenSSL and place it in your designated webserver folder).
+here goes a sample NGINX configuration for redirecting from port 80 to a localhost application server listening on port HTTPS 8181.</p>
 
 
 
@@ -115,7 +130,7 @@
 
 
 
-<h2>nginx project conf</h2>
+<h2>nginx project conf file</h2>
 
 
 
