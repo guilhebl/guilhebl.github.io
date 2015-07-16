@@ -690,10 +690,10 @@
                     <span class="nt">&lt;/thead&gt;</span>
                     <span class="nt">&lt;tbody&gt;</span>
                         <span class="nt">&lt;tr</span> <span class="na">ng-repeat=</span><span class="s">"animal in animals"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#/animal/"</span><span class="nt">&gt;</span>  <span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
-                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
-                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
-                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#/animal/{ {animal.name}}"</span><span class="nt">&gt;</span> { {animal.name}} <span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>{ {animal.class}}<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>{ {animal.birth}}<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>{ {animal.location}}<span class="nt">&lt;/td&gt;</span>
                         <span class="nt">&lt;/tr&gt;</span>
                     <span class="nt">&lt;/tbody&gt;</span>
                     <span class="nt">&lt;tfoot&gt;</span>
@@ -792,12 +792,100 @@
 
 
 
+<h2>test-main.js</h2>
+
+
+
+
+<p>Have your test-main file hold all your requireJS config for tests.</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">tests</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">file</span> <span class="k">in</span> <span class="nb">window</span><span class="p">.</span><span class="nx">__karma__</span><span class="p">.</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">__karma__</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">file</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="sr">/Spec</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">file</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">tests</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">requirejs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+    <span class="c1">// Karma serves files from '/base'</span>
+    <span class="na">baseUrl</span><span class="p">:</span> <span class="s1">'/base/app/js'</span><span class="p">,</span>
+
+    <span class="na">paths</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">jquery</span><span class="p">:</span> <span class="s1">'../lib/bower_components/jquery/dist/jquery.min'</span><span class="p">,</span>
+        <span class="na">angular</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular/angular.min'</span><span class="p">,</span>
+        <span class="na">angularAnimate</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-animate/angular-animate.min'</span><span class="p">,</span>
+        <span class="na">angularCookies</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-cookies/angular-cookies.min'</span><span class="p">,</span>
+        <span class="na">angularResource</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-resource/angular-resource.min'</span><span class="p">,</span> 
+        <span class="na">angularRoute</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-route/angular-route.min'</span><span class="p">,</span>
+        <span class="na">angularScenario</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-scenario/angular-scenario'</span><span class="p">,</span>
+        <span class="na">angularMocks</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-mocks/angular-mocks'</span><span class="p">,</span>
+        <span class="na">angularTouch</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-touch/angular-touch'</span><span class="p">,</span>      
+        <span class="na">angularSanitize</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-sanitize/angular-sanitize.min'</span><span class="p">,</span>
+        <span class="na">jqueryui</span><span class="p">:</span> <span class="s1">'../lib/bower_components/jquery-ui/jquery-ui.min'</span><span class="p">,</span>
+        <span class="na">bootstrap</span><span class="p">:</span> <span class="s1">'../lib/bower_components/bootstrap/dist/js/bootstrap.min'</span><span class="p">,</span>
+        <span class="na">angularBootstrap</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-bootstrap/ui-bootstrap-tpls'</span>
+    <span class="p">},</span>   
+
+    <span class="na">shim</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'angular'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'jquery'</span><span class="p">],</span>
+            <span class="s1">'exports'</span><span class="p">:</span> <span class="s1">'angular'</span>
+        <span class="p">},</span>
+        <span class="s1">'angularResource'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">],</span>
+            <span class="na">exports</span><span class="p">:</span> <span class="s1">'angularResource'</span>
+        <span class="p">},</span>
+        <span class="s1">'angularRoute'</span><span class="err">:</span><span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s1">'angularAnimate'</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s1">'angularCookies'</span><span class="err">:</span><span class="p">{</span>
+            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
+        <span class="p">},</span>          
+    <span class="s1">'angularMocks'</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s1">'angularTouch'</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s1">'angularScenario'</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s1">'angularSanitize'</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+        <span class="s1">'angularBootstrap'</span> <span class="err">:</span> <span class="p">{</span>
+         <span class="nl">deps</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'bootstrap'</span><span class="p">]</span>
+        <span class="p">},</span>
+    <span class="s1">'bootstrap'</span> <span class="err">:</span> <span class="p">{</span><span class="nl">deps</span><span class="p">:[</span><span class="s1">'jquery'</span><span class="p">]}</span>
+    <span class="p">},</span>   
+    <span class="nx">priority</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s1">'angular'</span>
+    <span class="p">]</span>
+
+    <span class="c1">// ask Require.js to load these files (all our tests)</span>
+    <span class="nl">deps</span><span class="p">:</span> <span class="nx">tests</span><span class="p">,</span>
+
+    <span class="c1">// start test run, once Require.js is done</span>
+    <span class="nx">callback</span><span class="err">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">__karma__</span><span class="p">.</span><span class="nx">start</span>
+<span class="p">});</span></code></pre></div>
+
+
+
+
 <h2>animalListSpec.js</h2>
 
 
 
 
-<p>Now in this case animalListSpec.js defines the tests that should be used by Karma for testing the animalList:</p>
+<p>Now our unit test, in this case animalListSpec.js defines the tests that should be used by Karma for testing the animalList controller and view:</p>
 
 
 
