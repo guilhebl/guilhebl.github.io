@@ -1,7 +1,14 @@
 [
 	
 		{
-		  "title"    : "building an app based on angularjs, requirejs, jquery, bootstrap.",
+		  "title"    : "Unit testing with angularjs, requirejs, jquery, karma and jasmine.",
+		  "category" : "",
+		  "url"     : "/ui/2015/07/19/angularjs-requirejs-karma-jasmine/",
+		  "date"     : "2015-07-19 14:15:12 -0700"
+		} ,
+	
+		{
+		  "title"    : "Building an app based on angularjs, requirejs, jquery, bootstrap.",
 		  "category" : "",
 		  "url"     : "/ui/2015/07/13/angularjs-requirejs-jquery-bootstrap-karma-jasmine/",
 		  "date"     : "2015-07-13 17:12:12 -0700"
