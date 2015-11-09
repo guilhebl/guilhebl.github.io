@@ -110,6 +110,11 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>Memory Info:</p>
 
 
@@ -120,12 +125,22 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>Version of your kernel and the GCC compiler:</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/version</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -150,6 +165,11 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>Clear screen:</p>
 
 
@@ -160,12 +180,37 @@
 
 
 
+<p><br /></p>
+
+
+
+
+<p>Display current path:</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">pwd</span></code></pre></div>
+
+
+
+
+<p><br /></p>
+
+
+
+
 <p>Remove directory with all content inside:</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rm -rf example</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -190,12 +235,67 @@
 
 
 
+<p><br /></p>
+
+
+
+
+<p>Switch to a different user:</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">su - user2</code></pre></div>
+
+
+
+
+<p><br /></p>
+
+
+
+
+<p>Display current logged user:</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">whoami</code></pre></div>
+
+
+
+
+<p><br /></p>
+
+
+
+
+<p>display members of a group:</p>
+
+
+
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">members mygroup</code></pre></div>
+
+
+
+
+<p><br /></p>
+
+
+
+
 <p>Switch to super user:</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">su</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -210,6 +310,11 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>Exit from Super user mode or close terminal window:</p>
 
 
@@ -220,12 +325,22 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>Open application using Super user:</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo open -a <span class="s2">"app_name"</span></code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -250,12 +365,22 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>discover PID of a process:</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">pidof java</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -270,12 +395,22 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <p>Kill process and force shutdown:</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">kill</span> -9 2581</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -290,6 +425,11 @@
 
 
 
+<p><br /></p>
+
+
+
+
 <hr />
 
 
@@ -300,7 +440,7 @@
 
 
 
-<p>adds all current changes to staging area</p>
+<p>Adds all current changes to staging area</p>
 
 
 
@@ -310,7 +450,12 @@
 
 
 
-<p>commits current changes from staging area to local branch</p>
+<p><br /></p>
+
+
+
+
+<p>Commits current changes from staging area to local branch</p>
 
 
 
@@ -320,12 +465,22 @@
 
 
 
-<p>pushes local commits to remote branch</p>
+<p><br /></p>
+
+
+
+
+<p>Pushes local commits to remote branch</p>
 
 
 
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">git push</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -341,12 +496,17 @@ and sets up master to track origin/my_test.</p>
 
 
 
+<p><br /></p>
+
+
+
+
 <hr />
 
 
 
 
-<h2>node.js</h2>
+<h2>node.js and npm</h2>
 
 
 
@@ -356,7 +516,12 @@ and sets up master to track origin/my_test.</p>
 
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo npm -g ls | grep -v <span class="s1">'npm@'</span> | awk <span class="s1">'/@/ {print $2}'</span> | awk -F@ <span class="s1">'{print $1}'</span> | xargs sudo npm -g rm</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm -g ls | grep -v <span class="s1">'npm@'</span> | awk <span class="s1">'/@/ {print $2}'</span> | awk -F@ <span class="s1">'{print $1}'</span> | xargs sudo npm -g rm</code></pre></div>
+
+
+
+
+<p><br /></p>
 
 
 
@@ -371,27 +536,12 @@ and sets up master to track origin/my_test.</p>
 
 
 
-<p>Solve Permission access issues when running without sudo:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo chown -R <span class="nv">$USER</span> /usr/<span class="o">{</span><span class="nb">local</span>/share/man,local/bin,lib/node<span class="o">}</span></code></pre></div>
-
-
-
-
-<p>and</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo chown -R <span class="nv">$USER</span></code></pre></div>
-
-
-
-
-
+		    <br />
+		    <br />
+		    <br />
+		    <br />
+		    <br />
+		    <br />
 
 		    <div id="disqus_thread"></div>
 		    <script type="text/javascript">

@@ -401,6 +401,7 @@ body {
 
 .search-link  {
  margin-left: 4px;
+ padding:10px;
 }
 
 .search-link:hover  {
