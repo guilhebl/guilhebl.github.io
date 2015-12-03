@@ -8,7 +8,16 @@
     <title>guilhebl IO Pages</title>
     <link>http://guilhebl.github.io</link>
     <description>guilhebl IO Pages - Software Development writings</description>
-    <pubDate>Sun, 19 Jul 2015 14:15:12 -0700</pubDate>
+    <pubDate>Wed, 02 Dec 2015 15:02:21 -0800</pubDate>
+    <item>
+      <title>Full AngularJS Gulp seed</title>
+      <link>http://guilhebl.github.io/ui/2015/12/02/full-angularjs-gulp-seed/</link>
+      <description>&lt;h2&gt;Full AngularJS + Gulp Seed&lt;/h2&gt;
+</description>
+      <pubDate>Wed, 02 Dec 2015 15:02:21 -0800</pubDate>
+      <guid>http://guilhebl.github.io/ui/2015/12/02/full-angularjs-gulp-seed/</guid>
+      <dc:date>2015-12-02T15:02:21-08:00</dc:date>
+    </item>
     <item>
       <title>Unit testing with angularjs, requirejs, jquery, karma and jasmine.</title>
       <link>http://guilhebl.github.io/ui/2015/07/19/angularjs-requirejs-karma-jasmine/</link>
@@ -371,6 +380,6 @@ methods for your &lt;a href=&quot;/java/2014/04/09/domain-model-generic-supercla
       <guid>http://guilhebl.github.io/java/2014/03/27/build-jaxrs-rest/</guid>
       <dc:date>2014-03-27T15:36:24-07:00</dc:date>
     </item>
-    <dc:date>2015-07-19T14:15:12-07:00</dc:date>
+    <dc:date>2015-12-02T15:02:21-08:00</dc:date>
   </channel>
 </rss>

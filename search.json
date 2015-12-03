@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Full AngularJS Gulp seed",
+		  "category" : "",
+		  "url"     : "/ui/2015/12/02/full-angularjs-gulp-seed/",
+		  "date"     : "2015-12-02 15:02:21 -0800"
+		} ,
+	
+		{
 		  "title"    : "Unit testing with angularjs, requirejs, jquery, karma and jasmine.",
 		  "category" : "",
 		  "url"     : "/ui/2015/07/19/angularjs-requirejs-karma-jasmine/",
