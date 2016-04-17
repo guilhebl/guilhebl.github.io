@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Angular 2",
+		  "category" : "",
+		  "url"     : "/ui/2016/04/16/angular-2/",
+		  "date"     : "2016-04-16 14:38:24 -0700"
+		} ,
+	
+		{
 		  "title"    : "Full AngularJS Gulp seed",
 		  "category" : "",
 		  "url"     : "/ui/2015/12/02/full-angularjs-gulp-seed/",
