@@ -98,53 +98,26 @@
 
 			<article contenteditable="false"><hr />
 
-
-
-
 <h2>Problem overview</h2>
 
-
-
-
 <p>This is a good mental exercise and an interesting bit manipulation problem for practicing binary related logic:</p>
-
-
-
 
 <p>an integer is a sparse number if there are no adjacent 1 in it's binary representation.
 - 5 --> 101 (no adjacent 1s)
 - 9 --> 1001  (no adjacent 1s)
 - 6 --> 110  is not sparse number.</p>
 
-
-
-
 <p>Now you are given an integer N find the NEXT HIGHER sparse number of N.</p>
-
-
-
 
 <hr />
 
-
-
-
 <h2>Algorithm analysis</h2>
-
-
-
 
 <p>There are 2 possible number types you are going to deal with:
 1. already sparse number
 2. non-sparse number</p>
 
-
-
-
 <p>Algorithm for solution based on the 2 scenarios:</p>
-
-
-
 
 <ol>
 <li><p>Check if binary representation of number is Sparse, if it is:</p></li>
@@ -152,15 +125,10 @@
 </ol>
 
 
-
-
 <p>-If it doesn't contain a seq. of 2 zeros
 shift N left of 1 and set all remaining bits to 0,
 return next higher power of 2.
 i.e"10101", "100000")</p>
-
-
-
 
 <ol>
 <li><p>If number is not sparse:</p></li>
@@ -170,249 +138,239 @@ If we find out we created a new seq. of 2 one's on that index (i.e: "10110010001
 </ol>
 
 
-
-
 <hr />
-
-
-
 
 <h2>Implementation</h2>
 
-
-
-
 <p>Below is the algorithm implementation that translates the idea above:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">72</span><span class="o">;</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">convertToBinaryString</span><span class="o">(</span><span class="n">n</span><span class="o">));</span>
     <span class="kt">int</span> <span class="n">nextSparse</span> <span class="o">=</span> <span class="n">getNextBiggerSparseNumber</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">nextSparse</span><span class="o">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">convertToBinaryString</span><span class="o">(</span><span class="n">nextSparse</span><span class="o">));</span>  
-<span class="o">}</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">convertToBinaryString</span><span class="o">(</span><span class="n">nextSparse</span><span class="o">));</span><br/>
+<span class="o">}</span></p>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getNextBiggerSparseNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+<p><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getNextBiggerSparseNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span><span class="o">(</span><span class="n">isSparseBinaryNumber</span><span class="o">(</span><span class="n">n</span><span class="o">))</span> <span class="o">{</span>
         <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">getFirstIndexSeqZeros</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
-            <span class="o">}</span>
-            
-            <span class="k">return</span> <span class="n">incrementToNextSparseFromZeroIndex</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
-            
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">getLengthBits</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">getLastIndexSeqOnes</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>           
-        <span class="k">return</span> <span class="n">incrementToNextSparseFromIndex</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>           
-    <span class="o">}</span>
-                
-<span class="o">}</span>
+            <span class="o">}</span></p>
 
-<span class="cm">/**
+<pre><code>        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nf"&gt;incrementToNextSparseFromZeroIndex&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;getLengthBits&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getLastIndexSeqOnes&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;           
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nf"&gt;incrementToNextSparseFromIndex&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;          
+&lt;span class="o"&gt;}&lt;/span&gt;
+</code></pre>
+
+<p><span class="o">}</span></p>
+
+<p><span class="cm">/<em>*
  * Sets the bit at index to 1 while setting all remaining bits on the right to 0, "1001101" index 4 -&gt; "1010000"
  * @param n
  * @param index
  * @return
- */</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">incrementToNextSparseFromZeroIndex</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>   
+ </em>/</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">incrementToNextSparseFromZeroIndex</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <br/>
     <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
     <span class="n">n2</span> <span class="o">=</span> <span class="n">setBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
     <span class="k">while</span><span class="o">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">n2</span> <span class="o">=</span> <span class="n">setBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-        <span class="n">i</span><span class="o">--;</span>          
+        <span class="n">i</span><span class="o">--;</span>        <br/>
     <span class="o">}</span>
     <span class="k">return</span> <span class="n">n2</span><span class="o">;</span>
-<span class="o">}</span>
+<span class="o">}</span></p>
 
-<span class="cm">/**
+<p><span class="cm">/<em>*
  * Sets all bits of n to 0 until index, from right to left, then sets next bit index+1 to 1 and checks next bit,
  * if next is 1 or if number is lower than original n, keeps setting last bit to 0 and current to 1, from right
  * to left until a valid condition for sparse number is reached, otherwise if it reaches 0 returns next power of
- * 2. (1 &lt;&lt; sizeOf(n)) 
- *  
+ * 2. (1 &lt;&lt; sizeOf(n))
+ *<br/>
  * @param n
  * @param index
  * @return
- */</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">incrementToNextSparseFromIndex</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+ </em>/</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">incrementToNextSparseFromIndex</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
-    <span class="kt">boolean</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">current</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-    
-    <span class="k">while</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">n2</span> <span class="o">=</span> <span class="n">setBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-        <span class="n">i</span><span class="o">++;</span>          
-    <span class="o">}</span>
-    <span class="n">n2</span> <span class="o">=</span> <span class="n">setBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span>  <span class="n">i</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-    <span class="n">prev</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="n">i</span><span class="o">++;</span>
-    <span class="n">current</span> <span class="o">=</span> <span class="n">getBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span>  <span class="n">i</span><span class="o">);</span>
-            
-    <span class="k">while</span> <span class="o">(</span><span class="n">current</span> <span class="o">&amp;&amp;</span> <span class="n">prev</span> <span class="o">&amp;&amp;</span> <span class="n">n2</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">(</span><span class="n">n2</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">n2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">n2</span> <span class="o">=</span> <span class="n">setBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-        <span class="n">n2</span> <span class="o">=</span> <span class="n">setBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-        <span class="n">i</span><span class="o">++;</span>      
-        <span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="o">;</span>
-        <span class="n">current</span> <span class="o">=</span> <span class="n">getBit</span><span class="o">(</span><span class="n">n2</span><span class="o">,</span>  <span class="n">i</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">n2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">getLengthBits</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
-    <span class="o">}</span>
-            
-    <span class="k">return</span> <span class="n">n2</span><span class="o">;</span>
-<span class="o">}</span>
+    <span class="kt">boolean</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">current</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span></p>
 
-<span class="cm">/**
+<pre><code>&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;setBit&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++;&lt;/span&gt;          
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;setBit&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++;&lt;/span&gt;
+&lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getBit&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;prev&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;setBit&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;setBit&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++;&lt;/span&gt;      
+    &lt;span class="n"&gt;prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getBit&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;getLengthBits&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n2&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+</code></pre>
+
+<p><span class="o">}</span></p>
+
+<p><span class="cm">/<em>*
  * Checks index of first seq. of 2 consecutive zeros. i.e: "1001 -&gt; index = 2"
- * if no seq. found return -1 
- * 
+ * if no seq. found return -1
+ *
  * @param n
  * @return
- */</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getFirstIndexSeqZeros</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+ </em>/</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getFirstIndexSeqZeros</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// current and previous bit if set to 0 then true</span>
-    <span class="kt">boolean</span> <span class="n">cur</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-    
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span> <span class="o">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-      <span class="o">}</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">cur</span> <span class="o">&amp;&amp;</span> <span class="n">prev</span><span class="o">)</span> <span class="o">{</span>
-          <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
-      <span class="o">}</span>
-      <span class="n">prev</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span> 
-      
-      <span class="n">i</span><span class="o">++;</span>
-      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">;</span>
-     <span class="o">}</span>
+    <span class="kt">boolean</span> <span class="n">cur</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span></p>
 
-     <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-<span class="o">}</span>
+<pre><code>&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;prev&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+  &lt;span class="n"&gt;prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; 
 
-<span class="cm">/**
- * Checks index of last seq. of 2 consecutive 1. i.e: "1011001 -&gt; index 3" 
- * if no seq. found return -1 
- * 
+  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++;&lt;/span&gt;
+  &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+ &lt;span class="o"&gt;}&lt;/span&gt;
+
+ &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+</code></pre>
+
+<p><span class="o">}</span></p>
+
+<p><span class="cm">/<em>*
+ * Checks index of last seq. of 2 consecutive 1. i.e: "1011001 -&gt; index 3"
+ * if no seq. found return -1
+ *
  * @param n
  * @return
- */</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getLastIndexSeqOnes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+ </em>/</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getLastIndexSeqOnes</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// current and previous bit if set to 1 then true</span>
-    <span class="kt">boolean</span> <span class="n">cur</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-    
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">highest</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-    
-    <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span> <span class="o">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-      <span class="o">}</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">cur</span> <span class="o">&amp;&amp;</span> <span class="n">prev</span><span class="o">)</span> <span class="o">{</span>
-          <span class="n">highest</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
-      <span class="o">}</span>
-      <span class="n">prev</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
-      
-      <span class="n">i</span><span class="o">++;</span>
-      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">;</span>
-     <span class="o">}</span>
+    <span class="kt">boolean</span> <span class="n">cur</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span></p>
 
-     <span class="k">return</span> <span class="n">highest</span><span class="o">;</span>
-<span class="o">}</span>
+<pre><code>&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-<span class="cm">/**
- * Checks if number is sparse: if 2 consecutive 1 are present. 
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;prev&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+      &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+  &lt;span class="n"&gt;prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+  &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++;&lt;/span&gt;
+  &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+ &lt;span class="o"&gt;}&lt;/span&gt;
+
+ &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+</code></pre>
+
+<p><span class="o">}</span></p>
+
+<p><span class="cm">/<em>*
+ * Checks if number is sparse: if 2 consecutive 1 are present.
  * @param n
  * @return
- */</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isSparseBinaryNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+ </em>/</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isSparseBinaryNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// current and previous bit if set to 1 then true</span>
-    <span class="kt">boolean</span> <span class="n">cur</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-    
-    <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span> <span class="o">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-      <span class="o">}</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">cur</span> <span class="o">&amp;&amp;</span> <span class="n">prev</span><span class="o">)</span> <span class="o">{</span>
-          <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-      <span class="o">}</span>
-      <span class="n">prev</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
-      
-      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">;</span>
-     <span class="o">}</span>
+    <span class="kt">boolean</span> <span class="n">cur</span><span class="o">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span></p>
 
-     <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-<span class="o">}</span>
+<pre><code>&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;prev&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+  &lt;span class="n"&gt;prev&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getLengthBits</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+  &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+ &lt;span class="o"&gt;}&lt;/span&gt;
+
+ &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+</code></pre>
+
+<p><span class="o">}</span></p>
+
+<p><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getLengthBits</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">count</span><span class="o">++;</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">;</span>
     <span class="o">}</span>
     <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
-<span class="o">}</span>
+<span class="o">}</span></p>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">convertToBinaryString</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+<p><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">convertToBinaryString</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span></p>
 
-     <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span> <span class="o">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-       <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-       <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"0"</span><span class="o">);</span>
-      <span class="o">}</span>
+<pre><code> &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;sb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;append&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"1"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;sb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;append&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"0"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
 
-      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">;</span>
-     <span class="o">}</span>
+  &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+ &lt;span class="o"&gt;}&lt;/span&gt;
 
-     <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
-<span class="o">}</span>
+ &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;sb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;toString&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+</code></pre>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">getBit</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+<p><span class="o">}</span></p>
+
+<p><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">getBit</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="o">((</span><span class="n">n</span> <span class="o">&amp;</span> <span class="o">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">index</span><span class="o">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">);</span>
-<span class="o">}</span>
+<span class="o">}</span></p>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">setBit</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<p><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">setBit</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">b</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">n</span> <span class="o">|</span> <span class="o">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">index</span><span class="o">);</span>
     <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="o">~(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">index</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span>
+<span class="o">}</span></p>
 
-<span class="o">}</span></code></pre></div>
-
-
-
+<p><span class="o">}</span></code></pre></figure></p>
 
 <hr />
-
-
-
 
 <p><a href="https://github.com/guilhebl/algorithms/blob/master/src/com/guilhebl/algo/bit/NextBiggerBinarySparseNumber.java">Full source code</a></p>
 
-
-
-
 <hr />
-
 </article>
 		      </section>
 

@@ -98,336 +98,177 @@
 
 			<article contenteditable="false"><h2>Why JAAS</h2>
 
-
-
-
 <p>The objective of using JAAS is to separate the concerns of user authentication so that they may be managed independently.
 You can let your Application Server handle the authentication logic using JAAS JDBC based authentication
 in order to keep your business domain related code isolated from the authentication layer mechanism.</p>
 
-
-
-
 <p>The examples of this post explain how to create a JDBC Authentication realm for Oracle and PostgreSQL in Linux and Windows,
 using MD5 algorithm to store the users passwords encrypted in the DB.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Setup DATABASE</h2>
 
-
-
-
 <h4>ORACLE</h4>
-
-
-
 
 <p>Open ORACLE SQLPlus:</p>
 
+<p><figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> <span class="n">DATAFILE</span> <span class="s1">'testapp.dbf'</span> <span class="k">SIZE</span> <span class="mi">40</span><span class="n">M</span> <span class="n">ONLINE</span><span class="p">;</span></p>
 
+<p><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">testapp</span>
+    <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="n">testapp</span>
+    <span class="k">DEFAULT</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span>
+    <span class="k">TEMPORARY</span> <span class="n">TABLESPACE</span> <span class="k">temp</span><span class="p">;</span></p>
 
-
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> <span class="n">DATAFILE</span> <span class="s1">'testapp.dbf'</span> <span class="k">SIZE</span> <span class="mi">40</span><span class="n">M</span> <span class="n">ONLINE</span><span class="p">;</span>
-
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="n">testapp</span>
-    <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="n">testapp</span> 
-    <span class="k">DEFAULT</span> <span class="n">TABLESPACE</span> <span class="n">testapp</span> 
-    <span class="k">TEMPORARY</span> <span class="n">TABLESPACE</span> <span class="k">temp</span><span class="p">;</span>
-
-<span class="k">GRANT</span> <span class="k">CONNECT</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="n">DBA</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span> <span class="o">--</span> <span class="o">*</span> <span class="k">For</span> <span class="n">testing</span> <span class="n">purposes</span> <span class="k">only</span><span class="o">!</span></code></pre></div>
-
-
-
+<p><span class="k">GRANT</span> <span class="k">CONNECT</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="n">DBA</span> <span class="k">TO</span> <span class="n">testapp</span><span class="p">;</span> <span class="c1">-- * For testing purposes only!</span></code></pre></figure></p>
 
 <hr />
-
-
-
 
 <h4>POSTGRESQL</h4>
 
-
-
-
 <h5>LINUX</h5>
-
-
-
 
 <p>.Create data base</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -u postgres createdb testapp</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -u postgres createdb testapp</code></pre></figure></p>
 
 <p>.Start data base</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/postgresql start</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/postgresql start</code></pre></figure></p>
 
 <p>.Login to your database</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">psql -d testapp -U testapp</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">psql -d testapp -U testapp</code></pre></figure></p>
 
 <p>. to examine the database</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\l</span> :List databases
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">    <span class="se">\l</span> :List databases
     <span class="se">\c</span> database-name :List databases
     <span class="se">\d</span> :List tables <span class="k">in </span>database
     <span class="se">\d</span> table-name :Describe table
-    <span class="se">\q</span> : quit</code></pre></div>
-
-
-
+    <span class="se">\q</span> : quit</code></pre></figure></p>
 
 <hr />
-
-
-
 
 <h5>WINDOWS</h5>
 
-
-
-
 <p>Open command line, in your POSGRESQL bin folder:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bat" data-lang="bat">initdb -U postgres -A password -E utf8 -W -D POSTGRESQL_ROOT\data
-postgres -D %PGSQL_HOME%\data</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bat" data-lang="bat">initdb -U postgres -A password -E utf8 -W -D POSTGRESQL_ROOT\data
+postgres -D %PGSQL_HOME%\data</code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Build Database Model</h2>
 
-
-
-
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">TB_USER</span>
+<p><figure class="highlight"><pre><code class="language-sql" data-lang="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">TB_USER</span>
  <span class="p">(</span>
       <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
       <span class="n">PASSWORD</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
       <span class="n">ACTIVE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
- <span class="p">);</span>
- 
-<span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP</span>
+ <span class="p">);</span></p>
+
+<p><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP</span>
  <span class="p">(</span>
      <span class="n">ID_GROUP</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
      <span class="n">DESCRIPTION</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
- <span class="p">);</span>
+ <span class="p">);</span></p>
 
-<span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP_USER</span> <span class="p">(</span>
+<p><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP_USER</span> <span class="p">(</span>
        <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
        <span class="n">ID_GROUP</span>  <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">,</span> <span class="n">ID_GROUP</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_GROUP_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER_GROUP</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>
-<span class="p">);</span></code></pre></div>
-
-
-
+<span class="p">);</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Configure Glassfish</h2>
 
-
-
-
 <h4>Create DATASOURCE in Glassfish</h4>
-
-
-
 
 <p>First copy JDBC libs to glassfish/lib, or make sure you have Oracle or PostgreSQL jdbc
 .jar file(s) in the Classpath for Glassfish.</p>
 
-
-
-
 <p>Create JDBC connection pool using asadmin Tool under glassfish\bin:</p>
 
-
-
-
 <hr />
-
-
-
 
 <h5>ORACLE</h5>
 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource
+--datasourceclassname<span class="o">=</span>oracle.jdbc.pool.OracleDataSource
+--property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>testapp:password<span class="o">=</span>testapp1:url<span class="o">=</span>jdbc<span class="se">\</span>:oracle<span class="se">\</span>:thin<span class="se">\</span>:@localhost<span class="se">\</span>:1521<span class="se">\</span>:XE oracleJDBCPool</p>
 
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
---datasourceclassname<span class="o">=</span>oracle.jdbc.pool.OracleDataSource 
---property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>testapp:password<span class="o">=</span>testapp1:url<span class="o">=</span>jdbc<span class="se">\\</span>:oracle<span class="se">\\</span>:thin<span class="se">\\</span>:@localhost<span class="se">\\</span>:1521<span class="se">\\</span>:XE oracleJDBCPool
-
-asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCResource</code></pre></div>
-
-
-
+<p>asadmin &gt; create-jdbc-resource --connectionpoolid oracleJDBCPool oracleJDBCResource </code></pre></figure></p>
 
 <hr />
-
-
-
 
 <h5>POSTGRESQL</h5>
 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource
+--datasourceclassname<span class="o">=</span>org.postgresql.ds.PGSimpleDataSource
+--property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>postgres:password<span class="o">=</span>testapp1:serverName<span class="o">=</span>localhost:portNumber<span class="o">=</span>5432:databaseName<span class="o">=</span>testapp postgreSQLJDBCPool</p>
 
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">asadmin &gt; create-jdbc-connection-pool --restype<span class="o">=</span>javax.sql.DataSource 
---datasourceclassname<span class="o">=</span>org.postgresql.ds.PGSimpleDataSource 
---property<span class="o">=</span><span class="nv">user</span><span class="o">=</span>postgres:password<span class="o">=</span>testapp1:serverName<span class="o">=</span>localhost:portNumber<span class="o">=</span>5432:databaseName<span class="o">=</span>testapp postgreSQLJDBCPool
-
-asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreSQLJDBCResource</code></pre></div>
-
-
-
+<p>asadmin &gt; create-jdbc-resource --connectionpoolid postgreSQLJDBCPool postgreSQLJDBCResource</code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h4>CREATE AUTHENTICATION REALM in Glassfish</h4>
-
-
-
 
 <p>Here we specify several parameters for the authentication realm we're creating, including a DIGEST algorithm to store the
 user's password encrypted, In this example we're going to use MD5.</p>
 
-
-
-
 <hr />
-
-
-
 
 <h5>ORACLE</h5>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm
 --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>oracleJDBCResource:user-table<span class="o">=</span>TB_USER:
 user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:
-group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth</code></pre></div>
-
-
-
+group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth</code></pre></figure></p>
 
 <hr />
-
-
-
 
 <h5>POSTGRESQL</h5>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">create-auth-realm --classname com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm
 --property jaas-context<span class="o">=</span>jdbcRealm:datasource-jndi<span class="o">=</span>postgreSQLJDBCResource:user-table<span class="o">=</span>TB_USER:
 user-name-column<span class="o">=</span>ID_USER:password-column<span class="o">=</span>PASSWORD:group-table<span class="o">=</span>TB_USER_GROUP_USER:
-group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth</code></pre></div>
-
-
-
+group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<span class="o">=</span>ID_GROUP:digest-algorithm<span class="o">=</span>MD5 userauth</code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Configure your web.xml</h2>
 
-
-
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;login-config&gt;</span>
+<p><figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;login-config&gt;</span>
     <span class="nt">&lt;auth-method&gt;</span>FORM<span class="nt">&lt;/auth-method&gt;</span>
     <span class="nt">&lt;realm-name&gt;</span>userauth<span class="nt">&lt;/realm-name&gt;</span>
     <span class="nt">&lt;form-login-config&gt;</span>
         <span class="nt">&lt;form-login-page&gt;</span>/login.xhtml<span class="nt">&lt;/form-login-page&gt;</span>
         <span class="nt">&lt;form-error-page&gt;</span>/loginError.xhtml<span class="nt">&lt;/form-error-page&gt;</span>
     <span class="nt">&lt;/form-login-config&gt;</span>
-<span class="nt">&lt;/login-config&gt;</span>
+<span class="nt">&lt;/login-config&gt;</span></p>
 
-<span class="nt">&lt;security-constraint&gt;</span>
+<p><span class="nt">&lt;security-constraint&gt;</span>
     <span class="nt">&lt;display-name&gt;</span>ConstraintSSL<span class="nt">&lt;/display-name&gt;</span>
     <span class="nt">&lt;web-resource-collection&gt;</span>
         <span class="nt">&lt;web-resource-name&gt;</span>common<span class="nt">&lt;/web-resource-name&gt;</span>
         <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;url-pattern&gt;</span>/login/*<span class="nt">&lt;/url-pattern&gt;</span>
-        <span class="nt">&lt;url-pattern&gt;</span>/products/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/login/<em><span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/products/</em><span class="nt">&lt;/url-pattern&gt;</span>
         <span class="nt">&lt;http-method&gt;</span>GET<span class="nt">&lt;/http-method&gt;</span>
         <span class="nt">&lt;http-method&gt;</span>POST<span class="nt">&lt;/http-method&gt;</span>
         <span class="nt">&lt;http-method&gt;</span>HEAD<span class="nt">&lt;/http-method&gt;</span>
@@ -468,116 +309,64 @@ group-name-column<span class="o">=</span>ID_GROUP:group_table_user-name-column<s
         <span class="nt">&lt;description&gt;</span>SSL not required for Development<span class="nt">&lt;/description&gt;</span>
         <span class="nt">&lt;transport-guarantee&gt;</span>CONFIDENTIAL<span class="nt">&lt;/transport-guarantee&gt;</span>
     <span class="nt">&lt;/user-data-constraint&gt;</span>
-<span class="nt">&lt;/security-constraint&gt;</span>
+<span class="nt">&lt;/security-constraint&gt;</span></p>
 
-<span class="nt">&lt;security-role&gt;</span>
+<p><span class="nt">&lt;security-role&gt;</span>
     <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;role-name&gt;</span>USERS<span class="nt">&lt;/role-name&gt;</span>
 <span class="nt">&lt;/security-role&gt;</span>
 <span class="nt">&lt;security-role&gt;</span>
     <span class="nt">&lt;description</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;role-name&gt;</span>ADMINISTRATORS<span class="nt">&lt;/role-name&gt;</span>
-<span class="nt">&lt;/security-role&gt;</span></code></pre></div>
-
-
-
+<span class="nt">&lt;/security-role&gt;</span></code></pre></figure></p>
 
 <p>notice the url-pattern tag, this defines the actual resources that this group of users can access.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Create your authentication form</h2>
 
-
-
-
 <p>In your Login page, place a form that will trigger the login flow:</p>
 
+<p><figure class="highlight"><pre><code class="language-html" data-lang="html"> <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"j_security_check"</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>User<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"j_username"</span> <span class="nt">/&gt;</span></p>
 
+<p>  <span class="nt">&lt;label&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"j_password"</span> <span class="nt">/&gt;</span></p>
 
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"j_security_check"</span> <span class="nt">&gt;</span>
-  <span class="nt">&lt;label&gt;</span>User<span class="nt">&lt;/label&gt;</span> 
-  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"j_username"</span> <span class="nt">/&gt;</span> 
-
-  <span class="nt">&lt;label&gt;</span>Password<span class="nt">&lt;/label&gt;</span> 
-  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"j_password"</span> <span class="nt">/&gt;</span>
-
-  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Login"</span> <span class="nt">/&gt;</span> 
+<p>  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Login"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"reset"</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"Reset"</span> <span class="nt">/&gt;</span>
- <span class="nt">&lt;/form&gt;</span></code></pre></div>
-
-
-
+ <span class="nt">&lt;/form&gt;</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Load some sample data and test</h2>
 
-
-
-
 <p>Create 2 different USER Groups one for common Users and other for Admins:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">--------------------------------- USERS AND GROUPS -----------------------------------------------------
-</span><span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">'USERS'</span><span class="p">,</span> <span class="s1">'common USERS'</span><span class="p">);</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">'ADMINISTRATORS'</span><span class="p">,</span> <span class="s1">'privileged ADMIN GROUP'</span><span class="p">);</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">--------------------------------- USERS AND GROUPS -----------------------------------------------------</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">'USERS'</span><span class="p">,</span> <span class="s1">'common USERS'</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">TB_USER_GROUP</span> <span class="k">values</span><span class="p">(</span><span class="s1">'ADMINISTRATORS'</span><span class="p">,</span> <span class="s1">'privileged ADMIN GROUP'</span><span class="p">);</span></code></pre></figure></p>
 
 <p>After that create sample users on each group,
 common users should only be able to access resources under /products/<em> and /login/</em>,
 while admin users should be able to access these URLs and also "protected" URLs which are under
 /account/*.</p>
 
-
-
-
 <p>You can customize your login and error pages accordingly.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Additional links:</h2>
 
-
-
-
 <p><a href="http://en.wikipedia.org/wiki/Java_Authentication_and_Authorization_Service">JAAS</a></p>
-
 </article>
 		      </section>
 

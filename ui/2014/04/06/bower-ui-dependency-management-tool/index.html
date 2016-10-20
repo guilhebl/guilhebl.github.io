@@ -98,163 +98,87 @@
 
 			<article contenteditable="false"><h2>Bower - a UI dependency management tool</h2>
 
-
-
-
 <p>Building UI related code has evolved during last years due to the introduction of new modern Javascript frameworks
 and to the new possibilities of usage that the javascript language has been extended like server side usage with Node.JS
 for example.</p>
 
-
-
-
 <p>There are several popular build tools nowadays to manage project dependencies, like maven and others. But UI related
 dependencies aren't managed very well under these tools.</p>
 
-
-
-
 <p>Bower is a lightweight UI related dependency manager tool, it depends on Node.js to run and npm as package manager</p>
-
-
-
 
 <h2>Prerequisites</h2>
 
-
-
-
 <p>Bower depends on Node and npm. It's installed globally using npm:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install -g bower</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">npm install -g bower</code></pre></figure></p>
 
 <p>Also make sure that git is installed as some bower packages require it to be fetched and installed.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Creating your project's bower.json file</h2>
 
-
-
-
 <p>Configure your project's dependency in a file called bower.json, the default bower configuration file for your project:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myApp"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"ignore"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"**/.*"</span><span class="p">,</span><span class="w">
+<p><figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myApp"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ignore"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"<em>*/.</em>"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"node_modules"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bower_components"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tests"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"jquery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.10.2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular-route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular-resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular-cookies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular-animate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular-scenario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"angular-mocks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bootstrap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=3.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requirejs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.1.9"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requirejs-text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.0"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-  
-</span><span class="p">}</span></code></pre></div>
+  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"jquery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.10.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular-route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular-resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular-cookies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular-animate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular-scenario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"angular-mocks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bootstrap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=3.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requirejs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.1.9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requirejs-text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w"></p>
 
-
-
+<p></span><span class="p">}</span></code></pre></figure></p>
 
 <p>. name and version: Here you place your project name and version.</p>
-
-
-
 
 <p>. ignore: Here we're telling Bower that it should ignore folders like "node_modules" "tests" and "bower_components"
 since these folders are used for development and test scenarios and are not needed during production deployment
 or application runtime.</p>
 
-
-
-
 <p>. devDependencies: Here we're listing our development dependencies, which are a list of other bower packages available for download,
 like jQuery, requireJS and angularJS libs. Notice the >= symbol, this will tell Bower to fetch version "XXX" or above of this particular artifact. There are other options as well to fetch isolated version ranges.</p>
 
-
-
-
 <p>After that we run the command</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">bower install</code></pre></figure></p>
 
 <p>and Bower will fetch our necessary dependencies and place them under "bower_components" folder as per default.</p>
 
-
-
-
 <h2>.bowerrc file</h2>
-
-
-
 
 <p>The .bowerrc file enables custom configuration for Bower. For example we can determine a custom install directory:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"directory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public/bower_components"</span><span class="w">
-</span><span class="p">}</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"directory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public/bower_components"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h4>Additional links:</h4>
 
-
-
-
 <p><a href="http://bower.io">Bower</a></p>
-
 </article>
 		      </section>
 

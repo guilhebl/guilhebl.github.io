@@ -98,116 +98,67 @@
 
 			<article contenteditable="false"><h2>Three different ways to get an EJB reference in Java</h2>
 
-
-
-
 <h3>1: @Inject</h3>
-
-
-
 
 <p>Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility for your java classes
 and it's nowadays considered the standard way of integrating managed lifecycle components in the JavaEE platform.</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Inject</span>
-<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Inject</span>
+<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></figure></p>
 
 <p>Inject Interface:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
 <span class="nd">@Documented</span>
 <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">Inject</span> <span class="o">{</span>
-<span class="o">}</span></code></pre></div>
-
-
-
+<span class="o">}</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h3>2: @EJB</h3>
 
-
-
-
 <p>EJB specific annotation, can use specific attributes like "beanName" and others:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">"ejb/UserService"</span><span class="o">)</span>
-<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">"ejb/UserService"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></figure></p>
 
 <p>EJB Interface</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
-<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">EJB</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">EJB</span> <span class="o">{</span></p>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">()</span> <span class="k">default</span> <span class="s">""</span><span class="o">;</span>
+<pre><code>&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;name&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">beanName</span><span class="o">()</span> <span class="k">default</span> <span class="s">""</span><span class="o">;</span>
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;beanName&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-    <span class="kd">public</span> <span class="n">Class</span> <span class="n">beanInterface</span><span class="o">()</span> <span class="k">default</span> <span class="n">Object</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Class&lt;/span&gt; &lt;span class="nf"&gt;beanInterface&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">mappedName</span><span class="o">()</span> <span class="k">default</span> <span class="s">""</span><span class="o">;</span>
-<span class="o">}</span></code></pre></div>
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;mappedName&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+</code></pre>
 
-
-
-
-<hr />
-
-
-
+<p><span class="o">}</span></code></pre></figure></p>
 
 <hr />
 
-
-
+<hr />
 
 <h3>3: JNDI Lookup</h3>
-
-
-
 
 <p>In simple Java POJOs or classes that doesn't have support for injection dependency mechanisms,
 you can realize a direct JNDI Lookup to get and EJB instance. In this example a simple Hashmap based cache
 is added to enhance performance for repeated lookups:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/* 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/<em>
 Read from Local Home Interface if EJB container is located in same JVM, otherwise use
 remote interface
-*/</span>
-   <span class="kd">public</span> <span class="n">Crud</span> <span class="n">getLocalHome</span><span class="o">(</span><span class="n">String</span> <span class="n">jndiHomeName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceLocatorException</span> <span class="o">{</span>
+</em>/</span>
+   <span class="kd">public</span> <span class="n">Crud</span> <span class="nf">getLocalHome</span><span class="o">(</span><span class="n">String</span> <span class="n">jndiHomeName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceLocatorException</span> <span class="o">{</span>
      <span class="n">Crud</span> <span class="n">home</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-     <span class="k">try</span> <span class="o">{</span> 
+     <span class="k">try</span> <span class="o">{</span>
        <span class="k">if</span> <span class="o">(</span><span class="n">cache</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">))</span> <span class="o">{</span>
            <span class="n">home</span> <span class="o">=</span> <span class="o">(</span><span class="n">Crud</span><span class="o">)</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">);</span>
        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
@@ -215,18 +166,14 @@ remote interface
            <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">,</span> <span class="n">home</span><span class="o">);</span>
        <span class="o">}</span>
       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NamingException</span> <span class="n">ne</span><span class="o">)</span> <span class="o">{</span>
-           <span class="k">throw</span> <span class="k">new</span> <span class="n">ServiceLocatorException</span><span class="o">(</span><span class="n">ne</span><span class="o">);</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nf">ServiceLocatorException</span><span class="o">(</span><span class="n">ne</span><span class="o">);</span>
       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-           <span class="k">throw</span> <span class="k">new</span> <span class="n">ServiceLocatorException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nf">ServiceLocatorException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
       <span class="o">}</span>
       <span class="k">return</span> <span class="n">home</span><span class="o">;</span>
-   <span class="o">}</span></code></pre></div>
-
-
-
+   <span class="o">}</span></code></pre></figure></p>
 
 <p>In the method above Crud is a generic business interface which is extended by our target EJB Remote and Home interfaces.</p>
-
 </article>
 		      </section>
 

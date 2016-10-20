@@ -98,43 +98,25 @@
 
 			<article contenteditable="false"><h3>$viewContentLoaded</h3>
 
-
-
-
 <p>When using angularJS, you can hook up event listeners like
 onDomReady using</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="c1">// ...</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="c1">// ... </span></code></pre></figure></p>
 
 <p>sometimes it's necessary to wait until the view gets loaded to hook up some additional processing that depends
 on DOM elements present or created after the controller has processed the view,
 and $viewContentLoaded is intended just for that.</p>
 
-
-
-
 <p>controllers.js</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/* Controllers */</span>
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="cm">/<em> Controllers </em>/</span>
     <span class="nx">myapp</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'ProductController'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'ProductService'</span><span class="p">,</span>
       <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">ProductService</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">products</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">query</span><span class="p">();</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">featuredProductList</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">featuredlist</span><span class="p">();</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">orderProp</span> <span class="o">=</span> <span class="s1">'introductionDate'</span><span class="p">;</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">'$viewContentLoaded'</span><span class="p">,</span> <span class="nx">loadBootstrapUI</span><span class="p">);</span> <span class="sr">/* Example building UI based elements dependent on fetched dat</span><span class="err">a
-</span>   <span class="p">}]);</span></code></pre></div>
-
-
-
+</span>   <span class="p">}]);</span></code></pre></figure></p>
 </article>
 		      </section>
 

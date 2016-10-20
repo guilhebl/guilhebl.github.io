@@ -99,44 +99,35 @@
 			<article contenteditable="false"><p>You might want to implement some generic template type
 methods for your <a href="/java/2014/04/09/domain-model-generic-superclass">domain model superclass</a> in order to avoid duplicating boilerplate code for several classes, one example is the findAll method, in certain scenarios you might want to search for all entities of a given Class:</p>
 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseServiceBean</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">DomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;,</span> <span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">BaseCrud</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span></p>
 
+<pre><code>&lt;span class="nd"&gt;@PersistenceContext&lt;/span&gt;
+&lt;span class="kd"&gt;protected&lt;/span&gt; &lt;span class="n"&gt;EntityManager&lt;/span&gt; &lt;span class="n"&gt;entityManager&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
+&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;findAll&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;clazz&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="kd"&gt;throws&lt;/span&gt; &lt;span class="n"&gt;ServiceException&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt; 
+    &lt;span class="n"&gt;CriteriaBuilder&lt;/span&gt; &lt;span class="n"&gt;cb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getEntityManager&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;getCriteriaBuilder&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;CriteriaQuery&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cq&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;createQuery&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clazz&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;Root&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;rootEntry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;from&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clazz&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;CriteriaQuery&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;select&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rootEntry&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;TypedQuery&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;allQuery&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getEntityManager&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;createQuery&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;allQuery&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getResultList&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseServiceBean</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">DomainEntity</span><span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;,</span> <span class="n">ID</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">BaseCrud</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">{</span>
+&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;findAllQuery&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;clazz&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="kd"&gt;throws&lt;/span&gt; &lt;span class="n"&gt;ServiceException&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;    
+    &lt;span class="n"&gt;Query&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;entityManager&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;createQuery&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;
+            &lt;span class="s"&gt;"select o from "&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;clazz&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getSimpleName&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;" o"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;)&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getResultList&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+</code></pre>
 
-    <span class="nd">@PersistenceContext</span>
-    <span class="kd">protected</span> <span class="n">EntityManager</span> <span class="n">entityManager</span><span class="o">;</span>
-    
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">findAll</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">clazz</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceException</span> <span class="o">{</span>  
-        <span class="n">CriteriaBuilder</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">().</span><span class="na">getCriteriaBuilder</span><span class="o">();</span>
-        <span class="n">CriteriaQuery</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">cq</span> <span class="o">=</span> <span class="n">cb</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">clazz</span><span class="o">);</span>
-        <span class="n">Root</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rootEntry</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">clazz</span><span class="o">);</span>
-        <span class="n">CriteriaQuery</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">all</span> <span class="o">=</span> <span class="n">cq</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">rootEntry</span><span class="o">);</span>
-        <span class="n">TypedQuery</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">allQuery</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">().</span><span class="na">createQuery</span><span class="o">(</span><span class="n">all</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">allQuery</span><span class="o">.</span><span class="na">getResultList</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">findAllQuery</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">clazz</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceException</span> <span class="o">{</span> 
-        <span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">entityManager</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span>
-                <span class="s">"select o from "</span> <span class="o">+</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" o"</span><span class="o">);</span>
-        <span class="k">return</span> <span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="n">query</span><span class="o">.</span><span class="na">getResultList</span><span class="o">();</span>
-    <span class="o">}</span>
-
-<span class="c1">// ... more code</span></code></pre></div>
-
-
-
+<p><span class="c1">// ... more code</span></code></pre></figure></p>
 
 <p>Where DomainEntity is a generic domain entity superclass and ID a generic Id type that can be serializable, like String, Integer and others.</p>
 
-
-
-
 <p>Here I listed two ways of getting the list, first using CriteriaBuilder and second using JPA Query Language, I personally
 prefer the first one since it only handles object instances.</p>
-
 </article>
 		      </section>
 

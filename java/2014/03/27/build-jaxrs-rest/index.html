@@ -98,13 +98,7 @@
 
 			<article contenteditable="false"><h2>Prerequisites</h2>
 
-
-
-
 <p>To start deploying your JAX-RS application you need to install:</p>
-
-
-
 
 <ul>
 <li>Java JDK (1.6 or later)</li>
@@ -112,53 +106,27 @@
 </ul>
 
 
-
-
 <p>Download java latest version and follow installation instructions.
 Download Glassfish and unzip on preferred location, test installation using commands:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="nv">$GLASSFISH_FOLDER$/</span>glassfish/bin/
-asadmin start-domain domain1</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="nv">$GLASSFISH_FOLDER$/</span>glassfish/bin/
+asadmin start-domain domain1 </code></pre></figure></p>
 
 <p>If you got the domain up and running successfully you're ready to step to the next action</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Create REST webservices in your Webapp</h2>
-
-
-
 
 <p>Configure your server side Java webapp to be able to respond to incoming REST HTTP requests
 from client side UI via JAX-RS.</p>
 
-
-
-
 <p>Since our application server is Glassfish, the default JAX-RS implementation of glassfish is Jersey.
 You can either configure Jersey Servlet in your web.xml as:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;servlet&gt;</span>
+<p><figure class="highlight"><pre><code class="language-xml" data-lang="xml">   <span class="nt">&lt;servlet&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;servlet-class&gt;</span>com.sun.jersey.spi.container.servlet.ServletContainer<span class="nt">&lt;/servlet-class&gt;</span>
         <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
@@ -166,28 +134,22 @@ You can either configure Jersey Servlet in your web.xml as:</p>
    <span class="nt">&lt;servlet-mapping&gt;</span>
         <span class="nt">&lt;servlet-name&gt;</span>JerseyRESTServlet<span class="nt">&lt;/servlet-name&gt;</span>
         <span class="nt">&lt;url-pattern&gt;</span>/rest/*<span class="nt">&lt;/url-pattern&gt;</span>
-   <span class="nt">&lt;/servlet-mapping&gt;</span></code></pre></div>
-
-
-
+   <span class="nt">&lt;/servlet-mapping&gt;</span></code></pre></figure></p>
 
 <p>With this Jersey will scan your packages to check if there are any annotated resources
 Or else use the implementation agnostic way, which is the prefferred way:</p>
 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span></p>
 
+<p><span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span></p>
 
+<p><span class="kn">import</span> <span class="nn">javax.ws.rs.ApplicationPath</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.ws.rs.core.Application</span><span class="o">;</span></p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">application</span><span class="o">;</span>
+<p><span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.facade.UserService</span><span class="o">;</span></p>
 
-<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.ws.rs.ApplicationPath</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.ws.rs.core.Application</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.facade.UserService</span><span class="o">;</span>
-
-<span class="nd">@ApplicationPath</span><span class="o">(</span><span class="s">"/rest"</span><span class="o">)</span>
+<p><span class="nd">@ApplicationPath</span><span class="o">(</span><span class="s">"/rest"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleAppApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">getClasses</span><span class="o">()</span> <span class="o">{</span>
@@ -196,264 +158,174 @@ Or else use the implementation agnostic way, which is the prefferred way:</p>
         <span class="n">classes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
         <span class="k">return</span> <span class="n">classes</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-
-
+<span class="o">}</span></code></pre></figure></p>
 
 <p>in the sample above we are registering one REST resource class UserService
 which we will implement like this:</p>
 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span></p>
 
+<p><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span></p>
 
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">facade</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.ws.rs.GET</span><span class="o">;</span>
+<p><span class="kn">import</span> <span class="nn">javax.ws.rs.GET</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.ws.rs.Path</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.ws.rs.Produces</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.ws.rs.core.MediaType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.ws.rs.core.MediaType</span><span class="o">;</span></p>
 
-<span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.domain.UserVO</span><span class="o">;</span>
+<p><span class="kn">import</span> <span class="nn">com.guilhebl.test.web.service.domain.UserVO</span><span class="o">;</span></p>
 
-<span class="nd">@Path</span><span class="o">(</span><span class="s">"/user"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+<p><span class="nd">@Path</span><span class="o">(</span><span class="s">"/user"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span></p>
 
-    <span class="kd">public</span> <span class="n">UserService</span><span class="o">()</span> <span class="o">{}</span>
-    
-    <span class="nd">@GET</span>
-    <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">TEXT_PLAIN</span><span class="o">})</span>
-    <span class="nd">@Path</span><span class="o">(</span><span class="s">"/text-sample"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">textSample</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">"Hi! This is a test!"</span><span class="o">;</span>
-    <span class="o">}</span>
+<pre><code>&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;UserService&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt;
 
-    <span class="nd">@GET</span>
-    <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">TEXT_HTML</span><span class="o">})</span>
-    <span class="nd">@Path</span><span class="o">(</span><span class="s">"/html-sample"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">htmlSample</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">"&lt;ul&gt;&lt;li&gt;Element 1&lt;/li&gt;&lt;li&gt;Element 2&lt;/li&gt;&lt;li&gt;Element 3&lt;/li&gt;&lt;/ul&gt;"</span><span class="o">;</span>
-    <span class="o">}</span>
+&lt;span class="nd"&gt;@GET&lt;/span&gt;
+&lt;span class="nd"&gt;@Produces&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="n"&gt;MediaType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;TEXT_PLAIN&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt;
+&lt;span class="nd"&gt;@Path&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"/text-sample"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;textSample&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;"Hi! This is a test!"&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
 
-    <span class="nd">@GET</span>
-    <span class="nd">@Produces</span><span class="o">({</span><span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_XML</span><span class="o">,</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON</span><span class="o">})</span>
-    <span class="nd">@Path</span><span class="o">(</span><span class="s">"/json-sample"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">UserVO</span> <span class="n">jsonSample</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">UserVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="n">buildSampleUserVO</span><span class="o">();</span>     
-        <span class="k">return</span> <span class="n">vo</span><span class="o">;</span>
-    <span class="o">}</span>
+&lt;span class="nd"&gt;@GET&lt;/span&gt;
+&lt;span class="nd"&gt;@Produces&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="n"&gt;MediaType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;TEXT_HTML&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt;
+&lt;span class="nd"&gt;@Path&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"/html-sample"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;htmlSample&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;"&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;Element 1&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;Element 2&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;Element 3&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;"&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
 
-    <span class="kd">private</span> <span class="n">UserVO</span> <span class="n">buildSampleUserVO</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">UserVO</span> <span class="n">userVO</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserVO</span><span class="o">();</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"test@testdomain.com"</span><span class="o">);</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setActive</span><span class="o">(</span><span class="s">"T"</span><span class="o">);</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">"*************"</span><span class="o">);</span>     
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroupsStr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>      
-        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"abc"</span><span class="o">);</span>
-        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"admin"</span><span class="o">);</span>
-        <span class="n">userGroupsStr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"users"</span><span class="o">);</span>
-        <span class="n">userVO</span><span class="o">.</span><span class="na">setUserGroups</span><span class="o">(</span><span class="n">userGroupsStr</span><span class="o">);</span>                         
-        <span class="k">return</span> <span class="n">userVO</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+&lt;span class="nd"&gt;@GET&lt;/span&gt;
+&lt;span class="nd"&gt;@Produces&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="n"&gt;MediaType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;APPLICATION_XML&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MediaType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;APPLICATION_JSON&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt;
+&lt;span class="nd"&gt;@Path&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"/json-sample"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;UserVO&lt;/span&gt; &lt;span class="nf"&gt;jsonSample&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;UserVO&lt;/span&gt; &lt;span class="n"&gt;vo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;buildSampleUserVO&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;     
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;vo&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
 
+&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;UserVO&lt;/span&gt; &lt;span class="nf"&gt;buildSampleUserVO&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;UserVO&lt;/span&gt; &lt;span class="n"&gt;userVO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;UserVO&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;userVO&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setId&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"test@testdomain.com"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;userVO&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setActive&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"T"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;userVO&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setPassword&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"*************"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;     
+    &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;userGroupsStr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ArrayList&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;();&lt;/span&gt;      
+    &lt;span class="n"&gt;userGroupsStr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;add&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"abc"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;userGroupsStr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;add&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"admin"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;userGroupsStr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;add&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"users"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;userVO&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setUserGroups&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userGroupsStr&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;                         
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;userVO&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+</code></pre>
 
-
-
-<hr />
-
-
-
+<p><span class="o">}</span></code></pre></figure></p>
 
 <hr />
 
-
-
+<hr />
 
 <h2>Configure your domain model to support JAXB</h2>
-
-
-
 
 <p>Notice how UserService is returning a UserVO object in the last 2 methods, JAXB: Java API for XML Binding
 is the default api for transforming Java objects into XML or JSON, in order to make JAXB understand our domain
 model we must annotate our domain classes with @XmlRootElement:</p>
 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span></p>
 
+<p><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span></p>
 
+<p><span class="kn">import</span> <span class="nn">javax.xml.bind.annotation.XmlRootElement</span><span class="o">;</span></p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">guilhebl</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">domain</span><span class="o">;</span>
+<p><span class="nd">@XmlRootElement</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserVO</span> <span class="o">{</span></p>
 
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<pre><code>&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; 
+&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;userGroups&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-<span class="kn">import</span> <span class="nn">javax.xml.bind.annotation.XmlRootElement</span><span class="o">;</span>
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;Id&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setId&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;getPassword&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setPassword&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;getActive&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setActive&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;active&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nf"&gt;getUserGroups&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;userGroups&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setUserGroups&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;userGroups&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;userGroups&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;userGroups&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+</code></pre>
 
-<span class="nd">@XmlRootElement</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserVO</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span> 
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">active</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">;</span>
-    
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">Id</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">getPassword</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">password</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">getActive</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">active</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setActive</span><span class="o">(</span><span class="n">String</span> <span class="n">active</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">active</span> <span class="o">=</span> <span class="n">active</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">getUserGroups</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">userGroups</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setUserGroups</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">userGroups</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">userGroups</span> <span class="o">=</span> <span class="n">userGroups</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-
-
+<p><span class="o">}</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Build and test</h2>
 
-
-
-
 <p>Your REST resource will answer HTTP requests and send back responses with MIME type according to each
 request URI(path) and to the Accepted-Type headers in the HTTP request.</p>
-
-
-
 
 <p>After that we're ready to build and deploy our webapp in Glassfish. You can either drop your .war or .ear file inside
 Glassfish autodeploy folder, or either deploy via admin console, maven or some other automated procedure, I'd rather use
 the maven glassfish plugin since I can integrate my project build and deploy steps easily.</p>
 
-
-
-
 <p>In case you get a successful deploy it's time to test your deployed REST webservices,
 open your browser and navigate to "localhost:8080/myApp/rest/user/"
 myApp should be replaced with your webapp name.</p>
 
-
-
-
 <hr />
-
-
-
 
 <p>. TEXT Response - localhost:8080/myApp/rest/user/text-sample</p>
 
-
-
-
 <p><img src="/assets/img/screenshot_01_text.png" alt="TEXT screenshot" /></p>
 
-
-
-
 <hr />
-
-
-
 
 <p>. HTML Response - "localhost:8080/myApp/rest/user/html-sample"</p>
 
-
-
-
 <p><img src="/assets/img/screenshot_01_html.png" alt="HTML screenshot" /></p>
-
-
-
 
 <hr />
 
-
-
-
 <p>. JSON Response - "localhost:8080/myApp/rest/user/json-sample"</p>
-
-
-
 
 <p>If you just place the location above in your browser and hit enter you will get a HTTP 404 - Not found page
 This is because your browser expects presentable MIME types like text/html or text/plain.</p>
-
-
-
 
 <p>In order to test your XML and JSON responses you need to access your URLs using a HTTP client tool,
 in this example I use Chrome's DEV HTTP Client, but there are many other tools and you can even create your
 own Java client app to test. In order to accept JSON data responses you must have in your HTTP request headers the Accepted types:
 application/json or application/xml for XML.</p>
 
-
-
-
 <p>Response using client tool:</p>
-
-
-
 
 <p><img src="/assets/img/screenshot_01_json.png" alt="JSON screenshot" /></p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Additional Resources</h2>
 
-
-
-
 <p>A REST endpoint can deliver many other HTTP MIME type responses, it's up to you the way you want to assemble your collection of webservices focusing to match according to the necessities of your project. With this approach you can achieve a cleaner separation between the UI Layer (Javascript + HTML) and Service Layer (Business and Domain model components), giving greater independence and flexibility to your UI and service layer teams, since their integration will be based on the REST interface contract.</p>
-
-
-
 
 <h4>Additional links:</h4>
 
-
-
-
 <p><a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkknj.html">JavaEE 6 Oracle JAX-RS and JAXB tutorial</a></p>
-
 </article>
 		      </section>
 

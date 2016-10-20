@@ -98,70 +98,55 @@
 
 			<article contenteditable="false"><hr />
 
-
-
-
 <h2>How to avoid packaging unwanted folders on a java WAR file</h2>
-
-
-
 
 <p>You must use the maven-war plugin to enable this feature:</p>
 
+<p><figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span></p>
 
+<p>  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span></p>
 
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> 
-<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> 
-<span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
-
-  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
-
-  <span class="nt">&lt;parent&gt;</span>
+<p>  <span class="nt">&lt;parent&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>testAppWebParent<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>io.guilhebl.test<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;relativePath&gt;</span>../testAppWebParent/pom.xml<span class="nt">&lt;/relativePath&gt;</span>
-  <span class="nt">&lt;/parent&gt;</span>
+  <span class="nt">&lt;/parent&gt;</span></p>
 
-  <span class="nt">&lt;artifactId&gt;</span>testApp<span class="nt">&lt;/artifactId&gt;</span>
+<p>  <span class="nt">&lt;artifactId&gt;</span>testApp<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;packaging&gt;</span>war<span class="nt">&lt;/packaging&gt;</span>
-  <span class="nt">&lt;name&gt;</span>Test Application<span class="nt">&lt;/name&gt;</span>
-  
-    <span class="nt">&lt;properties&gt;</span>
-        <span class="nt">&lt;endorsed.dir&gt;</span>${project.build.directory}/endorsed<span class="nt">&lt;/endorsed.dir&gt;</span>
-        <span class="nt">&lt;org.apache.maven.plugins.maven-war-plugin.version&gt;</span>2.3<span class="nt">&lt;/org.apache.maven.plugins.maven-war-plugin.version&gt;</span>
-    <span class="nt">&lt;/properties&gt;</span>
-        
-    <span class="nt">&lt;dependencies&gt;</span>
-    <span class="nt">&lt;/dependencies&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Test Application<span class="nt">&lt;/name&gt;</span></p>
+
+<pre><code>&lt;span class="nt"&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;endorsed.dir&amp;gt;&lt;/span&gt;${project.build.directory}/endorsed&lt;span class="nt"&gt;&amp;lt;/endorsed.dir&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;org.apache.maven.plugins.maven-war-plugin.version&amp;gt;&lt;/span&gt;2.3&lt;span class="nt"&gt;&amp;lt;/org.apache.maven.plugins.maven-war-plugin.version&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
 
 
-    <span class="nt">&lt;build&gt;</span>
-        <span class="nt">&lt;plugins&gt;</span>
-            <span class="nt">&lt;plugin&gt;</span>
-                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-                <span class="nt">&lt;artifactId&gt;</span>maven-war-plugin<span class="nt">&lt;/artifactId&gt;</span>
-                <span class="nt">&lt;version&gt;</span>${org.apache.maven.plugins.maven-war-plugin.version}<span class="nt">&lt;/version&gt;</span>
-                <span class="nt">&lt;configuration&gt;</span>
-                  <span class="nt">&lt;warSourceExcludes&gt;</span>test/**,scripts/**,node_modules/**,bower_components/**<span class="nt">&lt;/warSourceExcludes&gt;</span>
-                <span class="nt">&lt;/configuration&gt;</span>
-            <span class="nt">&lt;/plugin&gt;</span>
-        <span class="nt">&lt;/plugins&gt;</span>
-    <span class="nt">&lt;/build&gt;</span>
-    
-<span class="nt">&lt;/project&gt;</span></code></pre></div>
+&lt;span class="nt"&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-war-plugin&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${org.apache.maven.plugins.maven-war-plugin.version}&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+              &lt;span class="nt"&gt;&amp;lt;warSourceExcludes&amp;gt;&lt;/span&gt;test/**,scripts/**,node_modules/**,bower_components/**&lt;span class="nt"&gt;&amp;lt;/warSourceExcludes&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+</code></pre>
 
-
-
+<p><span class="nt">&lt;/project&gt;</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <p>The resulting WAR file will not have the above folders packaged as a result of the build, resulting in a smaller, more compact WAR file.</p>
-
 </article>
 		      </section>
 

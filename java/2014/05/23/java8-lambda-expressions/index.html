@@ -98,164 +98,80 @@
 
 			<article contenteditable="false"><h2>Concept of Lambda expressions</h2>
 
-
-
-
 <p>Lambda expressions enable you to treat functionality as method argument, or code as data.
 in this post we're using an example of using Lambda expression in order to define a standard functional Interface (in this case ActionListener) with an anonymous class.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Sample Code</h2>
-
-
-
 
 <p>In a typical java Swing application (Java desktop GUI based app), in previous versions you would attach listeners to the GUI components on
 your screen using anonymous classes or other approaches:</p>
 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"> <span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span><span class="k">new</span> <span class="n">EventHandler</span><span class="o">&lt;</span><span class="n">ActionEvent</span><span class="o">&gt;()</span> <span class="o">{</span></p>
 
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span><span class="k">new</span> <span class="n">EventHandler</span><span class="o">&lt;</span><span class="n">ActionEvent</span><span class="o">&gt;()</span> <span class="o">{</span>
-
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="n">handle</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World!"</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">});</span></code></pre></div>
-
-
-
+<pre><code>        &lt;span class="nd"&gt;@Override&lt;/span&gt;
+        &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;handle&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ActionEvent&lt;/span&gt; &lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;println&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Hello World!"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</code></pre>
 
 <p>with java Lambda Expressions you can reduce the ammount of code used to describe the Listener implementation.</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span>
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">btn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">(</span>
           <span class="n">event</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World!"</span><span class="o">)</span>
-        <span class="o">);</span></code></pre></div>
-
-
-
+        <span class="o">);</span></code></pre></figure></p>
 
 <p>notice how the lambda expression only declares the most important part of the anonymous class which is the actual method implementation itself.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h2>Syntax of Lambda Expressions</h2>
 
-
-
-
 <p>A lambda expression consists of the following:</p>
-
-
-
 
 <p>A comma-separated list of formal parameters enclosed in parentheses. The CheckPerson.test method contains one parameter, p, which represents an instance of the Person class.</p>
 
-
-
-
 <p>Note: You can omit the data type of the parameters in a lambda expression. In addition, you can omit the parentheses if there is only one parameter. For example, the following lambda expression is also valid:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span> 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span>
     <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">18</span>
-    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span></code></pre></div>
-
-
-
+    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span></code></pre></figure></p>
 
 <p>The arrow token, -></p>
 
-
-
-
 <p>A body, which consists of a single expression or a statement block. This example uses the following expression:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span> 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span>
     <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">18</span>
-    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span></code></pre></div>
-
-
-
+    <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span></code></pre></figure></p>
 
 <p>If you specify a single expression, then the Java runtime evaluates the expression and then returns its value. Alternatively, you can use a return statement:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">{</span>
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="na">getGender</span><span class="o">()</span> <span class="o">==</span> <span class="n">Person</span><span class="o">.</span><span class="na">Sex</span><span class="o">.</span><span class="na">MALE</span>
         <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">18</span>
         <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="o">;</span>
-<span class="o">}</span></code></pre></div>
-
-
-
+<span class="o">}</span></code></pre></figure></p>
 
 <p>A return statement is not an expression; in a lambda expression, you must enclose statements in braces ({}). However, you do not have to enclose a void method invocation in braces. For example, the following is a valid lambda expression:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">email</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">email</span><span class="o">)</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">email</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">email</span><span class="o">)</span></code></pre></figure></p>
 
 <p>Note that a lambda expression looks a lot like a method declaration; you can consider lambda expressions as anonymous methods—methods without a name.</p>
 
-
-
-
 <hr />
 
-
-
-
 <hr />
-
-
-
 
 <h4>Additional links:</h4>
 
-
-
-
 <p><a href="http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">Oracle java tutorial</a></p>
-
 </article>
 		      </section>
 

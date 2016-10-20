@@ -98,444 +98,137 @@
 
 			<article contenteditable="false"><h3>System Information</h3>
 
-
-
-
 <p>Processor Info:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /proc/cpuinfo </code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Memory Info:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/meminfo</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /proc/meminfo</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Version of your kernel and the GCC compiler:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/version</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /proc/version </code></pre></figure></p>
 
 <p><br /></p>
 
+<p>Release information</p>
 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> lsb_release -a</code></pre></figure></p>
 
+<p><br /></p>
 
 <hr />
-
-
-
 
 <h3>File and display commands</h3>
 
-
-
-
 <p>Lists files with permissions, shows hidden files, displays them in a column format, and suppresses group information.</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -laxo</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> ls -laxo</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Clear screen:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">clear</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> clear</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Display current path:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">pwd</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nb">pwd</span></code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Remove directory with all content inside:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rm -rf example</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> rm -rf example</code></pre></figure></p>
 
 <p><br /></p>
 
-
-
-
 <hr />
-
-
-
 
 <h3>User access</h3>
 
+<p>List all users</p>
 
-
-
-<p>Change a bin access mode to be executable:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">chmod +x file.bin</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> getent passwd</code></pre></figure></p>
 
 <p><br /></p>
 
+<p>List all groups</p>
 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> getent group</code></pre></figure></p>
 
+<p><br /></p>
 
 <p>Switch to a different user:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su - user2</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> su - user2</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Display current logged user:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">whoami</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> whoami</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>display members of a group:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">members mygroup</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> members mygroup</code></pre></figure></p>
 
 <p><br /></p>
 
+<p>make file executable:</p>
 
-
-
-<p>Switch to super user:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">su</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> sudo chmod +x <span class="s2">"file_name"</span></code></pre></figure></p>
 
 <p><br /></p>
-
-
-
-
-<p>Run a command using super user:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo <span class="o">(</span><span class="nb">command</span><span class="o">)</span></code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
-
-<p>Exit from Super user mode or close terminal window:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">exit</span></code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
 
 <p>Open application using Super user:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo open -a <span class="s2">"app_name"</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> sudo open -a <span class="s2">"app_name"</span></code></pre></figure></p>
 
 <p><br /></p>
 
-
-
-
 <hr />
-
-
-
 
 <h2>Process management</h2>
 
-
-
-
 <p>List active processes:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ps -a</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> ps -a</code></pre></figure></p>
 
 <p><br /></p>
 
+<p>discover PID of a process by name:</p>
 
-
-
-<p>discover PID of a process:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">pidof java</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> pidof java</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Kill process by PID:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">kill </span>2581</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nb">kill </span>2581</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Kill process and force shutdown:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">kill</span> -9 2581</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nb">kill</span> -9 2581</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
 
 <p>Kill all processes with same name:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">killall java</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> killall java</code></pre></figure></p>
 
 <p><br /></p>
-
-
-
-
-<hr />
-
-
-
-
-<h2>GIT</h2>
-
-
-
-
-<p>Adds all current changes to staging area</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git add -all</code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
-
-<p>Commits current changes from staging area to local branch</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git commit -m <span class="s2">"commit message"</span></code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
-
-<p>Pushes local commits to remote branch</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git push</code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
-
-<p>Pushes the commits from your local master branch to a (possibly new) remote branch my_test
-and sets up master to track origin/my_test.</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git push -u origin master:my_test</code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
-
-<hr />
-
-
-
-
-<h2>node.js and npm</h2>
-
-
-
-
-<p>Remove all globally installed packages with npm:</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm -g ls | grep -v <span class="s1">'npm@'</span> | awk <span class="s1">'/@/ {print $2}'</span> | awk -F@ <span class="s1">'{print $1}'</span> | xargs sudo npm -g rm</code></pre></div>
-
-
-
-
-<p><br /></p>
-
-
-
-
-<p>Purge NodeJS installation</p>
-
-
-
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get remove --purge nodejs</code></pre></div>
-
-
-
 </article>
 		      </section>
 

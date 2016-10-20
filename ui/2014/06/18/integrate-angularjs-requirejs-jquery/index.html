@@ -98,130 +98,98 @@
 
 			<article contenteditable="false"><h3>index.html</h3>
 
-
-
-
 <p>First of all, in your index page, you will have to load requireJS script and point it your main configuration file like:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--requireJS --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">data-main=</span><span class="s">"js/main"</span> <span class="na">src=</span><span class="s">"lib/requirejs/require.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--requireJS --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">data-main=</span><span class="s">"js/main"</span> <span class="na">src=</span><span class="s">"lib/requirejs/require.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure></p>
 
 <p>after that its time to configure requireJS to load your JS modules.</p>
 
-
-
-
 <hr />
-
-
-
 
 <h3>main.js</h3>
 
-
-
-
 <p>In your main.js file you will configure require and also wrap all non requirejs compatible modules into shims:</p>
 
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><br/>
+    <span class="na">baseUrl</span><span class="p">:</span> <span class="s1">'js/'</span><span class="p">,</span></p>
 
+<pre><code>&lt;span class="na"&gt;paths&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="na"&gt;jquery&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/plugins/jquery/jquery'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="na"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular/angular'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="na"&gt;angularAnimate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular-animate/angular-animate'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="na"&gt;angularCookies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular-cookies/angular-cookies'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="na"&gt;angularMocks&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular-mocks/angular-mocks'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="na"&gt;angularResource&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular-resource/angular-resource'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   
+    &lt;span class="na"&gt;angularRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular-route/angular-route'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="na"&gt;angularScenario&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/components/angular-scenario/angular-scenario'&lt;/span&gt;
+&lt;span class="p"&gt;},&lt;/span&gt;   
 
+&lt;span class="na"&gt;shim&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;'jquery'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'exports'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'jquery'&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;'myApp'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'jquery'&lt;/span&gt; &lt;span class="p"&gt;]},&lt;/span&gt;
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span> 
-    <span class="na">baseUrl</span><span class="p">:</span> <span class="s1">'js/'</span><span class="p">,</span>
+    &lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'jquery'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s1"&gt;'exports'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'angular'&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;'angularResource'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="na"&gt;exports&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'angularResource'&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;'angularRoute'&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;
+        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;'angularAnimate'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;'angularCookies'&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;
+        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;          
+&lt;span class="s1"&gt;'angularMocks'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="s1"&gt;'angularScenario'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;},&lt;/span&gt;   
+&lt;span class="na"&gt;priority&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s1"&gt;'angular'&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+</code></pre>
 
-    <span class="na">paths</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">jquery</span><span class="p">:</span> <span class="s1">'../lib/plugins/jquery/jquery'</span><span class="p">,</span>
-        <span class="na">angular</span><span class="p">:</span> <span class="s1">'../lib/components/angular/angular'</span><span class="p">,</span>
-        <span class="na">angularAnimate</span><span class="p">:</span> <span class="s1">'../lib/components/angular-animate/angular-animate'</span><span class="p">,</span>
-        <span class="na">angularCookies</span><span class="p">:</span> <span class="s1">'../lib/components/angular-cookies/angular-cookies'</span><span class="p">,</span>
-        <span class="na">angularMocks</span><span class="p">:</span> <span class="s1">'../lib/components/angular-mocks/angular-mocks'</span><span class="p">,</span>
-        <span class="na">angularResource</span><span class="p">:</span> <span class="s1">'../lib/components/angular-resource/angular-resource'</span><span class="p">,</span>   
-        <span class="na">angularRoute</span><span class="p">:</span> <span class="s1">'../lib/components/angular-route/angular-route'</span><span class="p">,</span>
-        <span class="na">angularScenario</span><span class="p">:</span> <span class="s1">'../lib/components/angular-scenario/angular-scenario'</span>
-    <span class="p">},</span>   
-    
-    <span class="na">shim</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'jquery'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'exports'</span><span class="p">:</span> <span class="s1">'jquery'</span><span class="p">},</span>
-        <span class="s1">'myApp'</span> <span class="p">:</span> <span class="p">{</span><span class="nl">deps</span><span class="p">:[</span><span class="s1">'jquery'</span> <span class="p">]},</span>
-        
-        <span class="s1">'angular'</span><span class="err">:</span> <span class="p">{</span>
-            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'jquery'</span><span class="p">],</span>
-            <span class="s1">'exports'</span><span class="err">:</span> <span class="s1">'angular'</span>
-        <span class="p">},</span>
-        <span class="s1">'angularResource'</span><span class="err">:</span> <span class="p">{</span>
-            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">],</span>
-            <span class="nx">exports</span><span class="err">:</span> <span class="s1">'angularResource'</span>
-        <span class="p">},</span>
-        <span class="s1">'angularRoute'</span><span class="err">:</span><span class="p">{</span>
-            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s1">'angularAnimate'</span><span class="err">:</span> <span class="p">{</span>
-            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s1">'angularCookies'</span><span class="err">:</span><span class="p">{</span>
-            <span class="s1">'deps'</span><span class="err">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
-        <span class="p">},</span>          
-    <span class="s1">'angularMocks'</span><span class="err">:</span> <span class="p">{</span>
-        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
-    <span class="p">},</span>
-    <span class="s1">'angularScenario'</span><span class="err">:</span> <span class="p">{</span>
-        <span class="nl">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
-    <span class="p">},</span>   
-    <span class="nx">priority</span><span class="err">:</span> <span class="p">[</span>
-        <span class="s1">'angular'</span>
-    <span class="p">]</span>
-<span class="p">});</span>
+<p><span class="p">});</span></p>
 
-<span class="cm">/*
+<p><span class="cm">/<em>
  this block of code is necessary in order to defer angular's bootstrap phase.
-*/</span>
+</em>/</span>
 <span class="c1">//http://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'NG_DEFER_BOOTSTRAP!'</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'NG_DEFER_BOOTSTRAP!'</span><span class="p">;</span></p>
 
-<span class="nx">require</span><span class="p">(</span> <span class="p">[</span>
+<p><span class="nx">require</span><span class="p">(</span> <span class="p">[</span>
     <span class="s1">'angular'</span><span class="p">,</span>
     <span class="s1">'app'</span><span class="p">,</span>
     <span class="s1">'routes'</span><span class="p">,</span>
     <span class="s1">'myApp'</span>
 <span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">app</span><span class="p">,</span> <span class="nx">routes</span><span class="p">,</span> <span class="nx">myApp</span><span class="p">)</span> <span class="p">{</span>
     <span class="s1">'use strict'</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">$html</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'html'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">$html</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'html'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span></p>
 
-    <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">().</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">angular</span><span class="p">.</span><span class="nx">resumeBootstrap</span><span class="p">([</span><span class="nx">app</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]]);</span>
-    <span class="p">});</span>
-<span class="p">});</span></code></pre></div>
+<pre><code>&lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;ready&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;resumeBootstrap&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nx"&gt;app&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;]]);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+</code></pre>
 
-
-
+<p><span class="p">});</span></code></pre></figure></p>
 
 <p>With the above configuration angular will resume the bootstrap process in the right moment.</p>
 
-
-
-
 <hr />
-
-
-
 
 <h3>app.js</h3>
 
-
-
-
 <p>you should have a file called app.js that will initialize your angular app module:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span>
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span>
     <span class="s1">'angular'</span><span class="p">,</span>
     <span class="s1">'filters'</span><span class="p">,</span>
     <span class="s1">'services'</span><span class="p">,</span>
@@ -230,182 +198,142 @@
     <span class="s1">'animations'</span><span class="p">,</span>
     <span class="s1">'angularRoute'</span><span class="p">,</span>
     <span class="s1">'angularCookies'</span><span class="p">,</span>
-    <span class="s1">'angularAnimate'</span>    
+    <span class="s1">'angularAnimate'</span>  <br/>
     <span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-        <span class="s1">'use strict'</span><span class="p">;</span>
+        <span class="s1">'use strict'</span><span class="p">;</span></p>
 
-        <span class="k">return</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span>
-            <span class="s1">'ngRoute'</span><span class="p">,</span>
-            <span class="s1">'ngCookies'</span><span class="p">,</span>
-            <span class="s1">'ngAnimate'</span><span class="p">,</span>
-            <span class="s1">'myApp.services'</span><span class="p">,</span>
-            <span class="s1">'myApp.directives'</span><span class="p">,</span>
-            <span class="s1">'myApp.filters'</span><span class="p">,</span>
-            <span class="s1">'myApp.controllers'</span><span class="p">,</span>
-            <span class="s1">'myApp.animations'</span>
-        <span class="p">]);</span>
+<pre><code>    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'myApp'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s1"&gt;'ngRoute'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'ngCookies'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'ngAnimate'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'myApp.services'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'myApp.directives'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'myApp.filters'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'myApp.controllers'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;'myApp.animations'&lt;/span&gt;
+    &lt;span class="p"&gt;]);&lt;/span&gt;
+</code></pre>
 
-<span class="p">});</span></code></pre></div>
-
-
-
+<p><span class="p">});</span></code></pre></figure></p>
 
 <hr />
-
-
-
 
 <p>These files follow the normal angularJS app structure with routes, controllers, directives, services and filters:</p>
 
-
-
-
 <p>services.js</p>
 
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'angularResource'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span></p>
+
+<pre><code>    &lt;span class="cm"&gt;/* Services */&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;appServices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'myApp.services'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'ngResource'&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+
+&lt;span class="nx"&gt;appServices&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'UserService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$resource'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'/appPortal/rest/user/:id'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@id"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}]);&lt;/span&gt;
+
+&lt;span class="nx"&gt;appServices&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'ProductService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$resource'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;    
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'/appPortal/rest/product/:id:query:catid'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@id"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;            
+            &lt;span class="na"&gt;catid&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@catid"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;          
+            &lt;span class="na"&gt;query&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@query"&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}]);&lt;/span&gt;   
 
 
+&lt;span class="nx"&gt;appServices&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'ProductCategoryService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$resource'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;    
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'/appPortal/rest/category/:id:query'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@id"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;            
+                &lt;span class="na"&gt;query&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@query"&lt;/span&gt;                  
+            &lt;span class="p"&gt;},&lt;/span&gt;               
+            &lt;span class="p"&gt;{&lt;/span&gt;
+              &lt;span class="s1"&gt;'querynode'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"GET"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="na"&gt;params&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;query&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'node'&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="na"&gt;isArray&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}]);&lt;/span&gt;
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'angularResource'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">'use strict'</span><span class="p">;</span>
-    
-        <span class="cm">/* Services */</span>
-    <span class="kd">var</span> <span class="nx">appServices</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp.services'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngResource'</span><span class="p">]);</span>
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;appServices&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+</code></pre>
 
-    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'UserService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
-          <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>
-        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/appPortal/rest/user/:id'</span><span class="p">,</span> 
-                <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span><span class="p">}</span>
-        <span class="p">);</span>
-      <span class="p">}]);</span>
-
-    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'ProductService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>    
-        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/appPortal/rest/product/:id:query:catid'</span><span class="p">,</span>
-                <span class="p">{</span>
-                <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span><span class="p">,</span>            
-                <span class="na">catid</span><span class="p">:</span> <span class="s2">"@catid"</span><span class="p">,</span>          
-                <span class="na">query</span><span class="p">:</span> <span class="s2">"@query"</span>
-                <span class="p">}</span>
-        <span class="p">);</span>
-      <span class="p">}]);</span>   
-
-    
-    <span class="nx">appServices</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'ProductCategoryService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>    
-        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/appPortal/rest/category/:id:query'</span><span class="p">,</span> 
-                <span class="p">{</span>
-                    <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span><span class="p">,</span>            
-                    <span class="na">query</span><span class="p">:</span> <span class="s2">"@query"</span>                  
-                <span class="p">},</span>               
-                <span class="p">{</span>
-                  <span class="s1">'querynode'</span><span class="p">:</span>  <span class="p">{</span> <span class="nl">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span> <span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">query</span><span class="p">:</span> <span class="s1">'node'</span><span class="p">},</span> <span class="na">isArray</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
-                <span class="p">}</span>
-        <span class="p">);</span>
-      <span class="p">}]);</span>
-            
-    <span class="k">return</span> <span class="nx">appServices</span><span class="p">;</span>
-<span class="p">});</span></code></pre></div>
-
-
-
+<p><span class="p">});</span></code></pre></figure></p>
 
 <hr />
-
-
-
 
 <p>controllers.js</p>
 
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span></p>
 
+<pre><code>&lt;span class="cm"&gt;/* Controllers */&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;appControllers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'myApp.controllers'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'myApp.services'&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 
+&lt;span class="nx"&gt;appControllers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'UserController'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$scope'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'$routeParams'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'UserService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$routeParams&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;UserService&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;UserService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;$routeParams&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+  &lt;span class="p"&gt;}]);&lt;/span&gt;
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">'use strict'</span><span class="p">;</span>
+&lt;span class="nx"&gt;appControllers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'ProductListController'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$scope'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'ProductService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ProductService&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;products&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ProductService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;query&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;orderProp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'introductionDate'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}]);&lt;/span&gt;
 
-    <span class="cm">/* Controllers */</span>
-    <span class="kd">var</span> <span class="nx">appControllers</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp.controllers'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'myApp.services'</span><span class="p">]);</span>
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;appControllers&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+</code></pre>
 
-    <span class="nx">appControllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'UserController'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'$routeParams'</span><span class="p">,</span> <span class="s1">'UserService'</span><span class="p">,</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$routeParams</span><span class="p">,</span> <span class="nx">UserService</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">UserService</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="nx">$routeParams</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
-      <span class="p">}]);</span>
-
-    <span class="nx">appControllers</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'ProductListController'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'ProductService'</span><span class="p">,</span>
-      <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">ProductService</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">products</span> <span class="o">=</span> <span class="nx">ProductService</span><span class="p">.</span><span class="nx">query</span><span class="p">();</span>
-        <span class="nx">$scope</span><span class="p">.</span><span class="nx">orderProp</span> <span class="o">=</span> <span class="s1">'introductionDate'</span><span class="p">;</span>
-      <span class="p">}]);</span>
-
-    <span class="k">return</span> <span class="nx">appControllers</span><span class="p">;</span>
-<span class="p">});</span></code></pre></div>
-
-
-
+<p><span class="p">});</span></code></pre></figure></p>
 
 <hr />
-
-
-
 
 <p>directives.js</p>
 
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">services</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">'use strict'</span><span class="p">;</span></p>
 
+<pre><code>    &lt;span class="cm"&gt;/* Directives */&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;appDirectives&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'myApp.directives'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'myApp.services'&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 
+&lt;span class="nx"&gt;appDirectives&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;directive&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'prodThumbnail'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="na"&gt;restrict&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'E'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="na"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="na"&gt;product&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'='&lt;/span&gt;
+      &lt;span class="p"&gt;},&lt;/span&gt;
+      &lt;span class="na"&gt;templateUrl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'partials/template/product_thumbnail.html'&lt;/span&gt;
+    &lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="p"&gt;}]);&lt;/span&gt;
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">services</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">'use strict'</span><span class="p">;</span>
+&lt;span class="nx"&gt;appDirectives&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;directive&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'appVersion'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'version'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;elm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;attrs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;elm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="p"&gt;}]);&lt;/span&gt;
 
-        <span class="cm">/* Directives */</span>
-    <span class="kd">var</span> <span class="nx">appDirectives</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp.directives'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'myApp.services'</span><span class="p">]);</span>
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;appDirectives&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+</code></pre>
 
-    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">'prodThumbnail'</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">{</span>
-          <span class="na">restrict</span><span class="p">:</span> <span class="s1">'E'</span><span class="p">,</span>
-          <span class="na">scope</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">product</span><span class="p">:</span> <span class="s1">'='</span>
-          <span class="p">},</span>
-          <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'partials/template/product_thumbnail.html'</span>
-        <span class="p">};</span>
-    <span class="p">}]);</span>
-
-    <span class="nx">appDirectives</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">'appVersion'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'version'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elm</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">elm</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">version</span><span class="p">);</span>
-          <span class="p">};</span>
-    <span class="p">}]);</span>
-    
-    <span class="k">return</span> <span class="nx">appDirectives</span><span class="p">;</span>
-
-<span class="p">});</span></code></pre></div>
-
-
-
+<p><span class="p">});</span></code></pre></figure></p>
 
 <hr />
-
-
-
 
 <p>Then your HTML pages could contain code to invoke the directives:</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">"product in products"</span> <span class="nt">&gt;</span>         
+<p><figure class="highlight"><pre><code class="language-html" data-lang="html">        <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">"product in products"</span> <span class="nt">&gt;</span>        <br/>
             <span class="nt">&lt;prod-thumbnail</span> <span class="na">product=</span><span class="s">"product"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;/prod-thumbnail&gt;</span>         
-        <span class="nt">&lt;/li&gt;</span></code></pre></div>
-
-
-
+            <span class="nt">&lt;/prod-thumbnail&gt;</span>       <br/>
+        <span class="nt">&lt;/li&gt;</span></code></pre></figure></p>
 
 <hr />
 
-
-
-
 <p>With the above configuration your web application can benefit from the modularity that requirejs provides and the cleanness and organization that angularjs provides, together which jquery and make them both a great choice to use for a modern frontend web application.</p>
-
 </article>
 		      </section>
 

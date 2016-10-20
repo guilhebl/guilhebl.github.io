@@ -98,59 +98,41 @@
 
 			<article contenteditable="false"><h3>SQL scripts</h3>
 
-
-
-
 <p>A typical User domain model must have a clean separation between each table and what they're supposed to store
 according to each table's entity responsibility.</p>
 
-
-
-
 <p>It is not really good to have the main user table with a lot of fields, keep on it mainly the fields which are most accessed.</p>
-
-
-
 
 <p>this sql script was tested under PostgreSQL DB and also OracleXE DB with minor syntax changes.
 In this scenario the User primary key is also the email, and has to be unique across all the app.
 User password is stored encrypted in the database (MD5 or some other encryption algorithm).</p>
 
-
-
-
 <hr />
-
-
-
 
 <h3>User</h3>
 
-
-
-
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER</span>
+<p><figure class="highlight"><pre><code class="language-sql" data-lang="sql"> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER</span>
  <span class="p">(</span>
       <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CONSTRAINT</span> <span class="n">USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
       <span class="n">PASSWORD</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
       <span class="n">ACTIVE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
- <span class="p">);</span>
- 
-<span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP</span>
+ <span class="p">);</span></p>
+
+<p><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP</span>
  <span class="p">(</span>
      <span class="n">ID_GROUP</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
      <span class="n">DESCRIPTION</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
- <span class="p">);</span>
+ <span class="p">);</span></p>
 
-<span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP_USER</span> <span class="p">(</span>
+<p><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_GROUP_USER</span> <span class="p">(</span>
        <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
        <span class="n">ID_GROUP</span>  <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">,</span> <span class="n">ID_GROUP</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">),</span>
        <span class="k">CONSTRAINT</span> <span class="n">USER_GROUP_USER_GROUP_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER_GROUP</span><span class="p">(</span><span class="n">ID_GROUP</span><span class="p">)</span> <span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>
-<span class="p">);</span>
+<span class="p">);</span></p>
 
- <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_PROFILE</span> <span class="p">(</span>
+<p> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_PROFILE</span> <span class="p">(</span>
      <span class="n">ID_USER_PROFILE</span> <span class="n">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
      <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="p">,</span>
      <span class="n">USER_COOKIE</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
@@ -163,20 +145,20 @@ User password is stored encrypted in the database (MD5 or some other encryption 
      <span class="n">RECEIVE_MESSAGE_FLAG</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PROFILE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER_PROFILE</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PROFILE_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span>
-<span class="p">);</span>
+<span class="p">);</span></p>
 
-<span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_PREFERENCE</span> <span class="p">(</span>
+<p><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_USER_PREFERENCE</span> <span class="p">(</span>
      <span class="n">ID_USER_PREFERENCE</span> <span class="n">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
      <span class="n">ID_USER</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-     <span class="n">CURRENCY</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+     <span class="n">CURRENCY</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
      <span class="n">PREFERRED_LOCALE</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
      <span class="n">RECEIVE_NEWSLETTER_FLAG</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
      <span class="n">REMEMBER_ME</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PREFERENCE_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">ID_USER_PREFERENCE</span><span class="p">),</span>
     <span class="k">CONSTRAINT</span> <span class="n">USER_PREF_USER_FK</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">TB_USER</span><span class="p">(</span><span class="n">ID_USER</span><span class="p">)</span>
-<span class="p">);</span>
+<span class="p">);</span></p>
 
- <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_LOG</span>
+<p> <span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">TB_LOG</span>
  <span class="p">(</span>
     <span class="n">ID_LOG</span> <span class="n">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">EMAIL</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -184,20 +166,13 @@ User password is stored encrypted in the database (MD5 or some other encryption 
     <span class="n">NAME</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">ACTION_TYPE</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="k">CONSTRAINT</span> <span class="n">TB_LOG_PK</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">ID_LOG</span><span class="p">)</span>
- <span class="p">);</span></code></pre></div>
+ <span class="p">);</span></p>
 
-
-
+<p> </code></pre></figure></p>
 
 <hr />
 
-
-
-
 <p>Description of Tables:</p>
-
-
-
 
 <ul>
 <li><p>TB_USER - main table for User.</p></li>
@@ -207,8 +182,6 @@ User password is stored encrypted in the database (MD5 or some other encryption 
 <li><p>TB_USER_PREFERENCE - Stores preferences for the user across the site like: Currency, preferred language, remember me feature, etc.</p></li>
 <li><p>TB_LOG - Log table for saving log records from a specific user action like changing sensitive data, also it's not coupled to any other table.</p></li>
 </ul>
-
-
 
 </article>
 		      </section>

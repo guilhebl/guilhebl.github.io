@@ -98,31 +98,15 @@
 
 			<article contenteditable="false"><h2>Default syntax</h2>
 
-
-
-
 <p>Per the EJB 3.1 Specification, each session bean is assigned a unique JNDI name within the java:global namespace.</p>
 
-
-
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nl">java:</span><span class="n">global</span><span class="o">[/&lt;</span><span class="n">app</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;]/&lt;</span><span class="n">module</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/&lt;</span><span class="n">bean</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span></code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nl">java:</span><span class="n">global</span><span class="o">[/&lt;</span><span class="n">app</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;]/&lt;</span><span class="n">module</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/&lt;</span><span class="n">bean</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span></code></pre></figure></p>
 
 <p>The <app-name> portion is only present if the application is deployed as an .ear file.   In that case, <app-name> defaults to the unqualified name of the .ear file, minus the file extension.   The <app-name> can be explicitly specified using the <app-name> element in application.xml.</p>
 
-
-
-
 <p><module-name> defaults to the unqualified name of the ejb-jar file or .war file in which the EJB component is defined, minus the file extension.   The <module-name> can be explicitly specified using the <module-name> element of the ejb-jar.xml (for ejb-jars) or web.xml(for EJB components defined in .wars).</p>
 
-
-
-
 <p><bean-name> corresponds to the session bean's EJB name.  It defaults to the unqualified name of the session bean class.  It can be explicitly specified using the name attribute of the @Stateless/@Stateful/@Singleton annotation.  Alternatively, if the ejb-jar.xml is being used to define the component, <bean-name> corresponds to the <ejb-name> element of ejb-jar.xml.</p>
-
 </article>
 		      </section>
 

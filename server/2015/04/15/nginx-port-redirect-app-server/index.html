@@ -98,19 +98,10 @@
 
 			<article contenteditable="false"><hr />
 
-
-
-
 <h2>Sample port redirect</h2>
-
-
-
 
 <p>A common scenario when using a separate Web Server from an Application Server is port redirect.
 using NGINX as a web application server and an application server it is possible to redirect incoming requests for specific data retrieved in the server-side via JSON,</p>
-
-
-
 
 <ol>
 <li>/myapp/rest/ correlates to the designated server side app RESTful endpoint returning data via JSON</li>
@@ -118,72 +109,60 @@ using NGINX as a web application server and an application server it is possible
 </ol>
 
 
-
-
 <p>this example depicts an application server environment running in HTTPS secure mode (To enable HTTPS in NGINX generate a public key using OpenSSL and place it in your designated webserver folder).
 here goes a sample NGINX configuration for redirecting from port 80 to a localhost application server listening on port HTTPS 8181.</p>
 
-
-
-
 <hr />
-
-
-
 
 <h2>nginx project conf file</h2>
 
-
-
-
-<div class="highlight"><pre><code class="language-vi" data-lang="vi">server {
+<p><figure class="highlight"><pre><code class="language-vi" data-lang="vi">server {
     listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
+    listen [::]:80 default_server ipv6only=on;</p>
 
-    server_name localhost;
-    return 301 https://$server_name$request_uri;
-}
+<pre><code>server_name localhost;
+return 301 https://$server_name$request_uri;
+</code></pre>
 
-server {
+<p>}</p>
+
+<p>server {
     listen 443 ssl;
-    client_max_body_size 5M;
+    client_max_body_size 5M;</p>
 
-    root /usr/share/nginx/html;
-    index  index.html index.htm;
+<pre><code>root /usr/share/nginx/html;
+index  index.html index.htm;
 
-    # Make site accessible from http://localhost/
-    server_name localhost;
+# Make site accessible from http://localhost/
+server_name localhost;
 
-    # SSL configuration
-    ssl_certificate /etc/nginx/ssl/myapp.crt;
-        ssl_certificate_key /etc/nginx/ssl/myapp.key;
+# SSL configuration
+ssl_certificate /etc/nginx/ssl/myapp.crt;
+    ssl_certificate_key /etc/nginx/ssl/myapp.key;
 
-        location ~ ^/myapp/rest/ {
-            proxy_pass         https://localhost:8181;
-            proxy_redirect     off;
-            proxy_set_header   Host             $host;
-            proxy_set_header   X-Real-IP        $remote_addr;
-            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
-        }
-
-    location ~ ^/myapp/image/ {
-            proxy_pass         https://localhost:8181; # image server
-            proxy_set_header   Host             $host;
-            proxy_set_header   X-Real-IP        $remote_addr;
-            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    location ~ ^/myapp/rest/ {
+        proxy_pass         https://localhost:8181;
+        proxy_redirect     off;
+        proxy_set_header   Host             $host;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
     }
 
-    location / {
-        try_files $uri $uri/ =404;
-        }
+location ~ ^/myapp/image/ {
+        proxy_pass         https://localhost:8181; # image server
+        proxy_set_header   Host             $host;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+}
 
-}</code></pre></div>
+location / {
+    try_files $uri $uri/ =404;
+    }
+</code></pre>
 
-
-
+<p>}   </code></pre></figure></p>
 
 <hr />
-
 </article>
 		      </section>
 
