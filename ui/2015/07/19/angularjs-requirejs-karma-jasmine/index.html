@@ -134,27 +134,21 @@ Here we are testing our AnimalListCtrl.js a simple angular JS controller that li
 <p>Our services that will interact with a backend resource:</p>
 
 <p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'angularResource'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">'use strict'</span><span class="p">;</span></p>
-
-<pre><code>&lt;span class="cm"&gt;/* Services */&lt;/span&gt;
-&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;services&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'farmapp.services'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'ngResource'&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
-
-&lt;span class="nx"&gt;services&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'AnimalService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$resource'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;    
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'/farmWebApp/rest/animal/:id'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"@id"&lt;/span&gt;
-            &lt;span class="p"&gt;},&lt;/span&gt;
-            &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="s1"&gt;'getByName'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'GET'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="na"&gt;params&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'@name'&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="na"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'/farmWebApp/rest/animal/:name'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-            &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}]);&lt;/span&gt;   
-
-&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;services&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-</code></pre>
-
-<p><span class="p">});</span></code></pre></figure></p>
+    <span class="s1">'use strict'</span><span class="p">;</span>  <br/>
+    <span class="kd">var</span> <span class="nx">services</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'farmapp.services'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngResource'</span><span class="p">]);</span>
+    <span class="nx">services</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'AnimalService'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$resource'</span><span class="p">,</span>
+      <span class="kd">function</span><span class="p">(</span><span class="nx">$resource</span><span class="p">){</span>  <br/>
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">'/farmWebApp/rest/animal/:id'</span><span class="p">,</span>
+                <span class="p">{</span>
+                <span class="na">id</span><span class="p">:</span> <span class="s2">"@id"</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s1">'getByName'</span><span class="p">:</span> <span class="p">{</span><span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'@name'</span><span class="p">},</span> <span class="na">url</span><span class="p">:</span> <span class="s1">'/farmWebApp/rest/animal/:name'</span><span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">);</span>
+      <span class="p">}]);</span>
+    <span class="k">return</span> <span class="nx">services</span><span class="p">;</span>
+<span class="p">});</span></code></pre></figure></p>
 
 <h2>Controllers</h2>
 
@@ -176,32 +170,22 @@ Here we are testing our AnimalListCtrl.js a simple angular JS controller that li
 <p>Here is the code for the animal list controller, which will be responsible for fetching a list of animals from the service.</p>
 
 <p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'services'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">angular</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s1">'use strict'</span><span class="p">;</span></p>
-
-<pre><code>&lt;span class="cm"&gt;/* Controllers */&lt;/span&gt;
-&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;animalList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'farmapp.animalList'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'farmapp.services'&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
-
-&lt;span class="nx"&gt;animalList&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'AnimalListCtrl'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'$scope'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'$filter'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'AnimalService'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
-  &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$filter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;AnimalService&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-
-    &lt;span class="c1"&gt;// callback for ng-click 'deleteAnimal':&lt;/span&gt;
-    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;deleteAnimal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aId&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;AnimalService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;aId&lt;/span&gt; &lt;span class="p"&gt;});&lt;/span&gt;
-        &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadAnimalListTable&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-    &lt;span class="p"&gt;};&lt;/span&gt;
-
-    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadAnimalListTable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;AnimalService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;animals&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="p"&gt;});&lt;/span&gt;
-    &lt;span class="p"&gt;};&lt;/span&gt;
-
-    &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadAnimalListTable&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-</code></pre>
-
-<p>  <span class="p">}]);</span></p>
-
-<p><span class="k">return</span> <span class="nx">animalList</span><span class="p">;</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">animalList</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'farmapp.animalList'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'farmapp.services'</span><span class="p">]);</span><br/>
+    <span class="nx">animalList</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'AnimalListCtrl'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'$filter'</span><span class="p">,</span> <span class="s1">'AnimalService'</span><span class="p">,</span>
+      <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$filter</span><span class="p">,</span> <span class="nx">AnimalService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">deleteAnimal</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">aId</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">AnimalService</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">aId</span> <span class="p">});</span>
+            <span class="nx">$scope</span><span class="p">.</span><span class="nx">loadAnimalListTable</span><span class="p">();</span>
+        <span class="p">};</span>      <br/>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">loadAnimalListTable</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">AnimalService</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">animals</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+            <span class="p">});</span>
+        <span class="p">};</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">loadAnimalListTable</span><span class="p">();</span>
+  <span class="p">}]);</span> <br/>
+<span class="k">return</span> <span class="nx">animalList</span><span class="p">;</span>
 <span class="p">});</span></code></pre></figure></p>
 
 <h2>karma.conf.js</h2>
@@ -209,69 +193,53 @@ Here we are testing our AnimalListCtrl.js a simple angular JS controller that li
 <p>In order to trigger unit tests in our application we will use Karma along with Jasmine for JS Unit tests.</p>
 
 <p><figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">){</span>
-  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span></p>
-
-<pre><code>&lt;span class="na"&gt;basePath&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'./'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="na"&gt;frameworks&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'jasmine'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-
-&lt;span class="c1"&gt;// test results reporter to use&lt;/span&gt;
-&lt;span class="c1"&gt;// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'&lt;/span&gt;
-&lt;span class="na"&gt;reporters&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'progress'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-
-&lt;span class="c1"&gt;// enable / disable colors in the output (reporters and logs)&lt;/span&gt;
-&lt;span class="na"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="c1"&gt;// level of logging&lt;/span&gt;
-&lt;span class="c1"&gt;// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG&lt;/span&gt;
-&lt;span class="c1"&gt;//logLevel: config.LOG_INFO,&lt;/span&gt;
-&lt;span class="na"&gt;logLevel&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;LOG_DEBUG&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="c1"&gt;// enable / disable watching file and executing tests whenever any file changes&lt;/span&gt;
-&lt;span class="na"&gt;autoWatch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="c1"&gt;// If browser does not capture in given timeout [ms], kill it&lt;/span&gt;
-&lt;span class="na"&gt;captureTimeout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;60000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="na"&gt;browserNoActivityTimeout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="c1"&gt;// Continuous Integration mode&lt;/span&gt;
-&lt;span class="c1"&gt;// if true, it capture browsers, run tests and exit&lt;/span&gt;
-&lt;span class="na"&gt;singleRun&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="na"&gt;plugins&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;               
-           &lt;span class="s1"&gt;'karma-chrome-launcher'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-           &lt;span class="s1"&gt;'karma-firefox-launcher'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;                            
-           &lt;span class="s1"&gt;'karma-script-launcher'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-           &lt;span class="s1"&gt;'karma-phantomjs-launcher'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-           &lt;span class="s1"&gt;'karma-junit-reporter'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-           &lt;span class="s1"&gt;'karma-jasmine'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-           &lt;span class="s1"&gt;'karma-requirejs'&lt;/span&gt;               
-&lt;span class="p"&gt;],&lt;/span&gt;
-
-&lt;span class="na"&gt;files&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;          
-  &lt;span class="s1"&gt;'node_modules/requirejs/require.js'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s1"&gt;'node_modules/karma-requirejs/lib/adapter.js'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;      
-  &lt;span class="s1"&gt;'app/js/test-main.js'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-  &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'app/lib/**/*.js'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="na"&gt;included&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'app/js/**/*.js'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="na"&gt;included&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;      
-  &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'app/js/views/**/*Spec.js'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="na"&gt;included&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;   
-&lt;span class="p"&gt;],&lt;/span&gt;
-
-&lt;span class="c1"&gt;// list of files to exclude&lt;/span&gt;
-&lt;span class="na"&gt;exclude&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-  &lt;span class="s1"&gt;'app/js/main.js'&lt;/span&gt;
-&lt;span class="p"&gt;],&lt;/span&gt;    
-
-&lt;span class="na"&gt;browsers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'PhantomJS'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-
-&lt;span class="na"&gt;junitReporter&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="na"&gt;outputFile&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'test_out/unit.xml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="na"&gt;suite&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'unit'&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-</code></pre>
-
-<p>  <span class="p">});</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+    <span class="na">basePath</span> <span class="p">:</span> <span class="s1">'./'</span><span class="p">,</span>
+    <span class="na">frameworks</span><span class="p">:</span> <span class="p">[</span><span class="s1">'jasmine'</span><span class="p">],</span>
+    <span class="c1">// test results reporter to use</span>
+    <span class="c1">// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'</span>
+    <span class="na">reporters</span><span class="p">:</span> <span class="p">[</span><span class="s1">'progress'</span><span class="p">],</span>
+    <span class="c1">// enable / disable colors in the output (reporters and logs)</span>
+    <span class="na">colors</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// level of logging</span>
+    <span class="c1">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span>
+    <span class="c1">//logLevel: config.LOG_INFO,</span>
+    <span class="na">logLevel</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">LOG_DEBUG</span><span class="p">,</span> <br/>
+    <span class="c1">// enable / disable watching file and executing tests whenever any file changes</span>
+    <span class="na">autoWatch</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// If browser does not capture in given timeout [ms], kill it</span>
+    <span class="na">captureTimeout</span><span class="p">:</span> <span class="mi">60000</span><span class="p">,</span>
+    <span class="na">browserNoActivityTimeout</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+    <span class="c1">// Continuous Integration mode</span>
+    <span class="c1">// if true, it capture browsers, run tests and exit</span>
+    <span class="na">singleRun</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">plugins</span> <span class="p">:</span> <span class="p">[</span>
+               <span class="s1">'karma-chrome-launcher'</span><span class="p">,</span>
+               <span class="s1">'karma-firefox-launcher'</span><span class="p">,</span>                          <br/>
+               <span class="s1">'karma-script-launcher'</span><span class="p">,</span>
+               <span class="s1">'karma-phantomjs-launcher'</span><span class="p">,</span>
+               <span class="s1">'karma-junit-reporter'</span><span class="p">,</span>
+               <span class="s1">'karma-jasmine'</span><span class="p">,</span>
+               <span class="s1">'karma-requirejs'</span>             <br/>
+    <span class="p">],</span>
+    <span class="na">files</span> <span class="p">:</span> <span class="p">[</span>
+      <span class="s1">'node_modules/requirejs/require.js'</span><span class="p">,</span>
+      <span class="s1">'node_modules/karma-requirejs/lib/adapter.js'</span><span class="p">,</span>
+      <span class="s1">'app/js/test-main.js'</span><span class="p">,</span>
+      <span class="p">{</span><span class="na">pattern</span><span class="p">:</span> <span class="s1">'app/lib/<strong>/*.js'</span><span class="p">,</span> <span class="na">included</span><span class="p">:</span> <span class="kc">false</span><span class="p">},</span>
+      <span class="p">{</span><span class="na">pattern</span><span class="p">:</span> <span class="s1">'app/js/</strong>/<em>.js'</span><span class="p">,</span> <span class="na">included</span><span class="p">:</span> <span class="kc">false</span><span class="p">},</span>
+      <span class="p">{</span><span class="na">pattern</span><span class="p">:</span> <span class="s1">'app/js/views/**/</em>Spec.js'</span><span class="p">,</span> <span class="na">included</span><span class="p">:</span> <span class="kc">false</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="c1">// list of files to exclude</span>
+    <span class="na">exclude</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s1">'app/js/main.js'</span>
+    <span class="p">],</span>
+    <span class="na">browsers</span><span class="p">:</span> <span class="p">[</span><span class="s1">'PhantomJS'</span><span class="p">]</span>
+    <span class="na">junitReporter</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="na">outputFile</span><span class="p">:</span> <span class="s1">'test_out/unit.xml'</span><span class="p">,</span>
+      <span class="na">suite</span><span class="p">:</span> <span class="s1">'unit'</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
 <span class="p">};</span></code></pre></figure></p>
 
 <h2>test-main.js</h2>
@@ -289,136 +257,117 @@ Here we are testing our AnimalListCtrl.js a simple angular JS controller that li
 
 <p><span class="nx">requirejs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
     <span class="c1">// Karma serves files from '/base'</span>
-    <span class="na">baseUrl</span><span class="p">:</span> <span class="s1">'/base/app/js'</span><span class="p">,</span></p>
-
-<pre><code>&lt;span class="na"&gt;paths&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="na"&gt;jquery&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/jquery/dist/jquery.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angular&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular/angular.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularAnimate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-animate/angular-animate.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularCookies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-cookies/angular-cookies.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularResource&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-resource/angular-resource.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
-    &lt;span class="na"&gt;angularRoute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-route/angular-route.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularScenario&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-scenario/angular-scenario'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularMocks&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-mocks/angular-mocks'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularTouch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-touch/angular-touch'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;      
-    &lt;span class="na"&gt;angularSanitize&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-sanitize/angular-sanitize.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;jqueryui&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/jquery-ui/jquery-ui.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;bootstrap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/bootstrap/dist/js/bootstrap.min'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="na"&gt;angularBootstrap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'../lib/bower_components/angular-bootstrap/ui-bootstrap-tpls'&lt;/span&gt;
-&lt;span class="p"&gt;},&lt;/span&gt;   
-
-&lt;span class="na"&gt;shim&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'jquery'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-        &lt;span class="s1"&gt;'exports'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'angular'&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s1"&gt;'angularResource'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-        &lt;span class="na"&gt;exports&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'angularResource'&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s1"&gt;'angularRoute'&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;
-        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s1"&gt;'angularAnimate'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s1"&gt;'angularCookies'&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;
-        &lt;span class="s1"&gt;'deps'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;          
-&lt;span class="s1"&gt;'angularMocks'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="p"&gt;},&lt;/span&gt;
-&lt;span class="s1"&gt;'angularTouch'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="p"&gt;},&lt;/span&gt;
-&lt;span class="s1"&gt;'angularScenario'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="p"&gt;},&lt;/span&gt;
-&lt;span class="s1"&gt;'angularSanitize'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s1"&gt;'angularBootstrap'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-     &lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'angular'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'bootstrap'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-&lt;span class="s1"&gt;'bootstrap'&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s1"&gt;'jquery'&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
-&lt;span class="p"&gt;},&lt;/span&gt;   
-&lt;span class="na"&gt;priority&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s1"&gt;'angular'&lt;/span&gt;
-&lt;span class="p"&gt;]&lt;/span&gt;
-
-&lt;span class="c1"&gt;// ask Require.js to load these files (all our tests)&lt;/span&gt;
-&lt;span class="na"&gt;deps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;tests&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-
-&lt;span class="c1"&gt;// start test run, once Require.js is done&lt;/span&gt;
-&lt;span class="na"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;__karma__&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;start&lt;/span&gt;
-</code></pre>
-
-<p><span class="p">});</span></code></pre></figure></p>
+    <span class="na">baseUrl</span><span class="p">:</span> <span class="s1">'/base/app/js'</span><span class="p">,</span>
+    <span class="na">paths</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">jquery</span><span class="p">:</span> <span class="s1">'../lib/bower_components/jquery/dist/jquery.min'</span><span class="p">,</span>
+        <span class="na">angular</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular/angular.min'</span><span class="p">,</span>
+        <span class="na">angularAnimate</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-animate/angular-animate.min'</span><span class="p">,</span>
+        <span class="na">angularCookies</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-cookies/angular-cookies.min'</span><span class="p">,</span>
+        <span class="na">angularResource</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-resource/angular-resource.min'</span><span class="p">,</span>
+        <span class="na">angularRoute</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-route/angular-route.min'</span><span class="p">,</span>
+        <span class="na">angularScenario</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-scenario/angular-scenario'</span><span class="p">,</span>
+        <span class="na">angularMocks</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-mocks/angular-mocks'</span><span class="p">,</span>
+        <span class="na">angularTouch</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-touch/angular-touch'</span><span class="p">,</span>    <br/>
+        <span class="na">angularSanitize</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-sanitize/angular-sanitize.min'</span><span class="p">,</span>
+        <span class="na">jqueryui</span><span class="p">:</span> <span class="s1">'../lib/bower_components/jquery-ui/jquery-ui.min'</span><span class="p">,</span>
+        <span class="na">bootstrap</span><span class="p">:</span> <span class="s1">'../lib/bower_components/bootstrap/dist/js/bootstrap.min'</span><span class="p">,</span>
+        <span class="na">angularBootstrap</span><span class="p">:</span> <span class="s1">'../lib/bower_components/angular-bootstrap/ui-bootstrap-tpls'</span>
+    <span class="p">},</span> <br/>
+    <span class="na">shim</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'angular'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'jquery'</span><span class="p">],</span>
+            <span class="s1">'exports'</span><span class="p">:</span> <span class="s1">'angular'</span>
+        <span class="p">},</span>
+        <span class="s1">'angularResource'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">],</span>
+            <span class="na">exports</span><span class="p">:</span> <span class="s1">'angularResource'</span>
+        <span class="p">},</span>
+        <span class="s1">'angularRoute'</span><span class="p">:{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s1">'angularAnimate'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s1">'angularCookies'</span><span class="p">:{</span>
+            <span class="s1">'deps'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">]</span>
+        <span class="p">},</span>        <br/>
+    <span class="s1">'angularMocks'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s1">'angularTouch'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s1">'angularScenario'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s1">'angularSanitize'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">deps</span><span class="p">:[</span><span class="s1">'angular'</span><span class="p">]</span>
+    <span class="p">},</span>
+        <span class="s1">'angularBootstrap'</span> <span class="p">:</span> <span class="p">{</span>
+         <span class="na">deps</span><span class="p">:</span> <span class="p">[</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'bootstrap'</span><span class="p">]</span>
+        <span class="p">},</span>
+    <span class="s1">'bootstrap'</span> <span class="p">:</span> <span class="p">{</span><span class="na">deps</span><span class="p">:[</span><span class="s1">'jquery'</span><span class="p">]}</span>
+    <span class="p">},</span> <br/>
+    <span class="na">priority</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">'angular'</span>
+    <span class="p">]</span>
+    <span class="c1">// ask Require.js to load these files (all our tests)</span>
+    <span class="na">deps</span><span class="p">:</span> <span class="nx">tests</span><span class="p">,</span>
+    <span class="c1">// start test run, once Require.js is done</span>
+    <span class="na">callback</span><span class="p">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx"><strong>karma</strong></span><span class="p">.</span><span class="nx">start</span>
+<span class="p">});</span></code></pre></figure></p>
 
 <h2>animalListSpec.js</h2>
 
 <p>In the unit test, in this case animalListSpec.js, are all the tests that should be used by Karma for testing the animalList controller and view:</p>
 
 <p><figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">([</span><span class="s1">'angular'</span><span class="p">,</span> <span class="s1">'app'</span><span class="p">,</span> <span class="s1">'views/animal_list/animalList'</span><span class="p">,</span><span class="s1">'angularMocks'</span><span class="p">],</span>
-    <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">app</span><span class="p">,</span> <span class="nx">animalList</span><span class="p">,</span> <span class="nx">angularMocks</span><span class="p">)</span> <span class="p">{</span></p>
-
-<pre><code>&lt;span class="nx"&gt;describe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'AnimalListCtrl'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-
- &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;rootScope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-     &lt;span class="nx"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-     &lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
-     &lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
- &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;dataJSON&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"herbie"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"type"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"caprine"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"gender"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"M"&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-          &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"melvin"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"type"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"bovine"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"gender"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"M"&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-          &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"daisy"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"type"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"bovine"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"gender"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; 
-          &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"feather"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"type"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"avian"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;"gender"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"F"&lt;/span&gt;&lt;span class="p"&gt;}];&lt;/span&gt;
-
- &lt;span class="nx"&gt;beforeEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'farmapp'&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-
- &lt;span class="nx"&gt;beforeEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nx"&gt;mockAnimalService&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="na"&gt;query&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                    &lt;span class="nx"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;dataJSON&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;                       
-                &lt;span class="p"&gt;},&lt;/span&gt;
-                &lt;span class="na"&gt;remove&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-
-                &lt;span class="p"&gt;}&lt;/span&gt;
-      &lt;span class="p"&gt;};&lt;/span&gt;      
- &lt;span class="p"&gt;});&lt;/span&gt;
-
- &lt;span class="nx"&gt;beforeEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;inject&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$rootScope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$injector&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$controller&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;       
-        &lt;span class="nx"&gt;rootScope&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$rootScope&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="nx"&gt;scope&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$rootScope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;$new&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-        &lt;span class="nx"&gt;controller&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$controller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'AnimalListCtrl'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="na"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="na"&gt;AnimalService&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;               
-        &lt;span class="p"&gt;});&lt;/span&gt;                  
- &lt;span class="p"&gt;}));&lt;/span&gt;
-
-&lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'should be defined and not null'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;                                         
-      &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;toBeDefined&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;          
-      &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;not&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toBeNull&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;                          
-&lt;span class="p"&gt;});&lt;/span&gt;
-
-&lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'should call loadAnimalList'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nx"&gt;spyOn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'query'&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;and&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;callThrough&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;                 
-      &lt;span class="nx"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadAnimalListTable&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-      &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;query&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;toHaveBeenCalled&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-&lt;span class="p"&gt;});&lt;/span&gt;
-
-&lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'should call deleteAnimal'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;spyOn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'remove'&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;and&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;callThrough&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-    &lt;span class="nx"&gt;spyOn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'query'&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;and&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;callThrough&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;               
-    &lt;span class="nx"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;deleteAnimal&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-    &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;toHaveBeenCalled&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-        &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;mockAnimalService&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;query&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;toHaveBeenCalled&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-&lt;span class="p"&gt;});&lt;/span&gt;
-
-&lt;span class="p"&gt;});&lt;/span&gt;
-</code></pre>
-
-<p><span class="p">});</span></code></pre></figure></p>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">angular</span><span class="p">,</span> <span class="nx">app</span><span class="p">,</span> <span class="nx">animalList</span><span class="p">,</span> <span class="nx">angularMocks</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">describe</span><span class="p">(</span><span class="s1">'AnimalListCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nx">rootScope</span><span class="p">,</span>
+         <span class="nx">scope</span><span class="p">,</span>
+         <span class="nx">controller</span><span class="p">,</span>
+         <span class="nx">mockAnimalService</span><span class="p">;</span>        <br/>
+     <span class="kd">var</span> <span class="nx">dataJSON</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span><span class="s2">"id"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"herbie"</span><span class="p">,</span><span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"caprine"</span><span class="p">,</span><span class="s2">"gender"</span> <span class="p">:</span> <span class="s2">"M"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"id"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span><span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"melvin"</span><span class="p">,</span><span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"bovine"</span><span class="p">,</span><span class="s2">"gender"</span> <span class="p">:</span> <span class="s2">"M"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"id"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"daisy"</span><span class="p">,</span><span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"bovine"</span><span class="p">,</span><span class="s2">"gender"</span> <span class="p">:</span> <span class="s2">"F"</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">"id"</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span><span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"feather"</span><span class="p">,</span><span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"avian"</span><span class="p">,</span><span class="s2">"gender"</span> <span class="p">:</span> <span class="s2">"F"</span><span class="p">}];</span>
+     <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">'farmapp'</span><span class="p">));</span>
+     <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">mockAnimalService</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="na">query</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">callback</span><span class="p">(</span><span class="nx">dataJSON</span><span class="p">);</span>
+                    <span class="p">},</span>
+                    <span class="na">remove</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="p">}</span>
+          <span class="p">};</span>
+     <span class="p">});</span>
+     <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">$injector</span><span class="p">,</span> <span class="nx">$controller</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">rootScope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">;</span>
+            <span class="nx">scope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>
+            <span class="nx">controller</span> <span class="o">=</span> <span class="nx">$controller</span><span class="p">(</span><span class="s1">'AnimalListCtrl'</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">$scope</span><span class="p">:</span> <span class="nx">scope</span><span class="p">,</span>
+                    <span class="na">AnimalService</span><span class="p">:</span> <span class="nx">mockAnimalService</span>
+            <span class="p">});</span>
+     <span class="p">}));</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">'should be defined and not null'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">expect</span><span class="p">(</span><span class="nx">controller</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+          <span class="nx">expect</span><span class="p">(</span><span class="nx">controller</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeNull</span><span class="p">();</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">'should call loadAnimalList'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">spyOn</span><span class="p">(</span><span class="nx">mockAnimalService</span><span class="p">,</span> <span class="s1">'query'</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">callThrough</span><span class="p">();</span>
+          <span class="nx">scope</span><span class="p">.</span><span class="nx">loadAnimalListTable</span><span class="p">();</span>
+          <span class="nx">expect</span><span class="p">(</span><span class="nx">mockAnimalService</span><span class="p">.</span><span class="nx">query</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">'should call deleteAnimal'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">spyOn</span><span class="p">(</span><span class="nx">mockAnimalService</span><span class="p">,</span> <span class="s1">'remove'</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">callThrough</span><span class="p">();</span>
+        <span class="nx">spyOn</span><span class="p">(</span><span class="nx">mockAnimalService</span><span class="p">,</span> <span class="s1">'query'</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">callThrough</span><span class="p">();</span>             <br/>
+        <span class="nx">scope</span><span class="p">.</span><span class="nx">deleteAnimal</span><span class="p">();</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">mockAnimalService</span><span class="p">.</span><span class="nx">remove</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">mockAnimalService</span><span class="p">.</span><span class="nx">query</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></figure></p>
 
 <p>Notice how mockAnimalService mocks calls to animalService, returning a fake animal list based on JSON test data.
 Also notice how here spyOn is used to actually monitor these calls and and.callThrough() gurantees the calls will be passed through,
