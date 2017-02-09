@@ -3,49 +3,49 @@
 		{
 		  "title"    : "Java Test - code coverage using Jacoco",
 		  "category" : "",
-		  "url"     : "/java/2017/02/05/java-code-coverage-jacoco/",
+		  "url"     : "/java/testing/2017/02/05/java-code-coverage-jacoco/",
 		  "date"     : "2017-02-05 02:59:22 -0800"
 		} ,
 	
 		{
-		  "title"    : "Search Prod - The search indexing platform",
+		  "title"    : "Search Prod - Search for almost any product",
 		  "category" : "",
-		  "url"     : "/database/java/maven/ui/linux/business/algorithms/server/2016/12/02/search-prod-website-rs/",
+		  "url"     : "/database/java/linux/business/server/frontend/javascript/ui/2016/12/02/search-prod-website-rs/",
 		  "date"     : "2016-12-02 17:00:00 -0800"
 		} ,
 	
 		{
 		  "title"    : "Angular 2",
 		  "category" : "",
-		  "url"     : "/ui/2016/04/16/angular-2/",
+		  "url"     : "/ui/frontend/business/javascript/2016/04/16/angular-2/",
 		  "date"     : "2016-04-16 14:38:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "Full AngularJS Gulp seed",
 		  "category" : "",
-		  "url"     : "/ui/2015/12/02/full-angularjs-gulp-seed/",
+		  "url"     : "/ui/frontend/javascript/2015/12/02/full-angularjs-gulp-seed/",
 		  "date"     : "2015-12-02 15:02:21 -0800"
 		} ,
 	
 		{
 		  "title"    : "Unit testing with angularjs, requirejs, jquery, karma and jasmine.",
 		  "category" : "",
-		  "url"     : "/ui/2015/07/19/angularjs-requirejs-karma-jasmine/",
+		  "url"     : "/ui/frontend/javascript/testing/2015/07/19/angularjs-requirejs-karma-jasmine/",
 		  "date"     : "2015-07-19 14:15:12 -0700"
 		} ,
 	
 		{
 		  "title"    : "Building an app based on angularjs, requirejs, jquery, bootstrap.",
 		  "category" : "",
-		  "url"     : "/ui/2015/07/13/angularjs-requirejs-jquery-bootstrap-karma-jasmine/",
+		  "url"     : "/ui/frontend/javascript/2015/07/13/angularjs-requirejs-jquery-bootstrap-karma-jasmine/",
 		  "date"     : "2015-07-13 17:12:12 -0700"
 		} ,
 	
 		{
-		  "title"    : "NGINX port redirect",
+		  "title"    : "NGINX port redirect example",
 		  "category" : "",
-		  "url"     : "/server/2015/04/15/nginx-port-redirect-app-server/",
+		  "url"     : "/server/linux/network/devops/2015/04/15/nginx-port-redirect-app-server/",
 		  "date"     : "2015-04-15 03:59:22 -0700"
 		} ,
 	
@@ -73,7 +73,7 @@
 		{
 		  "title"    : "angular $locationChangeStart",
 		  "category" : "",
-		  "url"     : "/ui/2015/04/01/angular-locationchangestart-route-listener/",
+		  "url"     : "/ui/frontend/javascript/2015/04/01/angular-locationchangestart-route-listener/",
 		  "date"     : "2015-04-01 15:05:00 -0700"
 		} ,
 	
@@ -87,7 +87,7 @@
 		{
 		  "title"    : "Java 8 Stream API - a new way of dealing with Collections",
 		  "category" : "",
-		  "url"     : "/java/2015/03/25/java-8-stream-collections/",
+		  "url"     : "/java/backend/multithreading/2015/03/25/java-8-stream-collections/",
 		  "date"     : "2015-03-25 04:27:15 -0700"
 		} ,
 	
@@ -136,21 +136,21 @@
 		{
 		  "title"    : "Linux Kernel overview and useful links",
 		  "category" : "",
-		  "url"     : "/linux/2015/03/03/linux-kernel-overview-and-useful-links/",
+		  "url"     : "/linux/server/network/2015/03/03/linux-kernel-overview-and-useful-links/",
 		  "date"     : "2015-03-03 17:01:21 -0800"
 		} ,
 	
 		{
-		  "title"    : "user forgot password flow using RESTful webservices",
+		  "title"    : "Angular1.X user forgot password flow using REST API",
 		  "category" : "",
-		  "url"     : "/java/ui/2015/02/19/reset-password-flow-angular-js-jax-rs/",
+		  "url"     : "/java/ui/frontend/backend/javascript/2015/02/19/reset-password-flow-angular-js-jax-rs/",
 		  "date"     : "2015-02-19 17:06:23 -0800"
 		} ,
 	
 		{
 		  "title"    : "maven - On build Exclude specific folders from being packaged on a WAR file",
 		  "category" : "",
-		  "url"     : "/maven/2014/07/27/maven-build-exclude-folders-from-war-file/",
+		  "url"     : "/maven/devops/2014/07/27/maven-build-exclude-folders-from-war-file/",
 		  "date"     : "2014-07-27 14:06:23 -0700"
 		} ,
 	
@@ -164,14 +164,14 @@
 		{
 		  "title"    : "Integrating angularjs and jquery with requirejs",
 		  "category" : "",
-		  "url"     : "/ui/2014/06/18/integrate-angularjs-requirejs-jquery/",
+		  "url"     : "/ui/frontend/javascript/2014/06/18/integrate-angularjs-requirejs-jquery/",
 		  "date"     : "2014-06-18 18:20:00 -0700"
 		} ,
 	
 		{
 		  "title"    : "Typical Database model domain for User",
 		  "category" : "",
-		  "url"     : "/database/2014/06/18/user-domain-model-relational/",
+		  "url"     : "/database/sql/2014/06/18/user-domain-model-relational/",
 		  "date"     : "2014-06-18 18:05:00 -0700"
 		} ,
 	
@@ -185,14 +185,14 @@
 		{
 		  "title"    : "Java Lambda expressions",
 		  "category" : "",
-		  "url"     : "/java/2014/05/23/java8-lambda-expressions/",
+		  "url"     : "/java/backend/2014/05/23/java8-lambda-expressions/",
 		  "date"     : "2014-05-23 15:36:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "angular $viewContentLoaded",
 		  "category" : "",
-		  "url"     : "/ui/2014/04/27/angular-view-content-loaded/",
+		  "url"     : "/ui/javascript/frontend/2014/04/27/angular-view-content-loaded/",
 		  "date"     : "2014-04-27 15:05:00 -0700"
 		} ,
 	
@@ -206,7 +206,7 @@
 		{
 		  "title"    : "Useful Linux commands for developers",
 		  "category" : "",
-		  "url"     : "/linux/2014/04/15/useful-dev-commands-linux/",
+		  "url"     : "/linux/server/network/devops/2014/04/15/useful-dev-commands-linux/",
 		  "date"     : "2014-04-15 15:05:00 -0700"
 		} ,
 	
@@ -220,21 +220,21 @@
 		{
 		  "title"    : "Regex Utility Class",
 		  "category" : "",
-		  "url"     : "/java/2014/04/10/regex-util-class/",
+		  "url"     : "/java/backend/algorithms/2014/04/10/regex-util-class/",
 		  "date"     : "2014-04-10 16:45:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "JPA - Find all - Generic method",
 		  "category" : "",
-		  "url"     : "/java/2014/04/09/jpa-find-all-generic/",
+		  "url"     : "/java/backend/database/2014/04/09/jpa-find-all-generic/",
 		  "date"     : "2014-04-09 01:31:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "Domain Model Generic Superclass",
 		  "category" : "",
-		  "url"     : "/java/2014/04/09/domain-model-generic-superclass/",
+		  "url"     : "/java/database/backend/2014/04/09/domain-model-generic-superclass/",
 		  "date"     : "2014-04-09 01:31:24 -0700"
 		} ,
 	
@@ -255,28 +255,28 @@
 		{
 		  "title"    : "Evolution of the Java EE platform",
 		  "category" : "",
-		  "url"     : "/java/2014/04/05/javaee-evolution/",
+		  "url"     : "/java/backend/2014/04/05/javaee-evolution/",
 		  "date"     : "2014-04-05 02:36:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "@Inject vs @EJB and Direct JNDI Lookup",
 		  "category" : "",
-		  "url"     : "/java/2014/04/01/ways-get-ejb-ref/",
+		  "url"     : "/java/backend/2014/04/01/ways-get-ejb-ref/",
 		  "date"     : "2014-04-01 19:44:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "Creating a JAAS JDBC Authentication Realm in Glassfish",
 		  "category" : "",
-		  "url"     : "/java/2014/04/01/creating-jaas-auth-realm-glassfish/",
+		  "url"     : "/java/database/server/backend/sql/2014/04/01/creating-jaas-auth-realm-glassfish/",
 		  "date"     : "2014-04-01 16:38:24 -0700"
 		} ,
 	
 		{
 		  "title"    : "Building RESTful webservices with JAX-RS",
 		  "category" : "",
-		  "url"     : "/java/2014/03/27/build-jaxrs-rest/",
+		  "url"     : "/java/backend/2014/03/27/build-jaxrs-rest/",
 		  "date"     : "2014-03-27 15:36:24 -0700"
 		} 
 	

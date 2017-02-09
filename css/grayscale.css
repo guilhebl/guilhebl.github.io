@@ -414,7 +414,7 @@ body {
 }
 
 .category-list {
-  padding: 20px;
+  padding: 10px;
   background-color: black;
   text-align: left;
   font-family: sans-serif;
@@ -422,7 +422,7 @@ body {
 
 .category-list-link {
   text-align: left;
-  font-size: 36px;
+  font-size: 24px;
   color: #B0B0DF;
 }
 .marginRight6 {

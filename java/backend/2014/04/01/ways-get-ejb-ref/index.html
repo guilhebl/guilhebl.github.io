@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gui B.L Software Engineering-Code and posts about tech and programming</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gui B.L coder and entrepreneur-free tutorials with sample code and topics about tech and programming">
+    <meta name="author" content="Guilherme Becker Lamounier">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='/font-awesome/css/font-lora.css' rel='stylesheet' type='text/css'>
+    <link href='/font-awesome/css/font-montserrat.css' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Theme CSS -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+
+    <!-- Syntax highlight CSS -->
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49522383-1', 'guilhebl.github.io');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/index.html">
+                    <i class="fa fa-play-circle"></i>  <span class="light">guilhebl</span>
+                </a>
+            </div>
+
+	<div class="col-sm-3 col-md-3 pull-right">
+        <div class="input-group">
+
+            <input type="text" class="search-field form-control" placeholder="Search" autocomplete="off">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/#postList"><i class="fa fa-home fa-fw marginRight6"></i>Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/categories"><i class="fa fa-list-ul fa-fw marginRight6"></i>Pages</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/about"><i class="fa fa-user fa-fw marginRight6"></i>About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/contact"><i class="fa fa-coffee fa-fw marginRight6"></i>Contact</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+
+        <div class="results resultsBox"></div>
+    </nav>
+
+
+    <section class="post">
+        <div class="post-body">
+            <div class="container">
+		<div class="row-fluid">
+		  <div class="center-block">
+		     <section class="paper">
+		      	<article class="head">@Inject vs @EJB and Direct JNDI Lookup</article>
+			<p class="muted">01 April 2014</p>
+
+			<article contenteditable="false"><h2>Three different ways to get an EJB reference in Java</h2>
+
+<h3>1: @Inject</h3>
+
+<p>Preferrable way as for JavaEE6 and beyond, CDI api gives greater flexibility for your java classes
+and it's nowadays considered the standard way of integrating managed lifecycle components in the JavaEE platform.</p>
+
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Inject</span>
+<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></figure></p>
+
+<p>Inject Interface:</p>
+
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@Documented</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">Inject</span> <span class="o">{</span>
+<span class="o">}</span></code></pre></figure></p>
+
+<hr />
+
+<hr />
+
+<h3>2: @EJB</h3>
+
+<p>EJB specific annotation, can use specific attributes like "beanName" and others:</p>
+
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@EJB</span><span class="o">(</span><span class="n">mappedName</span> <span class="o">=</span> <span class="s">"ejb/UserService"</span><span class="o">)</span>
+<span class="kd">private</span> <span class="n">UserServiceBeanLocal</span> <span class="n">userService</span><span class="o">;</span></code></pre></figure></p>
+
+<p>EJB Interface</p>
+
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">EJB</span> <span class="o">{</span></p>
+
+<pre><code>&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;name&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;beanName&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Class&lt;/span&gt; &lt;span class="nf"&gt;beanInterface&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="nf"&gt;mappedName&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+</code></pre>
+
+<p><span class="o">}</span></code></pre></figure></p>
+
+<hr />
+
+<hr />
+
+<h3>3: JNDI Lookup</h3>
+
+<p>In simple Java POJOs or classes that doesn't have support for injection dependency mechanisms,
+you can realize a direct JNDI Lookup to get and EJB instance. In this example a simple Hashmap based cache
+is added to enhance performance for repeated lookups:</p>
+
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/<em>
+Read from Local Home Interface if EJB container is located in same JVM, otherwise use
+remote interface
+</em>/</span>
+   <span class="kd">public</span> <span class="n">Crud</span> <span class="nf">getLocalHome</span><span class="o">(</span><span class="n">String</span> <span class="n">jndiHomeName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServiceLocatorException</span> <span class="o">{</span>
+     <span class="n">Crud</span> <span class="n">home</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+     <span class="k">try</span> <span class="o">{</span>
+       <span class="k">if</span> <span class="o">(</span><span class="n">cache</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">))</span> <span class="o">{</span>
+           <span class="n">home</span> <span class="o">=</span> <span class="o">(</span><span class="n">Crud</span><span class="o">)</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">);</span>
+       <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+           <span class="n">home</span> <span class="o">=</span> <span class="o">(</span><span class="n">Crud</span><span class="o">)</span> <span class="n">ic</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">);</span>
+           <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">jndiHomeName</span><span class="o">,</span> <span class="n">home</span><span class="o">);</span>
+       <span class="o">}</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NamingException</span> <span class="n">ne</span><span class="o">)</span> <span class="o">{</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nf">ServiceLocatorException</span><span class="o">(</span><span class="n">ne</span><span class="o">);</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nf">ServiceLocatorException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="n">home</span><span class="o">;</span>
+   <span class="o">}</span></code></pre></figure></p>
+
+<p>In the method above Crud is a generic business interface which is extended by our target EJB Remote and Home interfaces.</p>
+</article>
+		      </section>
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>		    
+		  </div>
+
+		</div>
+            </div>
+        </div>
+    </section>
+    <!-- Core JavaScript Files -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/grayscale.js"></script>
+
+    <!-- Plugin Third party JavaScript -->
+    <script src="/js/jekyll-search.js"></script>
+    <script src="/js/jekyll-search.jquery.js"></script>
+ 
+</body>
+
+</html>
+
+
