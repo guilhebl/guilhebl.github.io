@@ -102,25 +102,17 @@
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /proc/cpuinfo </code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Memory Info:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /proc/meminfo</code></pre></figure></p>
-
-<p><br /></p>
 
 <p>Version of your kernel and the GCC compiler:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /proc/version </code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Release information</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> lsb_release -a</code></pre></figure></p>
-
-<p><br /></p>
 
 <hr />
 
@@ -130,25 +122,17 @@
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> ls -laxo</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Clear screen:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> clear</code></pre></figure></p>
-
-<p><br /></p>
 
 <p>Display current path:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nb">pwd</span></code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Remove directory with all content inside:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> rm -rf example</code></pre></figure></p>
-
-<p><br /></p>
 
 <hr />
 
@@ -162,8 +146,6 @@
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /etc/passwd/</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>List all groups</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> getent group</code></pre></figure></p>
@@ -172,37 +154,29 @@
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> cat /etc/group/</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Switch to a different user:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> su - user2</code></pre></figure></p>
-
-<p><br /></p>
 
 <p>Display current logged user:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> whoami</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>display members of a group:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> members mygroup</code></pre></figure></p>
 
-<p><br /></p>
-
-<p>make file executable:</p>
+<p>change file permission to make file executable:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> sudo chmod +x <span class="s2">"file_name"</span></code></pre></figure></p>
-
-<p><br /></p>
 
 <p>Open application using Super user:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> sudo open -a <span class="s2">"app_name"</span></code></pre></figure></p>
 
-<p><br /></p>
+<p>Open Graphical User Interface application using Super user:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> gksudo gedit sample.txt</code></pre></figure></p>
 
 <hr />
 
@@ -212,31 +186,21 @@
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> ps -a</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>discover PID of a process by name:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> pidof java</code></pre></figure></p>
-
-<p><br /></p>
 
 <p>Kill process by PID:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nb">kill </span>2581</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Kill process and force shutdown:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nb">kill</span> -9 2581</code></pre></figure></p>
 
-<p><br /></p>
-
 <p>Kill all processes with same name:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> killall java</code></pre></figure></p>
-
-<p><br /></p>
 
 <hr />
 
@@ -257,6 +221,18 @@
 <p>stop service:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> service myservice stop</code></pre></figure></p>
+
+<p>check if a service is currently configured to start or not on the next reboot:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> systemctl is-enabled nginx</code></pre></figure></p>
+
+<p>disable service autostart:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> systemctl disable nginx</code></pre></figure></p>
+
+<p>show detailed info about a service:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"> systemctl show nginx</code></pre></figure></p>
 
 <hr />
 </article>

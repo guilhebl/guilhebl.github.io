@@ -87,29 +87,66 @@
     </nav>
 
 
+    <section class="post">
+        <div class="post-body">
+            <div class="container">
+		<div class="row-fluid">
+		  <div class="center-block">
+		     <section class="paper">
+		      	<article class="head">Print current path in Java</article>
+			<p class="muted">06 March 2017</p>
 
-<h1 class="category">Category: testing</h1>
-<ul class="posts">
+			<article contenteditable="false"><hr />
 
-    <div>2017-03-06 06:12:22 -0800</div>
-    <h2><a href="/java/testing/2017/03/06/java-print-current-path/">Print current path in Java</a></h2>
-    <div class="categories">under javatesting</div>
+<h2>Printing current path</h2>
 
-    <div>2017-02-13 09:13:22 -0800</div>
-    <h2><a href="/java/testing/2017/02/13/randoop-automatic-unit-test-generation/">Unit Test generation tool</a></h2>
-    <div class="categories">under javatesting</div>
+<p>When coding in Java I found myself having to print the current path of the executing JVM program in order to troubleshoot File not Found
+exceptions and other file-system related issues.</p>
 
-    <div>2017-02-05 02:59:22 -0800</div>
-    <h2><a href="/java/testing/2017/02/05/java-code-coverage-jacoco/">Java Test - code coverage using Jacoco</a></h2>
-    <div class="categories">under javatesting</div>
+<p>There are different ways to do that in Java:</p>
 
-    <div>2015-07-19 14:15:12 -0700</div>
-    <h2><a href="/ui/frontend/javascript/testing/2015/07/19/angularjs-requirejs-karma-jasmine/">Unit testing with angularjs, requirejs, jquery, karma and jasmine.</a></h2>
-    <div class="categories">under uifrontendjavascripttesting</div>
+<hr />
 
-</ul>
+<h3>1. Using System properties</h3>
 
+<p>You can use System class getting the user.dir property to achieve this:</p>
 
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Current path using System = "</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"user.dir"</span><span class="o">));</span></code></pre></figure></p>
+
+<h3>2. using NIO Path</h3>
+
+<p>In Java 7 and beyond you can use NIO Path to get current path:</p>
+
+<p><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Path</span> <span class="n">currentRelativePath</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">currentRelativePath</span><span class="o">.</span><span class="na">toAbsolutePath</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Current path using NIO is: "</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span></code></pre></figure></p>
+
+<hr />
+
+<hr />
+</article>
+		      </section>
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>		    
+		  </div>
+
+		</div>
+            </div>
+        </div>
+    </section>
     <!-- Core JavaScript Files -->
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -125,4 +162,5 @@
 </body>
 
 </html>
+
 
