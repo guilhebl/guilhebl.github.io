@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Finding minimum size distance of a group of keywords in a document",
+		  "category" : "",
+		  "url"     : "/scala/algorithms/2017/06/22/scala-find-min-distance-keywords-window-size-in-document-algorithm/",
+		  "date"     : "2017-06-22 13:25:22 -0700"
+		} ,
+	
+		{
 		  "title"    : "Scala Url Shortener",
 		  "category" : "",
 		  "url"     : "/scala/jvm/2017/05/08/scala-url-shortener-algorithm/",
