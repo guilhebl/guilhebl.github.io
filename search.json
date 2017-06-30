@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "Finding K(th) Max or Min element of a collection",
+		  "category" : "",
+		  "url"     : "/scala/algorithms/2017/06/30/scala-find-kth-element-in-collection-algorithm/",
+		  "date"     : "2017-06-30 04:25:22 -0700"
+		} ,
+	
+		{
 		  "title"    : "Finding minimum size distance of a group of keywords in a document",
 		  "category" : "",
 		  "url"     : "/scala/algorithms/2017/06/22/scala-find-min-distance-keywords-window-size-in-document-algorithm/",
