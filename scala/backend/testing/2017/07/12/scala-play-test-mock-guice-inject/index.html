@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gui B.L Software Engineering-Code and posts about tech and programming</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gui B.L coder and entrepreneur-free tutorials with sample code and topics about tech and programming">
+    <meta name="author" content="Guilherme Becker Lamounier">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='/font-awesome/css/font-lora.css' rel='stylesheet' type='text/css'>
+    <link href='/font-awesome/css/font-montserrat.css' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Theme CSS -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+
+    <!-- Syntax highlight CSS -->
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49522383-1', 'guilhebl.github.io');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/index.html">
+                    <i class="fa fa-play-circle"></i>  <span class="light">guilhebl</span>
+                </a>
+            </div>
+
+	<div class="col-sm-3 col-md-3 pull-right">
+        <div class="input-group">
+
+            <input type="text" class="search-field form-control" placeholder="Search" autocomplete="off">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/#postList"><i class="fa fa-home fa-fw marginRight6"></i>Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/categories"><i class="fa fa-list-ul fa-fw marginRight6"></i>Pages</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/about"><i class="fa fa-user fa-fw marginRight6"></i>About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/contact"><i class="fa fa-coffee fa-fw marginRight6"></i>Contact</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+
+        <div class="results resultsBox"></div>
+    </nav>
+
+
+    <section class="post">
+        <div class="post-body">
+            <div class="container">
+		<div class="row-fluid">
+		  <div class="center-block">
+		     <section class="paper">
+		      	<article class="head">Testing Scala Play application using Mock and GuiceApplicationBuilder</article>
+			<p class="muted">12 July 2017</p>
+
+			<article contenteditable="false"><p>In this example the controller class Product Controller fetches data from an external service called DataService. Since we can't call real APIs during Test we need to mock these 3rd Party services and return a fake JSON mock data instead. We use Mockito to return a fake instance and inject it into the application in test using GuiceApplicationBuilder.</p>
+
+<h3>Sample Test</h3>
+
+<p><figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">import</span> <span class="nn">scala.io.Source</span>
+<span class="k">import</span> <span class="nn">org.junit.runner.RunWith</span>
+<span class="k">import</span> <span class="nn">org.scalatest.<em></span>
+<span class="k">import</span> <span class="nn">org.scalatest.mockito.MockitoSugar</span>
+<span class="k">import</span> <span class="nn">org.scalatestplus.play.</em></span>
+<span class="k">import</span> <span class="nn">org.scalatestplus.play.PlaySpec</span>
+<span class="k">import</span> <span class="nn">play.api.inject.bind</span>
+<span class="k">import</span> <span class="nn">play.api.inject.guice.GuiceApplicationBuilder</span>
+<span class="k">import</span> <span class="nn">play.api.inject.guice.GuiceableModule</span>
+<span class="k">import</span> <span class="nn">play.api.libs.json.<em></span>
+<span class="k">import</span> <span class="nn">play.api.libs.json.Json</span>
+<span class="k">import</span> <span class="nn">product.model.OfferDetail</span>
+<span class="k">import</span> <span class="nn">product.model.OfferList</span>
+<span class="k">import</span> <span class="nn">product.services.market.walmart.WalmartRepository</span>
+<span class="k">import</span> <span class="nn">org.mockito.Mockito.</em></span>
+<span class="k">import</span> <span class="nn">org.mockito.Matchers.<em></span>
+<span class="k">import</span> <span class="nn">play.api.test.Helpers.</em></span>
+<span class="k">import</span> <span class="nn">play.api.test.CSRFTokenHelper._</span>
+<span class="k">import</span> <span class="nn">play.api.test.WithApplication</span>
+<span class="k">import</span> <span class="nn">play.api.test.FakeRequest</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.ExecutionContext.Implicits.global</span>
+<span class="k">import</span> <span class="nn">org.scalatest.junit.JUnitRunner</span></p>
+
+<p><span class="nd">@RunWith</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">JUnitRunner</span><span class="o">])</span>
+<span class="k">class</span> <span class="nc">ProductControllerSpec</span> <span class="k">extends</span> <span class="nc">PlaySpec</span> <span class="k">with</span> <span class="nc">MockitoSugar</span> <span class="o">{</span></p>
+
+<p>  <span class="cm">/<em> MOCK data </em>/</span>
+  <span class="k">val</span> <span class="n">productList</span> <span class="k">=</span> <span class="nc">Json</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">"conf/app/sample_offer.json"</span><span class="o">).</span><span class="n">getLines</span><span class="o">.</span><span class="n">mkString</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">OfferList</span><span class="o">]</span></p>
+
+<p>  <span class="k">val</span> <span class="n">myMock</span> <span class="k">=</span> <span class="n">mock</span><span class="o">[</span><span class="kt">DataRepository</span><span class="o">]</span>       <br/>
+  <span class="n">when</span><span class="o">(</span><span class="n">myMock</span><span class="o">.</span><span class="n">search</span><span class="o">(</span><span class="n">any</span><span class="o">[</span><span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>,<span class="kt">String</span><span class="o">]]))</span> <span class="n">thenReturn</span> <span class="nc">Future</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="nc">Some</span><span class="o">(</span><span class="n">productList</span><span class="o">))</span></p>
+
+<p>   <span class="k">val</span> <span class="n">appMock</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">GuiceApplicationBuilder</span><span class="o">()</span>
+   <span class="o">.</span><span class="n">overrides</span><span class="o">(</span><span class="n">bind</span><span class="o">[</span><span class="kt">DataRepository</span><span class="o">].</span><span class="n">toInstance</span><span class="o">(</span><span class="n">myMock</span><span class="o">))</span>
+   <span class="o">.</span><span class="n">build</span>
+  <span class="s">"index"</span> <span class="n">in</span> <span class="k">new</span> <span class="nc">WithApplication</span><span class="o">(</span><span class="n">appMock</span><span class="o">)</span> <span class="o">{</span>      <br/>
+      <span class="k">val</span> <span class="n">request</span> <span class="k">=</span> <span class="nc">FakeRequest</span><span class="o">(</span><span class="nc">GET</span><span class="o">,</span> <span class="s">"/products"</span><span class="o">).</span><span class="n">withHeaders</span><span class="o">(</span><span class="nc">HOST</span> <span class="o">-&gt;</span> <span class="s">"localhost:9000"</span><span class="o">)</span>
+      <span class="k">val</span> <span class="n">response</span> <span class="k">=</span> <span class="n">route</span><span class="o">(</span><span class="n">app</span><span class="o">,</span> <span class="n">request</span><span class="o">).</span><span class="n">get</span>
+      <span class="k">val</span> <span class="n">json</span> <span class="k">=</span> <span class="n">contentAsJson</span><span class="o">(</span><span class="n">response</span><span class="o">)</span>
+      <span class="k">val</span> <span class="n">elem0</span> <span class="k">=</span> <span class="o">(</span><span class="n">json</span> <span class="o">\</span> <span class="s">"list"</span><span class="o">)(</span><span class="mi">0</span><span class="o">)</span>
+      <span class="n">status</span><span class="o">(</span><span class="n">response</span><span class="o">)</span> <span class="n">mustBe</span> <span class="nc">OK</span>
+      <span class="o">(</span><span class="n">elem0</span> <span class="o">\</span> <span class="s">"id"</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="n">mustBe</span> <span class="s">"1"</span>
+      <span class="o">(</span><span class="n">elem0</span> <span class="o">\</span> <span class="s">"name"</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="n">mustBe</span> <span class="s">"prod 1"</span>    <br/>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure></p>
+</article>
+		      </section>
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>		    
+		  </div>
+
+		</div>
+            </div>
+        </div>
+    </section>
+    <!-- Core JavaScript Files -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/grayscale.js"></script>
+
+    <!-- Plugin Third party JavaScript -->
+    <script src="/js/jekyll-search.js"></script>
+    <script src="/js/jekyll-search.jquery.js"></script>
+ 
+</body>
+
+</html>
+
+
