@@ -96,7 +96,58 @@
 		      	<article class="head">Testing Scala Play application using Mock and GuiceApplicationBuilder</article>
 			<p class="muted">12 July 2017</p>
 
-			<article contenteditable="false"><p>In this example the controller class Product Controller fetches data from an external service called DataService. Since we can't call real APIs during Test we need to mock these 3rd Party services and return a fake JSON mock data instead. We use Mockito to return a fake instance and inject it into the application in test using GuiceApplicationBuilder.</p>
+			<article contenteditable="false"><p>In this example the controller class Product Controller fetches data from an external service called DataService. Since we can't call real APIs during Test we need to mock any 3rd Party APIs returning mock data instead. One such mock libraries is Mockito, we use it to return a fake instance and inject it into the application in test using GuiceApplicationBuilder. The test reads from a JSON sample output file called "sample_offer_list.json"</p>
+
+<h3>Injected JSON Mock data</h3>
+
+<p><figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+   </span><span class="nt">"list"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upc"</span><span class="p">:</span><span class="s2">"upc1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"prod 1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"partyName"</span><span class="p">:</span><span class="s2">"pty 1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"semanticName"</span><span class="p">:</span><span class="s2">"sem1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"mainImageFileUrl"</span><span class="p">:</span><span class="s2">"http://localhost:5555/assets/images/image-placeholder.png"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"partyImageFileUrl"</span><span class="p">:</span><span class="s2">"http://localhost:5555/assets/images/best-buy-logo.png"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"price"</span><span class="p">:</span><span class="mf">55.55</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"productCategory"</span><span class="p">:</span><span class="s2">"laptops"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"rating"</span><span class="p">:</span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"numReviews"</span><span class="p">:</span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upc"</span><span class="p">:</span><span class="s2">"upc2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"prod 2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"partyName"</span><span class="p">:</span><span class="s2">"pty 2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"semanticName"</span><span class="p">:</span><span class="s2">"sem2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"mainImageFileUrl"</span><span class="p">:</span><span class="s2">"http://localhost:5555/assets/images/image-placeholder.png"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"partyImageFileUrl"</span><span class="p">:</span><span class="s2">"http://localhost:5555/assets/images/best-buy-logo.png"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"price"</span><span class="p">:</span><span class="mf">445.55</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"productCategory"</span><span class="p">:</span><span class="s2">"laptops"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"rating"</span><span class="p">:</span><span class="mf">2.55</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"numReviews"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upc"</span><span class="p">:</span><span class="s2">"upc3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"prod 3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"partyName"</span><span class="p">:</span><span class="s2">"pty 3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"semanticName"</span><span class="p">:</span><span class="s2">"sem3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"mainImageFileUrl"</span><span class="p">:</span><span class="s2">"http://localhost:5555/assets/images/image-placeholder.png"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"partyImageFileUrl"</span><span class="p">:</span><span class="s2">"http://localhost:5555/assets/images/best-buy-logo.png"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"price"</span><span class="p">:</span><span class="mf">445.55</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"productCategory"</span><span class="p">:</span><span class="s2">"laptops"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"rating"</span><span class="p">:</span><span class="mf">3.55</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"numReviews"</span><span class="p">:</span><span class="mi">300</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nt">"summary"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pageCount"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"totalCount"</span><span class="p">:</span><span class="mi">3</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure></p>
 
 <h3>Sample Test</h3>
 
@@ -125,25 +176,22 @@
 <span class="k">import</span> <span class="nn">org.scalatest.junit.JUnitRunner</span></p>
 
 <p><span class="nd">@RunWith</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">JUnitRunner</span><span class="o">])</span>
-<span class="k">class</span> <span class="nc">ProductControllerSpec</span> <span class="k">extends</span> <span class="nc">PlaySpec</span> <span class="k">with</span> <span class="nc">MockitoSugar</span> <span class="o">{</span></p>
-
-<p>  <span class="cm">/<em> MOCK data </em>/</span>
-  <span class="k">val</span> <span class="n">productList</span> <span class="k">=</span> <span class="nc">Json</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">"conf/app/sample_offer.json"</span><span class="o">).</span><span class="n">getLines</span><span class="o">.</span><span class="n">mkString</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">OfferList</span><span class="o">]</span></p>
-
-<p>  <span class="k">val</span> <span class="n">myMock</span> <span class="k">=</span> <span class="n">mock</span><span class="o">[</span><span class="kt">DataRepository</span><span class="o">]</span>       <br/>
-  <span class="n">when</span><span class="o">(</span><span class="n">myMock</span><span class="o">.</span><span class="n">search</span><span class="o">(</span><span class="n">any</span><span class="o">[</span><span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>,<span class="kt">String</span><span class="o">]]))</span> <span class="n">thenReturn</span> <span class="nc">Future</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="nc">Some</span><span class="o">(</span><span class="n">productList</span><span class="o">))</span></p>
-
-<p>   <span class="k">val</span> <span class="n">appMock</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">GuiceApplicationBuilder</span><span class="o">()</span>
+<span class="k">class</span> <span class="nc">ProductControllerSpec</span> <span class="k">extends</span> <span class="nc">PlaySpec</span> <span class="k">with</span> <span class="nc">MockitoSugar</span> <span class="o">{</span>
+  <span class="cm">/<em> MOCK data </em>/</span>
+  <span class="k">val</span> <span class="n">productList</span> <span class="k">=</span> <span class="nc">Json</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">"conf/app/sample_offer.json"</span><span class="o">).</span><span class="n">getLines</span><span class="o">.</span><span class="n">mkString</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">OfferList</span><span class="o">]</span><br/>
+  <span class="k">val</span> <span class="n">myMock</span> <span class="k">=</span> <span class="n">mock</span><span class="o">[</span><span class="kt">DataRepository</span><span class="o">]</span>
+  <span class="n">when</span><span class="o">(</span><span class="n">myMock</span><span class="o">.</span><span class="n">search</span><span class="o">(</span><span class="n">any</span><span class="o">[</span><span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>,<span class="kt">String</span><span class="o">]]))</span> <span class="n">thenReturn</span> <span class="nc">Future</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="nc">Some</span><span class="o">(</span><span class="n">productList</span><span class="o">))</span><br/>
+   <span class="k">val</span> <span class="n">appMock</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">GuiceApplicationBuilder</span><span class="o">()</span>
    <span class="o">.</span><span class="n">overrides</span><span class="o">(</span><span class="n">bind</span><span class="o">[</span><span class="kt">DataRepository</span><span class="o">].</span><span class="n">toInstance</span><span class="o">(</span><span class="n">myMock</span><span class="o">))</span>
    <span class="o">.</span><span class="n">build</span>
-  <span class="s">"index"</span> <span class="n">in</span> <span class="k">new</span> <span class="nc">WithApplication</span><span class="o">(</span><span class="n">appMock</span><span class="o">)</span> <span class="o">{</span>      <br/>
+  <span class="s">"index"</span> <span class="n">in</span> <span class="k">new</span> <span class="nc">WithApplication</span><span class="o">(</span><span class="n">appMock</span><span class="o">)</span> <span class="o">{</span>
       <span class="k">val</span> <span class="n">request</span> <span class="k">=</span> <span class="nc">FakeRequest</span><span class="o">(</span><span class="nc">GET</span><span class="o">,</span> <span class="s">"/products"</span><span class="o">).</span><span class="n">withHeaders</span><span class="o">(</span><span class="nc">HOST</span> <span class="o">-&gt;</span> <span class="s">"localhost:9000"</span><span class="o">)</span>
       <span class="k">val</span> <span class="n">response</span> <span class="k">=</span> <span class="n">route</span><span class="o">(</span><span class="n">app</span><span class="o">,</span> <span class="n">request</span><span class="o">).</span><span class="n">get</span>
       <span class="k">val</span> <span class="n">json</span> <span class="k">=</span> <span class="n">contentAsJson</span><span class="o">(</span><span class="n">response</span><span class="o">)</span>
       <span class="k">val</span> <span class="n">elem0</span> <span class="k">=</span> <span class="o">(</span><span class="n">json</span> <span class="o">\</span> <span class="s">"list"</span><span class="o">)(</span><span class="mi">0</span><span class="o">)</span>
       <span class="n">status</span><span class="o">(</span><span class="n">response</span><span class="o">)</span> <span class="n">mustBe</span> <span class="nc">OK</span>
       <span class="o">(</span><span class="n">elem0</span> <span class="o">\</span> <span class="s">"id"</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="n">mustBe</span> <span class="s">"1"</span>
-      <span class="o">(</span><span class="n">elem0</span> <span class="o">\</span> <span class="s">"name"</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="n">mustBe</span> <span class="s">"prod 1"</span>    <br/>
+      <span class="o">(</span><span class="n">elem0</span> <span class="o">\</span> <span class="s">"name"</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="n">mustBe</span> <span class="s">"prod 1"</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure></p>
 </article>
