@@ -1,7 +1,7 @@
 [
 	
 		{
-		  "title"    : "Testing Scala Play application using Mock and GuiceApplicationBuilder",
+		  "title"    : "Testing Scala application using Play framework and Mockito",
 		  "category" : "",
 		  "url"     : "/scala/backend/testing/2017/07/12/scala-play-test-mock-guice-inject/",
 		  "date"     : "2017-07-12 04:25:22 -0700"

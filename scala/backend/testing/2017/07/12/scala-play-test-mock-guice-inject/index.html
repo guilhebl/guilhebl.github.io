@@ -93,10 +93,10 @@
 		<div class="row-fluid">
 		  <div class="center-block">
 		     <section class="paper">
-		      	<article class="head">Testing Scala Play application using Mock and GuiceApplicationBuilder</article>
+		      	<article class="head">Testing Scala application using Play framework and Mockito</article>
 			<p class="muted">12 July 2017</p>
 
-			<article contenteditable="false"><p>In this example the controller class Product Controller fetches data from an external service called DataService. Since we can't call real APIs during Test we need to mock any 3rd Party APIs returning mock data instead. One such mock libraries is Mockito, we use it to return a fake instance and inject it into the application in test using GuiceApplicationBuilder. The test reads from a JSON sample output file called "sample_offer_list.json"</p>
+			<article contenteditable="false"><p>In this example the controller class Product Controller fetches data from an external service called DataService. Since we can't call real APIs during Test we need to mock DataService and return mock data instead. Similar to Java, in Scala there are also many options for using mock libraries. One popular mock library is Mockito, in this example we use it to return a fake instance and inject it into the application in test using GuiceApplicationBuilder, we also leverage play framework's testing support capability. The test reads from a JSON file Source called "sample_offer_list.json", builds the json object representation and validates the fields values.</p>
 
 <h3>Injected JSON Mock data</h3>
 
