@@ -1,6 +1,20 @@
 [
 	
 		{
+		  "title"    : "Dockerizing a Scala Play application",
+		  "category" : "",
+		  "url"     : "/scala/backend/docker/play/2017/08/23/scala-play-docker-sbt-native-packager-example/",
+		  "date"     : "2017-08-23 04:20:20 -0700"
+		} ,
+	
+		{
+		  "title"    : "Git - developer contributor typical lifecycle commands",
+		  "category" : "",
+		  "url"     : "/git/2017/08/23/git-contributor-commands-developer-example/",
+		  "date"     : "2017-08-23 03:10:10 -0700"
+		} ,
+	
+		{
 		  "title"    : "Testing Scala application using Play framework and Mockito",
 		  "category" : "",
 		  "url"     : "/scala/backend/testing/2017/07/12/scala-play-test-mock-guice-inject/",

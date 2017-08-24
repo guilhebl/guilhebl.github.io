@@ -87,33 +87,77 @@
     </nav>
 
 
+    <section class="post">
+        <div class="post-body">
+            <div class="container">
+		<div class="row-fluid">
+		  <div class="center-block">
+		     <section class="paper">
+		      	<article class="head">Git - developer contributor typical lifecycle commands</article>
+			<p class="muted">23 August 2017</p>
 
-<h1 class="category">Category: scala</h1>
-<ul class="posts">
+			<article contenteditable="false"><p>These are the typical Git commands a developer would use in a bread-and-butter daily scenario through the development lifecycle.</p>
 
-    <div>2017-08-23 04:20:20 -0700</div>
-    <h2><a href="/scala/backend/docker/play/2017/08/23/scala-play-docker-sbt-native-packager-example/">Dockerizing a Scala Play application</a></h2>
-    <div class="categories">under scalabackenddockerplay</div>
+<h4>Create "feature" branch</h4>
 
-    <div>2017-07-12 04:25:22 -0700</div>
-    <h2><a href="/scala/backend/testing/2017/07/12/scala-play-test-mock-guice-inject/">Testing Scala application using Play framework and Mockito</a></h2>
-    <div class="categories">under scalabackendtesting</div>
+<p>We are creating a new branch called "myBranch123" this branch will contain all our commits for this feature:</p>
 
-    <div>2017-06-30 04:25:22 -0700</div>
-    <h2><a href="/scala/algorithms/2017/06/30/scala-find-kth-element-in-collection-algorithm/">Finding K(th) Max or Min element of a collection</a></h2>
-    <div class="categories">under scalaalgorithms</div>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout -b myBranch123</code></pre></figure></p>
 
-    <div>2017-06-22 13:25:22 -0700</div>
-    <h2><a href="/scala/algorithms/2017/06/22/scala-find-min-distance-keywords-window-size-in-document-algorithm/">Finding minimum size distance of a group of keywords in a document</a></h2>
-    <div class="categories">under scalaalgorithms</div>
+<h4>add changes</h4>
 
-    <div>2017-05-08 16:55:22 -0700</div>
-    <h2><a href="/scala/jvm/2017/05/08/scala-url-shortener-algorithm/">Scala Url Shortener</a></h2>
-    <div class="categories">under scalajvm</div>
+<p>make changes to the code and add them:</p>
 
-</ul>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git add --all</code></pre></figure></p>
 
+<h4>commit</h4>
 
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git commit -m <span class="s2">"my commit message"</span></code></pre></figure></p>
+
+<h4>push new branch to origin</h4>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git push origin myBranch123</code></pre></figure></p>
+
+<h4>create a PR request or merge manually</h4>
+
+<p>create a PR request for your branch to be merged into the "develop" branch</p>
+
+<p>or:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout develop
+git merge myBranch123
+git push</code></pre></figure></p>
+
+<h4>delete feature branch from origin</h4>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git push origin --delete myBranch123</code></pre></figure></p>
+
+<h4>delete feature branch from local</h4>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">git branch -d myBranch123</code></pre></figure></p>
+</article>
+		      </section>
+
+		    <div id="disqus_thread"></div>
+		    <script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			var disqus_shortname = 'guilhebliopages'; // required: replace example with your forum shortname
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>		    
+		  </div>
+
+		</div>
+            </div>
+        </div>
+    </section>
     <!-- Core JavaScript Files -->
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -129,4 +173,5 @@
 </body>
 
 </html>
+
 
