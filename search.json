@@ -1,6 +1,13 @@
 [
 	
 		{
+		  "title"    : "How to intercept and mock external API calls in Golang",
+		  "category" : "",
+		  "url"     : "/go/backend/mock/testing/2017/12/09/mock-external-api-rest-calls-functional-test-golang/",
+		  "date"     : "2017-12-09 00:23:20 -0800"
+		} ,
+	
+		{
 		  "title"    : "Dockerizing a Scala Play application",
 		  "category" : "",
 		  "url"     : "/scala/backend/docker/play/2017/08/23/scala-play-docker-sbt-native-packager-example/",
